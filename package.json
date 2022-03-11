@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "server": "cd backend && nodemon server",
+    "client": "cd frontend && npm start"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.3",
+    "nodemon": "^2.0.15"
+  }
+}
