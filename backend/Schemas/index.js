@@ -11,7 +11,7 @@ const connect = ( ) => {
     프로젝트에 사용할 데이터베이스 이름 입력
     callback: 연결 성공 여부 출력
     */
-    mongoose.connect('mongodb://root:gks253@localhost:27017/admin', {
+    mongoose.connect('mongodb+srv://root:root1234@cluster0.fc2ku.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
         dbName: 'test',
         // mongoose 6.0 미만에서만 적용
         // useNewUrlParser: true, userCreateIndex: true,
