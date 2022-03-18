@@ -1,18 +1,11 @@
-import axios from "axios";
-import { useEffect } from "react";
+import MyRoute from './MyRoute';
 
 function App() {
-  const callApi = async () => {
-    axios.get("/api").then((res) => {
-      console.log(res.data.test);
-    });
-  };
-
-  useEffect(() => {
-    callApi();
-  }, []);
-
-  return <div className="App">...</div>;
+  return (
+    <div className="App">
+       <MyRoute></MyRoute>
+    </div>
+  );
 }
 
 export default App;

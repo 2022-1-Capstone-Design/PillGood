@@ -1,0 +1,31 @@
+.navbar__element{
+    display:flex;
+    list-style: none;
+    padding-right: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color:#fec89a;
+    margin: 0px;
+}
+li{
+    padding-right: 40px;
+    font-family: 'Gideon Roman';
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+@media screen and (max-width:887px){
+    .navbar__element{
+        display: flex;
+        background-color: #fec89a;
+        flex-direction: column;
+        padding:0px;
+        align-items: center;
+    }
+    li{
+        padding-right:0px;
+        padding-bottom: 40px;
+    }
+}
