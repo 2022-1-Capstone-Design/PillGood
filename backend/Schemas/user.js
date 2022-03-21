@@ -7,6 +7,11 @@ const userSchema = new Schema({
         required: true,
         unique: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
+    versionKey: false
 });
 
 module.exports = mongoose.model('User', userSchema);

@@ -8,16 +8,25 @@ module.exports = ( ) => {
         clientID: "326cd91121ead061d9c149f8690d1706",
         // Redirect URL
         callbackURL: "/auth/kakao/callback",
-    }, async (accessToken, refreshToken, profile, done) => {
+    }, 
+    /** 
+     * passport-kakao 모듈의 Strategy.js 참고
+     * 모듈은 accessToken을 이용하여 "'https://kapi.kakao.com/v2/user/me"에서 유저정보를 받아와 profile return
+    */
+    async (accessToken, refreshToken, profile, done) => {
         console.log('kakaoprofile', profile);
         try {
-            const existUser = await User.find({ id: profile.id });
-            if (Object.keys(existUser).length === 0) {
-                await User.create( { id: profile.id });
+            const existUser = await User.findOne({ id: profile.id });
+            // 없으면 회원가입 처리
+            if (!existUser) {
+                const newUser = await User.create( { id: profile.id, name:  profile.username } );
+                done(null, newUser);
+            } else {
+                done(null, existUser);
             }
-            done(null, existUser);
         } catch(error) {
-            done(error)
+            console.log(error);
+            done(error);
         }
     }));
 }
