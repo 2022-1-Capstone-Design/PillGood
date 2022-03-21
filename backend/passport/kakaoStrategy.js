@@ -17,12 +17,17 @@ module.exports = ( ) => {
         console.log('kakaoprofile', profile);
         try {
             const existUser = await User.findOne({ id: profile.id });
+            const tokenUser = {
+                accessToken: accessToken || '',
+            }
             // 없으면 회원가입 처리
             if (!existUser) {
                 const newUser = await User.create( { id: profile.id, name:  profile.username } );
-                done(null, newUser);
+                tokenUser.user = newUser;
+                done(null, tokenUser);
             } else {
-                done(null, existUser);
+                tokenUser.user = existUser;
+                done(null, tokenUser);
             }
         } catch(error) {
             console.log(error);
