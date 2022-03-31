@@ -3,10 +3,18 @@ import Navigate from "../route/Navigate";
 import "../css/Main.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 
-function Main({ isLoggedIn }) {
-  // localStroage에 저장한 jwt 콘솔에 찍음
-  console.log(window.localStorage.token);
+function Main({ isLoggedIn, setIsLoggedIn }) {
+  const token = window.localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
   return (
     <div className="main">
       <div className="main__first">

@@ -10,8 +10,13 @@ function MyRoute() {
   return (
     <Fragment>
       <Routes>
-        <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
-        <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
+        <Route
+          path="/"
+          element={
+            <Main isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
+        <Route path="/auth" element={<Auth />} />
         <Route path="/form" element={<Form />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
       </Routes>
