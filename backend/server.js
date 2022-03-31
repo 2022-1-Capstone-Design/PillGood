@@ -5,10 +5,14 @@ const test = require("./Router/test");
 const userRouter = require("./Router/user");
 const authRouter = require("./Router/auth");
 
+const bodyParser = require("body-parser");
+
 // DB
 const connect = require("./Schemas");
 
 const app = express();
+
+app.use(bodyParser.json());
 
 // DB 연결
 connect();

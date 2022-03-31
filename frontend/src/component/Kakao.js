@@ -41,7 +41,7 @@ const Kakao = () => {
   const sendKakaoTokenToServer = (token) => {
     axios
       .post("/test/kakao", { access_token: token }, { withCredentials: true }) // localhost:5000/test/kakao로 전송
-      .then((res) => {
+      .then((res) => { 
         if (res.status == 201 || res.status == 200) {
           const user = res.data.user;
           window.localStorage.setItem(

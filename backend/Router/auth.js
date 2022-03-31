@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 const login = require("../Controller/login");
@@ -39,12 +40,23 @@ const User = require("../Schemas/user");
 router.post("/kakao", async (req, res) => {
   try {
     const kakaoUser = await login.getProfile(req.body.access_token);
-    const existUser = await User.findOne({ where: { id: profile.id } });
-    if (!existUser) {
-      User.create({ id: kakaoUser.id, name: kakaoUser.profile.nickname });
+    const {doc, created} = await User.findOrCreate({ id: kakaoUser.id, name: kakaoUser.properties.nickname });
+    let responseData = {
+      success : true,
+      user: doc,
     }
+    const token = jwt.sign({
+      id : doc.id,
+      name : doc.name,
+      access_token : req.body.access_token,
+    }, "SecretKey");
+    responseData.jwt= token;
+    return res.status(created? 201 : 200).json(responseData);
   } catch (error) {
-    return res.status(500);
+    return res.status(500).json({
+      success: false,
+      error
+    });
   }
 });
 

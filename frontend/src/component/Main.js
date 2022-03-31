@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Main({ isLoggedIn }) {
+  // localStroage에 저장한 jwt 콘솔에 찍음
+  console.log(window.localStorage.token);
   return (
     <div className="main">
       <div className="main__first">
