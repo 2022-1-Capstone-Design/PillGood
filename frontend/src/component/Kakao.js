@@ -19,7 +19,6 @@ const Kakao = ({ setIsLoggedIn }) => {
       redirect_uri: "http://localhost:3000/auth/kakao/callback",
       code: code,
     };
-    console.log(data.code); //인가코드
     const queryString = Object.keys(data)
       .map((k) => encodeURIComponent(k) + "=" + encodeURIComponent(data[k]))
       .join("&");
@@ -41,12 +40,13 @@ const Kakao = ({ setIsLoggedIn }) => {
     axios
       .post("/test/kakao", { access_token: token }, { withCredentials: true }) // localhost:5000/test/kakao로 전송
       .then((res) => {
-        if (res.status == 201 || res.status == 200) {
+        if (res.status === 201 || res.status === 200) {
           const user = res.data.user;
           window.localStorage.setItem(
             "token",
             JSON.stringify({
               access_token: res.data.jwt,
+              expire: Date.now() + 5000,
             })
           );
           navigate("/");
