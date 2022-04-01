@@ -60,4 +60,6 @@ router.post("/kakao", async (req, res) => {
   }
 });
 
+router.post("/kakao/logout", login.logout);
+
 module.exports = router;

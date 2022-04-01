@@ -9,9 +9,6 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
   const obj = JSON.parse(token);
   useEffect(() => {
-    if (obj && Date.now() > obj.expire) {
-      window.localStorage.removeItem("token");
-    }
     if (token) {
       setIsLoggedIn(true);
     } else {

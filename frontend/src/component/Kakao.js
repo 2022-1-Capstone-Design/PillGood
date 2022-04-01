@@ -46,7 +46,7 @@ const Kakao = ({ setIsLoggedIn }) => {
             "token",
             JSON.stringify({
               access_token: res.data.jwt,
-              expire: Date.now() + 5000,
+              //expire: Date.now() + 5000,
             })
           );
           navigate("/");
