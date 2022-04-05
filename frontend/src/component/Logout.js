@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 const Logout = () => {
   const navigate = useNavigate();
-  const token = JSON.parse(window.localStorage.getItem("token"));
+  const token = window.localStorage.getItem("token");
   useEffect(() => {
-    axios.post("/test/kakao/logout", { token: token.access_token }).then((res) => {
+    axios.post("/test/kakao/logout", { token: JSON.parse(token) }).then((res) => {
       if (res.data.success) window.localStorage.removeItem("token");
-    }).catch(error => console.log(error));
-    navigate("/");
+      navigate("/");
+    });
   });
   return <div>Logout</div>;
 };
