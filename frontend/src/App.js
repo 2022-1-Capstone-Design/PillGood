@@ -1,9 +1,9 @@
-import MyRoute from './MyRoute';
+import MyRoute from "./MyRoute";
 
 function App() {
   return (
     <div className="App">
-       <MyRoute></MyRoute>
+      <MyRoute></MyRoute>
     </div>
   );
 }

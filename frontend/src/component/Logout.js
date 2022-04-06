@@ -6,12 +6,15 @@ const Logout = () => {
   const navigate = useNavigate();
   const token = window.localStorage.getItem("token");
   useEffect(() => {
-    axios.post("/test/kakao/logout", { token: JSON.parse(token) }).then((res) => {
-      if (res.data.success) window.localStorage.removeItem("token");
-      navigate("/");
-    });
+    axios
+      .post("/test/kakao/logout", { token: JSON.parse(token) })
+      .then((res) => {
+        if (res.data.success) window.localStorage.removeItem("token");
+        navigate("/", true);
+      })
+      .catch((err) => navigate("/", true));
   });
-  return <div>Logout</div>;
+  return <></>;
 };
 
 export default Logout;

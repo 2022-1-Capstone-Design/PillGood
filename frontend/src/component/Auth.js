@@ -1,12 +1,21 @@
 import imgLogin from "../image/kakao_login.png";
 import "../css/Auth.css";
-function Auth({ isLoggedIn }) {
-  const kauthUrl =
-    "https://kauth.kakao.com/oauth/authorize?client_id=326cd91121ead061d9c149f8690d1706&redirect_uri=http://localhost:3000/auth/kakao/callback&response_type=code";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+function Auth({ isLoggedIn, setIsLoggedIn }) {
+  const navigate = useNavigate();
+  const token = window.localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      navigate("/", setIsLoggedIn(true));
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn, setIsLoggedIn, token]);
   return (
     <div className="auth">
-      <a href={kauthUrl}>
+      <a href={process.env.REACT_APP_KAUTH_URL}>
         <button>
           <img src={imgLogin} alt="kakao Login button" />
         </button>

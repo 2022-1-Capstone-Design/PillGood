@@ -7,15 +7,13 @@ import { useEffect } from "react";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
-  const obj = JSON.parse(token);
   useEffect(() => {
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-  }, [setIsLoggedIn, token]);
-
+  }, [isLoggedIn, setIsLoggedIn, token]);
   return (
     <div className="main">
       <div className="main__first">
