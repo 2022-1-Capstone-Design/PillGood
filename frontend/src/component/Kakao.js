@@ -45,7 +45,6 @@ const Kakao = () => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          console.log(expiresIn);
           const user = res.data.user;
           window.localStorage.setItem("token", JSON.stringify(res.data.jwt));
           navigate("/", true);

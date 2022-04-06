@@ -12,7 +12,12 @@ const Logout = () => {
         if (res.data.success) window.localStorage.removeItem("token");
         navigate("/", true);
       })
-      .catch((err) => navigate("/", true));
+      .catch((err) => {
+        // jwt 토큰 만료시 삭제
+        if (err.response.data.error.message === "jwt expired") {
+          window.localStorage.removeItem("token");
+        }
+        navigate("/", true); });
   });
   return <></>;
 };
