@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../css/Navigate.css";
+
 function Navigate({ isLoggedIn }) {
   return (
     <ul className="navbar__element">

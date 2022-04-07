@@ -10,12 +10,12 @@ const Kakao = () => {
     if (query.code) {
       getKakaoTokenHandler(query.code.toString());
     }
-  }, []);
+  });
 
   const getKakaoTokenHandler = async (code) => {
     const data = {
       grant_type: "authorization_code",
-      client_id: "326cd91121ead061d9c149f8690d1706",
+      client_id: process.env.REACT_APP_KAKAO_KEY,
       redirect_uri: "http://localhost:3000/auth/kakao/callback",
       code: code,
     };
@@ -33,7 +33,8 @@ const Kakao = () => {
       .then((res) => {
         //서버에 토큰 전송
         sendKakaoTokenToServer(res.data.access_token, res.data.expires_in);
-      });
+      })
+      .catch((err) => navigate("/", true));
   };
 
   const sendKakaoTokenToServer = (token, expiresIn) => {
@@ -45,8 +46,8 @@ const Kakao = () => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          const user = res.data.user;
           window.localStorage.setItem("token", JSON.stringify(res.data.jwt));
+          window.localStorage.setItem("expiresIn", JSON.stringify(expiresIn));
           navigate("/", true);
         } else {
           window.alert("로그인에 실패하였습니다.");
@@ -54,7 +55,7 @@ const Kakao = () => {
       });
   };
 
-  return <div>Kakao</div>;
+  return <></>;
 };
 
 export default Kakao;

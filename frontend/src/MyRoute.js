@@ -18,12 +18,7 @@ function MyRoute() {
             <Main isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
           }
         />
-        <Route
-          path="/auth"
-          element={
-            <Auth isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-          }
-        />
+        <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/form" element={<Form />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/logout" element={<Logout />} />

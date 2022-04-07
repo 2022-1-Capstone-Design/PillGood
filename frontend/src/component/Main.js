@@ -4,16 +4,19 @@ import "../css/Main.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
+import * as AuthVerify from "./AuthVerify";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
   useEffect(() => {
+    AuthVerify.AuthVerify();
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
+
   return (
     <div className="main">
       <div className="main__first">
