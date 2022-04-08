@@ -1,44 +1,136 @@
+p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
+    font-family: 'GyeonggiTitleM';
+    line-height: 1.7;
+    animation:fadeIn 3s ease-in-out;
+    
+}
+.main__intro__background{
+    transform: scaleX(-1);
+}
+/* 첫번째 페이지 전체 설정 */
 .main{
-    height:100vh;
-    background-color: papayawhip;
+    height:620px;
+    width:100%;
+    background-color: rgb(169, 232, 248);
+    background-image: url('../image/medical.png');
+    background-size: contain;
+    background-repeat: no-repeat;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
 }
+/* 필굿 로고 사진 */
+a>img{
+    margin-top: 0px;
+    height:60px;
+    padding-bottom: 12px;
+    backface-visibility: hidden;
+}
+/* 로고 포함 네비바 */
 .main__first{
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #fec89a;
+    padding: 9px;
+    /* background-color: #fec89a; */
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
-.main__first h2{
-    padding-left: 40px;
-    padding-bottom: 0px;
+/* 폰트 적용 */
+@font-face {
+    font-family: 'GyeonggiTitleM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
-.main__intro{
+/* 메인페이지 내용 */
+.main__intro__{
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: flex-end;
     padding-bottom: 20vh;
+    padding-right: 109px;
+    padding-top: 94px;
 }
-.main__intro p{
-    padding-bottom: 10vh;
+.main__intro__main__list, span{
+    font-size: 30px;
+    font-family:  'GyeonggiTitleM';
+    
 }
-.main__intro input{
+/* 첫 페이지 텍스트 중 단어 바뀌는 해당 줄 */
+.main__intro__main__change{
+   display:flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   /* overflow: hidden; */
+   height:45px;
+}
+/* 첫 페이지 텍스트 중 애니메이션 효과 적용한 단어 */
+.main__intro__main__change__list{
+    padding-left:12px;
+    width:203px;
+    /* animation: upchange 9s infinite ;  */
+    margin:0px;
+    
+}
+
+ul{
+    padding-bottom:0px;
+}
+.startForm{
+    animation:fadeIn 3s ease-in-out;
+}
+/* 메인페이지 내 큰 글씨 */
+.main__intro__main> h2{
+    width:527px;
+    /* padding-left: 109px; */
+    font-family:'GyeonggiTitleM';
+    line-height: 1.7;
+    font-weight: 500;
+    animation:fadeIn 3s ease-in-out;
+    padding-bottom: 0px;
+    font-size: 30px;
+    text-align: right;
+}
+@keyframes updown{
+    from{
+        transform: translatey(0px);
+      }
+      to{
+        transform: translatey(-20px);
+      }
+}
+/* 설문시작 버튼 */
+.startForm{
     border-radius: 40px;
-    padding:18px 40px;
-    background-color: #ffe5d9;
+    padding:23px 48px;
+    /* background-color: #ffe5d9; */
+    background-color: rgb(255, 37, 37);
     border:0px;
-    color:black;
+    color:rgb(245, 241, 241);
     font-weight: bold;
-    font-size:15px;
-    box-shadow: 2px 2px 2px rgb(158, 157, 157);
+    font-size:24px;
+    box-shadow: 0px 0px 20px 1px rgb(139, 138, 138);
+    font-weight: 600;
+     cursor: pointer;
+    font-family:'GyeonggiTitleM' ;
+    font-weight: 500;
+    /* animation:fadeIn 3s ease-in-out; */
+    /* animation:updown 3s infinite; */
+    position: relative;
+    
 }
 .main__first__menu{
     display:none;
 }
+
+/* 화면 너비가 줄어들 경우 반응형으로 메뉴바 나오도록 */
 @media screen and (max-width:887px){
     .main{
         background-color: #fec89a;
@@ -60,4 +152,243 @@
         display:block;
         font-size: 0.5em;
     }
+}
+.main__first>img{
+    width: 166px;
+}
+.main__intro__>p{
+    padding-bottom: 10px;
+    width:610px;
+    animation:fadeIn 3s ease-in-out;
+    /* animation-delay: 1s; */
+    line-height: 1.7;
+    text-align: right;
+    font-family:'GyeonggiTitleM' ;
+    font-size:21px;
+}
+
+/*----------------------second page---------------------------*/
+.active{
+    animation:fadeIn 3s ease-in-out;
+}
+.text{
+    opacity: 0;
+}
+.secondpage{
+    /* background:linear-gradient(90deg, pink 50%,rgb(251, 252, 243) 50%); */
+    background-color: white;
+    height:900px;
+    width:100%;
+    /* background-image: url('../image/blue.jpg');
+    background-repeat: no-repeat;
+    background-position-x: 90%;
+    background-position-y: 50%; */
+}
+/* 텍스트 설정 */
+.secondpage__context>p{
+    width:478px;
+    font-size: 16px;
+}
+/* 텍스트 중 상단 텍스트 */
+.secondpage__left>h5{
+    color:rgb(241, 92, 92);
+    animation:fadeIn 3s ease-in-out;
+}
+/* 텍스트 중 큰 글씨 */
+.secondpage__context>h2{
+    padding-bottom: 30px;
+    animation:fadeIn 3s ease-in-out;
+    font-size: 30px;
+}
+.secondpage__right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.secondpage__right>img{
+    width:700px;
+    height:auto;
+}
+.triangle{
+    width: 0;
+	height: 0;
+	border-top: 30px solid rgb(241, 92, 92);/* 화살표 */
+	opacity:0.4;
+    border-left: 40px solid transparent;
+	border-right: 40px solid transparent;
+    
+}
+.triangle2{
+    opacity:0.7;
+}
+.secondpage__left{
+    display:flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.secondpage__left>img{
+    width: 500px;height: auto;
+    padding-top: 40px;
+    padding-left: 0px;
+}
+.secondpage__context{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    padding-right: 0px;
+    padding-top: 100px;
+
+}
+
+span{
+    padding-bottom: 20px;
+}   
+.secondpage__left>h4{
+    font-family: 'GyeonggiTitleM' ;;
+}
+.head{
+    font-size: 30px;
+    padding-top: 40px;
+    font-weight: 600;
+}
+.below{
+    font-size:20px;
+}
+.behind{
+    padding-bottom: 48px;
+}
+/* 일러스트 설정 */
+.checklist>img,.medicine>img{
+    width:45px;
+    height:48px;
+    border-radius: 0%;
+    animation-name: updown;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction:alternate;
+    padding-right: 20px;
+}
+.secondpage__left>h1{
+    margin:0px;
+}
+
+.medicine{
+    padding-left:60px;
+    padding-top:60px
+}
+/*-------------------------third page-----------------*/
+.thirdpage{
+    height:900px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:aliceblue;
+    justify-content: center;
+}
+.thirdpage>h1{
+    text-align: center;
+    margin-top: 40px;
+}
+.thirdpage>h1:after{
+    content: "";
+    display: block;
+    width: 30%;
+    border-bottom: 2.5px solid rgb(255, 69, 12);
+    margin:5px auto;
+    padding-bottom: 20px;
+}
+.thirdpage__{
+    padding-top: 10px;
+}
+.thirdpage__{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 21px;
+}
+.circle1, 
+.circle2{
+    background-color: white;
+    font-size: 80px;
+    width: 200px;
+    height: 200px; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin-right: 0px;
+    margin:20px;
+}
+.circle1{
+    
+    background-image: url('../image/check.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.FontAwesomeIcon{
+    color:#222;
+}
+.circle2{
+    background-image: url('../image/pill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.circle1>img,
+.circle2>img{
+    width: auto;
+  height: 120px;
+  padding-top: 30px;
+  object-fit: cover;
+}
+.thirdpage__first,
+.thirdpage__second{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-right: 50px;
+    box-shadow: 0px 0px 20px 1px rgb(139, 137, 137);
+    border-radius: 10%;
+    padding-top: 40px;
+    padding:20px;
+}
+.thirdpage__first{
+    padding-left: 15px;padding-right: 17px;
+}
+.thirdpage__second{
+    padding-left: 37px;margin-left: 115px;padding-right: 37px;
+    margin-right: 0px;
+}
+.thirdpage__text1,
+.thirdpage__text2{
+    background-color: rgb(243, 220, 224);
+    box-shadow: 0px 0px 20px 1px rgb(200, 200, 200);
+    width:400px;
+    height:300px;
+    margin:0px 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.thirdpage__text1>p,
+.thirdpage__text2>p{
+    font-size: 18px;
+    color:rgb(56, 55, 55);
+    font-weight:600;
+    padding-top: 10px;
+}
+.thirdpage__text1>h2,
+.thirdpage__text2>h2{
+    padding-top: 40px;
+    border-bottom: 2px solid rgb(255, 69, 12);
+}
+.footer{
+    height:150px;
+    width:100%;
+    background-color: #222;
+    color: aliceblue;
 }
