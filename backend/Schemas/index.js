@@ -5,13 +5,12 @@ const connect = ( ) => {
     if (process.env.NODE_ENV !== 'production') {
         mongoose.set('debug', true);
     }
-    
     /* 
     connection part
     프로젝트에 사용할 데이터베이스 이름 입력
     callback: 연결 성공 여부 출력
     */
-    mongoose.connect('mongodb+srv://root:root1234@cluster0.fc2ku.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    mongoose.connect(process.env.DB_HOST, {
         dbName: 'test',
         // mongoose 6.0 미만에서만 적용
         // useNewUrlParser: true, userCreateIndex: true,

@@ -3,8 +3,18 @@ import Navigate from "../route/Navigate";
 import "../css/Main.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect } from "react";
 
-function Main({ isLoggedIn }) {
+function Main({ isLoggedIn, setIsLoggedIn }) {
+  const token = window.localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn, setIsLoggedIn, token]);
+
   return (
     <div className="main">
       <div className="main__first">
