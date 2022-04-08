@@ -47,10 +47,14 @@ const Kakao = () => {
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
           window.localStorage.setItem("token", JSON.stringify(res.data.jwt));
-          window.localStorage.setItem("expiresIn", JSON.stringify(expiresIn));
+          //토큰 만료시간 지나면 자동 삭제
+          setTimeout(() => {
+            window.localStorage.removeItem("token");
+          }, expiresIn * 1000);
           navigate("/", true);
         } else {
           window.alert("로그인에 실패하였습니다.");
+          navigate("/");
         }
       });
   };
