@@ -1,20 +1,19 @@
 const mongoose = require("mongoose");
+const findOrCreate = require("mongoose-findorcreate");
 
 const { Schema } = mongoose;
 const userSchema = new Schema({
-    name: {
-        type: String,
+    id: {
+        type: Number,
         required: true,
         unique: true,
     },
-    age: {
-        type: Number,
+    name: {
+        type: String,
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
+    versionKey: false
 });
+userSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', userSchema);

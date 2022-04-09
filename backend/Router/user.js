@@ -18,6 +18,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:name', async (req, res, next) => {
     try {
         const findUser = await User.find({ name: req.params.name })
+        if (Object.keys(findUser).length === 0) {
+            throw new Error(`${req.url}은 없는 사용자 입니다.`);
+        }
         res.json(findUser);
     } catch (error) {
         console.log(error);

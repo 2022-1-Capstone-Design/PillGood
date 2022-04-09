@@ -1,6 +1,6 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
-import React from "react";
+import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import logo from '../image/logo.png';
 import {FullPage, Slide} from 'react-full-page';
@@ -10,8 +10,18 @@ import Fade from 'react-reveal/Fade';
 import pictogram from '../image/pictogram.png';
 import Cards from "./Cards";
 import Footer from "./Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function Main({ isLoggedIn }) {
+function Main({ isLoggedIn, setIsLoggedIn }) {
+  const token = window.localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn, setIsLoggedIn, token]);
+
   return (
     
     <div>

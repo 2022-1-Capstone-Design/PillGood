@@ -2,10 +2,11 @@
 import { Link } from "react-router-dom";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../css/Navigate.css";
+import * as Logout from "../component/Logout";
+
 function Navigate({ isLoggedIn }) {
   return (
-    <ul class="navbar__element">
-  
+    <ul className="navbar__element">
       <li>
         <Link to="/">홈</Link>
       </li>
@@ -20,7 +21,7 @@ function Navigate({ isLoggedIn }) {
       <li>
         <Link to="/all">전체보기</Link>
         </li>
-      {isLoggedIn ? <li>로그아웃</li> : null}
+      {isLoggedIn ? <li onClick={Logout.Logout}>로그아웃</li> : null}
       {isLoggedIn ? <li>마이페이지</li> : null}
 
       <li>

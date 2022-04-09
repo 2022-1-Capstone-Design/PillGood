@@ -16,12 +16,19 @@ import Detail_Food from "./component/Common/Detail_Food";
 import Detail_Other from "./component/Common/Detail_Other";
 import Detail_Family from "./component/Common/Detail_Family";
 import Detail_Result from "./component/Common/Detail_Result";
+import Kakao from "./component/Kakao";
+
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <Fragment>
       <Routes>
-        <Route path="/" element={<Main isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/"
+          element={
+            <Main isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/form" element={<Form />} />
         <Route path="/all" element={<All />}/>
@@ -36,8 +43,8 @@ function MyRoute() {
         <Route path="/form/detail/common/other" element={<Detail_Other/>}/>
         <Route path="/form/detail/common/family" element={<Detail_Family/>}/>
         <Route path="/form/detail/common/result" element={<Detail_Result/>}/>
-        
-       </Routes>
+        <Route path="/auth/kakao/callback" element={<Kakao />} />
+      </Routes>
     </Fragment>
   );
 }
