@@ -1,7 +1,7 @@
 .navbar__element{
     display:flex;
     list-style: none;
-    padding-right: 30px;
+    padding-right: 100px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -11,7 +11,7 @@
     padding-left: 0px;
 }
 .navbar__element>li{
-    padding-right: 12px;
+    padding-right: 50px;
     font-family: 'GyeonggiTitleM';
     display:inline-block;
 
@@ -22,7 +22,7 @@ a{
     color:black;
     padding:0px 16px;
     transition:all .3s ease;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'GyeonggiTitleM';
     
 }
@@ -82,6 +82,7 @@ li:hover:after{
     .navbar__element>li{
         padding-right:0px;
         padding-bottom: 40px;
+
     }
     .behind{
         display: none;

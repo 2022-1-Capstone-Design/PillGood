@@ -12,6 +12,7 @@
     width:170px;
     border-radius: 50px;
     margin-top:50px;
+    align-items: center;
     background-color: white;
 }
 button{

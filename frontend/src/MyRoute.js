@@ -6,6 +6,8 @@ import Form from "./component/Form";
 import { Fragment, useState } from "react";
 import All from './component/All';
 import Ask from './component/Ask';
+import Cards from "./component/Cards";
+import Footer from "./component/Footer";
 import Detail1 from './component/Detail1';
 import Detail_Blood from './component/Detail/Detail_Blood'
 import Detail_Intestine from "./component/Detail/Detail_Intestine";
@@ -25,6 +27,8 @@ function MyRoute() {
         <Route path="/all" element={<All />}/>
         <Route path="/ask" element={<Ask/>}/>
         <Route path="/form/detail/1" element={<Detail1/>}/>
+        <Route path="/cards" element={<Cards/>}/>
+        <Route path="/footer" element={<Footer/>}/>
         <Route path="/form/detail/blood" element={<Detail_Blood/>}/>
         <Route path="/form/detail/intestine" element={<Detail_Intestine/>}/>
         <Route path="/form/detail/tired" element={<Detail_Tired/>}/>
