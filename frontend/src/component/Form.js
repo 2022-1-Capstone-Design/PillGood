@@ -3,8 +3,8 @@ import '../css/Form.css';
 import logo from '../image/logo.png';
 function Form(){
     return(
-      <div class="form">
-         <div class="form__first">
+      <div className="form">
+         <div className="form__first">
          <Link to="/">
          <img src={logo} width='166' height='30' alt='pillgood logo'/>
          </Link>
@@ -19,8 +19,6 @@ function Form(){
          <Link to="/form/detail/1">
            <input className="start" value='시작하기' type='submit'/>
         </Link>
-      </div>
-      <input value="시작하기" type="submit" />
     </div>
   );
 }
