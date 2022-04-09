@@ -1,5 +1,5 @@
 .auth{
-    background-color:whitesmoke;
+    background-color:white;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -8,12 +8,14 @@
     align-items: center;
 
 }
-img{
+.auth>img{
     width:170px;
     border-radius: 50px;
     margin-top:50px;
+    align-items: center;
+    background-color: white;
 }
-h2{
-    margin:0px;
-    padding-bottom:100px;
+button{
+    border:0px;
+    background-color: whitesmoke;
 }
