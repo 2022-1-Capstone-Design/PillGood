@@ -10,7 +10,6 @@ import Fade from 'react-reveal/Fade';
 import pictogram from '../image/pictogram.png';
 import Cards from "./Cards";
 import Footer from "./Footer";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
@@ -21,6 +20,27 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
       setIsLoggedIn(false);
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
+
+  let beforeScrollY = 0;//이전 스크롤 초기값
+let standard = document.body.clientHeight;//메뉴 높이
+let menu = document.querySelector('.main__first');
+window.addEventListener('scroll', scrollDirection);
+
+function  scrollDirection(){
+  //메뉴 높이값과 스크롤된 양 비교
+  if(document.documentElement.scrollTop > standard){
+    menu.classList.add('hidden');
+  }else{
+    menu.classList.remove('hidden');
+  }
+  //이전 스크롤된 양과 현재 스크롤된 양 비교하여 방향 감지
+  if(document.documentElement.scrollTop > beforeScrollY){//아래방향
+    menu.classList.add('hidden');
+  }else{
+    menu.classList.remove('hidden');//위방향
+  }
+  beforeScrollY = document.documentElement.scrollTop;//직전 스크롤양 저장
+}
 
   return (
     
@@ -56,7 +76,7 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
                   value="내 몸에 필요한 바른 영양소 자가진단,
           지금 시작하기"
                 />
-              </Link>
+                </Link>
             </Fade>
           </div>
         </div>
@@ -101,9 +121,8 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
                   10가지 문항을 종합/평가해 웰빙 서비스를 제안합니다.
                   <br />
                 </p>
-              </div>
-            </div>
-     
+            </div>      
+           </div>
 
             <div className="thirdpage__second ">
               <div className="circle2"></div>

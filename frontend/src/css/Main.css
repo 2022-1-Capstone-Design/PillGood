@@ -37,7 +37,7 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin-top: 200px;
+    /* margin-top: 100px; */
   }
   
   .slide-navigation button:disabled {
@@ -87,11 +87,22 @@ a>img{
     /* background-color: #fec89a; */
     background-color: white;
     position: fixed;
-    top: 0px;
+    transform: initial;
+    width: 100%; 
+    /* top: 0px;
     left: 0;
-    right: 0;
-    z-index: 1;
+    right: 0;*/
+    z-index: 1; 
+    transition:.5s;
+
 }
+
+.hidden {
+    opacity: 0;
+    top: -100px;
+    transition:.3s;
+  }
+
 /* 폰트 적용 */
 @font-face {
     font-family: 'GyeonggiTitleM';
@@ -264,7 +275,7 @@ ul{
     align-items: center;
 }
 .secondpage__right>img{
-    width:700px;
+    width:680px;
     height:auto;
 }
 .triangle{
@@ -297,15 +308,16 @@ ul{
     justify-content: center;
     align-items:center;
     padding-right: 0px;
-    padding-top: 100px;
-
+    padding-top: 85px;
+    padding-bottom: 48px;
 }
 
 span{
     padding-bottom: 20px;
 }   
 .secondpage__left>h4{
-    font-family: 'GyeonggiTitleM' ;;
+    font-family: 'GyeonggiTitleM' ;
+    margin-top: 6px;
 }
 .head{
     font-size: 30px;
@@ -346,10 +358,12 @@ span{
     align-items: center;
     background-color:aliceblue;
     justify-content: center;
+    padding-top:40px;
 }
 .thirdpage>h1{
     text-align: center;
     margin-top: 40px;
+    margin-bottom: 0px;
 }
 .thirdpage>h1:after{
     content: "";
@@ -357,23 +371,23 @@ span{
     width: 30%;
     border-bottom: 2.5px solid rgb(255, 69, 12);
     margin:5px auto;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .thirdpage__{
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .thirdpage__{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 21px;
+    padding-top: 10px;
 }
 .circle1, 
 .circle2{
     background-color: white;
     font-size: 80px;
-    width: 200px;
-    height: 200px; 
+    width: 150px;
+    height: 150px; 
     border-radius: 70%;
     overflow: hidden;
     margin-right: 0px;
@@ -412,6 +426,7 @@ span{
     border-radius: 10%;
     padding-top: 40px;
     padding:20px;
+    margin-bottom: 10px;
 }
 .thirdpage__first{
     padding-left: 15px;padding-right: 17px;
@@ -443,10 +458,4 @@ span{
 .thirdpage__text2>h2{
     padding-top: 40px;
     border-bottom: 2px solid rgb(255, 69, 12);
-}
-.footer{
-    height:150px;
-    width:100%;
-    background-color: #222;
-    color: aliceblue;
 }

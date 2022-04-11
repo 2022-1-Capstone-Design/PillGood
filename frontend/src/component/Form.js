@@ -19,7 +19,6 @@ function Form(){
          <Link to="/form/detail/1">
            <input className="start" value='시작하기' type='submit'/>
         </Link>
-      </div>
       <input value="시작하기" type="submit" />
     </div>
   );
