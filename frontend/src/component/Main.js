@@ -13,7 +13,12 @@ import Footer from "./Footer";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
+  let beforeScrollY = 0; //이전 스크롤 초기값
+  let standard = document.body.clientHeight; //메뉴 높이
+  let menu = document.getElementsByClassName("main__first");
+
   useEffect(() => {
+    window.addEventListener("scroll", scrollDirection);
     if (token) {
       setIsLoggedIn(true);
     } else {
@@ -21,24 +26,19 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
 
-  let beforeScrollY = 0; //이전 스크롤 초기값
-  let standard = document.body.clientHeight; //메뉴 높이
-  let menu = document.querySelector(".main__first");
-  window.addEventListener("scroll", scrollDirection);
-
   function scrollDirection() {
     //메뉴 높이값과 스크롤된 양 비교
     if (document.documentElement.scrollTop > standard) {
-      menu.classList.add("hidden");
+      menu[0].classList.add("hidden");
     } else {
-      menu.classList.remove("hidden");
+      menu[0].classList.remove("hidden");
     }
     //이전 스크롤된 양과 현재 스크롤된 양 비교하여 방향 감지
     if (document.documentElement.scrollTop > beforeScrollY) {
       //아래방향
-      menu.classList.add("hidden");
+      menu[0].classList.add("hidden");
     } else {
-      menu.classList.remove("hidden"); //위방향
+      menu[0].classList.remove("hidden"); //위방향
     }
     beforeScrollY = document.documentElement.scrollTop; //직전 스크롤양 저장
   }
