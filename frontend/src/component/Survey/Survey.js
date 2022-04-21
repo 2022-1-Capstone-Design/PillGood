@@ -4,6 +4,7 @@ import DetailSurvey from "./Detail/DetailSurvey";
 import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyNav from "./SurveyNav";
+import axios from "axios";
 
 const Survey = () => {
   //선택한 관심 분야에 따라 표시해 줄 상세 질문 번호를 저장해두는 배열
@@ -123,7 +124,10 @@ const Survey = () => {
 
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
-    console.log(surveyAnswer);
+    axios
+      .post("/survey", { surveyAnswer }, { withCredentials: true })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
