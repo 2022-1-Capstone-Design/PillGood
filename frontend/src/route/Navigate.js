@@ -6,7 +6,7 @@ import * as Logout from "../component/Logout";
 
 function Navigate({ isLoggedIn }) {
   return (
-    <ul className="navbar__element">
+    <ul className={"navbar__element"}>
       <li>
         <Link to="/">홈</Link>
       </li>
@@ -20,13 +20,17 @@ function Navigate({ isLoggedIn }) {
       </li>
       <li>
         <Link to="/all">전체보기</Link>
+      </li>
+      {isLoggedIn ? (
+        <li style={{ cursor: "pointer" }} onClick={Logout.Logout}>
+          로그아웃
         </li>
-      {isLoggedIn ? <li onClick={Logout.Logout}>로그아웃</li> : null}
+      ) : null}
       {isLoggedIn ? <li>마이페이지</li> : null}
 
       <li>
         <Link to="/ask">문의하기</Link>
-        </li>
+      </li>
     </ul>
   );
 }

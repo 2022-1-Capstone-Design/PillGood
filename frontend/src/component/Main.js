@@ -13,13 +13,35 @@ import Footer from "./Footer";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
+  let beforeScrollY = 0; //이전 스크롤 초기값
+  let standard = document.body.clientHeight; //메뉴 높이
+  let menu = document.getElementsByClassName("main__first");
+
   useEffect(() => {
+    window.addEventListener("scroll", scrollDirection);
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
+
+  function scrollDirection() {
+    //메뉴 높이값과 스크롤된 양 비교
+    if (document.documentElement.scrollTop > standard) {
+      menu[0].classList.add("hidden");
+    } else {
+      menu[0].classList.remove("hidden");
+    }
+    //이전 스크롤된 양과 현재 스크롤된 양 비교하여 방향 감지
+    if (document.documentElement.scrollTop > beforeScrollY) {
+      //아래방향
+      menu[0].classList.add("hidden");
+    } else {
+      menu[0].classList.remove("hidden"); //위방향
+    }
+    beforeScrollY = document.documentElement.scrollTop; //직전 스크롤양 저장
+  }
 
   return (
     <div>
@@ -47,7 +69,7 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
                     안심하고 믿을 수 있는 영양제 조회로 쉽고 빠르게 건강관리를
                     시작하세요.
                   </p>
-                  <Link to="/form">
+                  <Link to={isLoggedIn ? "/form" : "auth"}>
                     <input
                       className="startForm"
                       type="submit"
