@@ -37,7 +37,6 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    /* margin-top: 100px; */
   }
   
   .slide-navigation button:disabled {
@@ -89,9 +88,6 @@ a>img{
     position: fixed;
     transform: initial;
     width: 100%; 
-    /* top: 0px;
-    left: 0;
-    right: 0;*/
     z-index: 1; 
     transition:.5s;
 
@@ -120,7 +116,7 @@ a>img{
     padding-right: 109px;
     padding-top: 230px;
 }
-.main__intro__main__list, span{
+.main__intro__main__list{
     font-size: 30px;
     font-family:  'GyeonggiTitleM';
     
@@ -311,10 +307,7 @@ ul{
     padding-top: 85px;
     padding-bottom: 48px;
 }
-
-span{
-    padding-bottom: 20px;
-}   
+  
 .secondpage__left>h4{
     font-family: 'GyeonggiTitleM' ;
     margin-top: 6px;

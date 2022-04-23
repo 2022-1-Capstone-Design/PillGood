@@ -1,4 +1,5 @@
 import React from "react";
+import '../../css/SurveyNav.css';
 
 const SurveyNav = () => {
   return (

@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import '../../css/SurveyEnd.css';
 function Detail_Result({ surveyNum }) {
   return (
     <>
       <div className="survey">
-        <div className="survey_main">
           <div className="survey_main_question">
-            <span>질문 #{surveyNum} (결과 공유)</span>
-            <span>이메일 주소를 적어주세요</span>
+            <div className="number">질문 #{surveyNum} (결과 공유)</div>
+            <br />
+            <div className="para">이메일 주소를 적어주세요</div>
+            <br />
             <input type="email" placeholder="이메일을 적어주세요" />
           </div>
-        </div>
       </div>
     </>
   );

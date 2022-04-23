@@ -1,0 +1,101 @@
+/* 설문진단 박스(네비바 제외) */
+.surveyfirst{
+    display:flex;
+    flex-direction: column;
+    margin: 0px 100px;
+    height:100%;
+    box-shadow: 
+    rgba(17, 17, 26, 0.1) 0px 4px 16px,
+    rgba(17, 17, 26, 0.1) 0px 8px 24px, 
+    rgba(17, 17, 26, 0.1) 0px 16px 56px;
+}
+/* 설문진단 내부 '~를 선택해주세요' 부분 */
+.para, button{
+    font-family:  'GyeonggiTitleM';
+    font-size: 24px;
+}
+/* 설문진단 내부 '질문 # (번호)' 부분 */
+.number{
+    font-family:  'GyeonggiTitleM';
+    font-size: 15px;
+    color:#ec7710;
+}
+/* 설문진단 내부 체크박스 부분 */
+.survey_main_question_label>label,
+.survey_main_question_answer>li{
+    font-family:  'GyeonggiTitleM';
+    font-size: 18px;
+    padding-bottom: 10px;
+}
+/* 설문진단 inner 내용 */
+.survey_main{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    width:500px;
+    height: 175px;
+    padding-left: 177px;
+    z-index: 1;
+}
+/* 설문진단 inner 이전, 다음버튼 박스 부분*/
+.survey_footer{
+    display:flex;
+    justify-content: center;
+    padding-top: 63px;
+    padding-bottom:20px;
+}
+/* 설문진단 inner 이전, 다음버튼 부분 */
+.survey_footer>button{
+    margin:10px 20px;
+    font-size: 20px;
+    padding: 10px 80px;
+    border-radius:5px;
+}
+/* 설문진단 inner 이전버튼 부분 */
+.before{
+    background-color: rgb(211, 211, 211);
+}
+/* 설문진단 inner 다음버튼 부분 */
+.next{
+    background-color: rgb(253, 53, 53);
+}
+/* 설문진단 outer 네비바 중 홈버튼 부분 */
+.surveyhome{
+    background-image: url('../image/home.png');
+    width:50px;
+    height:50px;
+    background-repeat: no-repeat;
+    margin-left: 81px;
+    margin-top: 36px;
+    margin-bottom: 5px;
+    background-size: 100% 100%;
+    display:inline-block; 
+    border-radius: 50%;
+    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+}
+/* 설문진단 outer 네비바 중 문의하기버튼 부분 */
+.surveyask{
+    background-image: url('../image/chat-bubble.png');
+    width:50px;
+    height:50px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-left: 29px;
+    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+}
+/* 설문진단 outer 네비바 중 전체보기 버튼 부분 */
+.surveyall{
+    background-image: url('../image/list.png');
+    width:50px;
+    height:50px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-left: 29px;
+    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+}
+.survey>a{
+    padding:0px;
+}
