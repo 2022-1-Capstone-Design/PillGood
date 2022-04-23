@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import '../../css/SurveyEnd.css';
+import '../../css/Survey/SurveyEnd.css';
 function Detail_Result({ surveyNum }) {
   return (
     <>

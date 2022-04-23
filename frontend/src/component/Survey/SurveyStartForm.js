@@ -1,5 +1,5 @@
 import React from "react";
-import '../../css/SurveyStartForm.css';
+import '../../css/Survey/SurveyStartForm.css';
 const SurveyStartForm = ({ onChange }) => {
   return (
     <div className="survey_main_question">

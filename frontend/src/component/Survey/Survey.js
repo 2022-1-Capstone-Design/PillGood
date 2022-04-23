@@ -5,7 +5,7 @@ import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyNav from "./SurveyNav";
 import axios from "axios";
-import '../../css/Survey.css';
+import '../../css/Survey/Survey.css';
 import { Link } from "react-router-dom";
 const Survey = () => {
   //선택한 관심 분야에 따라 표시해 줄 상세 질문 번호를 저장해두는 배열

@@ -1,5 +1,5 @@
 import React from "react";
-import '../../css/SurveyNav.css';
+import '../../css/Survey/SurveyNav.css';
 
 const SurveyNav = () => {
   return (
