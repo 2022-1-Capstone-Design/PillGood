@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import CommonSurvey from "./Common/CommonSurvey";
 import DetailSurvey from "./Detail/DetailSurvey";
 import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyNav from "./SurveyNav";
 import axios from "axios";
-
+import '../../css/Survey/Survey.css';
+import { Link } from "react-router-dom";
 const Survey = () => {
   //선택한 관심 분야에 따라 표시해 줄 상세 질문 번호를 저장해두는 배열
   const [detailNum, setdetailNum] = useState([]);
@@ -132,49 +133,67 @@ const Survey = () => {
 
   return (
     <div className="survey">
-      <SurveyNav />
-      <div className="survey_main">
-        {detailNum.length === 0 && !common ? (
-          <SurveyStartForm onChange={onChange} />
-        ) : null}
-        {detailNum.length > 0 ? (
-          <DetailSurvey
-            detailNum={detailNum}
-            surveyNum={surveyNum}
-            checkedInputs={checkedInputs}
-            setCheckedInputs={setCheckedInputs}
-          />
-        ) : null}
-        {common && commonNum.length !== 0 ? (
-          <CommonSurvey
-            commonNum={commonNum}
-            surveyNum={surveyNum}
-            checkedInputs={checkedInputs}
-            setCheckedInputs={setCheckedInputs}
-          />
-        ) : null}
-        {detailNum.length === 0 && commonNum.length === 0 ? (
-          <SurveyEnd surveyNum={surveyNum} />
-        ) : null}
+
+      <div className="surveyButton">
+        <Link to='/'>
+          <div className="surveyhome"></div>
+        </Link>
+
+        <Link to='/ask'>
+          <div className="surveyask"></div>
+        </Link>
+
+        <Link to='/all'>
+          <div className="surveyall"></div>
+        </Link>
       </div>
-      <div className="survey_footer">
-        <button
-          onClick={detailNum.length === 0 && !common ? null : prevSurvey}
-          className="next"
-        >
-          이전
-        </button>
-        <button
-          onClick={() => {
-            if (detailNum.length === 0 && !common) saveSurveyNum();
-            else if (detailNum.length === 0 && commonNum.length === 0)
-              onSubmit();
-            else nextSurvey();
-          }}
-          className="next"
-        >
-          다음
-        </button>
+
+      <div className="surveyfirst">
+        <SurveyNav />
+        <div className="survey_main">
+          {detailNum.length === 0 && !common ? (
+            <SurveyStartForm onChange={onChange} />
+          ) : null}
+          {detailNum.length > 0 ? (
+            <DetailSurvey
+              detailNum={detailNum}
+              surveyNum={surveyNum}
+              checkedInputs={checkedInputs}
+              setCheckedInputs={setCheckedInputs}
+            />
+          ) : null}
+          {common && commonNum.length !== 0 ? (
+            <CommonSurvey
+              commonNum={commonNum}
+              surveyNum={surveyNum}
+              checkedInputs={checkedInputs}
+              setCheckedInputs={setCheckedInputs}
+            />
+          ) : null}
+          {detailNum.length === 0 && commonNum.length === 0 ? (
+            <SurveyEnd surveyNum={surveyNum} />
+          ) : null}
+        </div>
+
+        <div className="survey_footer">
+          <button
+            onClick={detailNum.length === 0 && !common ? null : prevSurvey}
+            className="before"
+          >
+            이전
+          </button>
+          <button
+            onClick={() => {
+              if (detailNum.length === 0 && !common) saveSurveyNum();
+              else if (detailNum.length === 0 && commonNum.length === 0)
+                onSubmit();
+              else nextSurvey();
+            }}
+            className="next"
+          >
+            다음
+          </button>
+        </div>
       </div>
     </div>
   );

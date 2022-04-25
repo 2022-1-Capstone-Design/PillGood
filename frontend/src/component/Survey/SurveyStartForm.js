@@ -1,10 +1,11 @@
 import React from "react";
-
+import '../../css/Survey/SurveyStartForm.css';
 const SurveyStartForm = ({ onChange }) => {
   return (
     <div className="survey_main_question">
-      <span>질문 # 1</span>
-      <span>분야를 선택해주세요</span>
+      <div className="number">질문 # 1</div>
+      <br />
+      <div className="para">분야를 선택해주세요</div>
       <ul className="survey_main_question_answer">
         <li data="혈관/혈액순환">
           <label>

@@ -26,7 +26,7 @@ function Navigate({ isLoggedIn }) {
           로그아웃
         </li>
       ) : null}
-      {isLoggedIn ? <li>마이페이지</li> : null}
+      {isLoggedIn ? <li style={{ cursor: "pointer" }}>마이페이지</li> : null}
 
       <li>
         <Link to="/ask">문의하기</Link>

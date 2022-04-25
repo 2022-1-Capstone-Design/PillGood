@@ -83,25 +83,37 @@ const DetailSurvey = ({
   return (
     <>
       <div className="survey">
-        <div className="survey_main">
+       
           <div className="survey_main_question">
-            <span>
-              질문 #{surveyNum} {category[Number(detailNum[0]) - 1]}
-            </span>
-            <span>해당되는 문장을 선택해주세요</span>
-            <br />
-            {surveyList[Number(detailNum[0]) - 1].map((item) => (
-              <label key={item.id}>
-                <input
-                  type="checkbox"
-                  value={item.name}
-                  onChange={(e) => onChange(e.currentTarget.checked, item.id)}
-                  checked={checkedInputs.includes(item.id) ? true : false}
-                />
-                <div>{item.name}</div>
-              </label>
-            ))}
-          </div>
+            
+            <div className="survey_main_question_detail">
+
+              <div className="number">
+                질문 #{surveyNum} {category[Number(detailNum[0]) - 1]}
+              </div>
+              <br />
+
+              <div className="para"> 해당되는 문장을 선택해주세요</div>
+              <br />
+            </div>
+
+              <div className="survey_main_question_label">
+              {surveyList[Number(detailNum[0]) - 1].map((item) => (
+                <label key={item.id}>
+                  <input
+                    type="checkbox"
+                    className="checkbox"
+                    value={item.name}
+                    onChange={(e) => onChange(e.currentTarget.checked, item.id)}
+                    checked={checkedInputs.includes(item.id) ? true : false}
+                  />
+                  {item.name}
+                <br />
+                </label>
+                ))}
+              </div>
+
+         
         </div>
       </div>
     </>

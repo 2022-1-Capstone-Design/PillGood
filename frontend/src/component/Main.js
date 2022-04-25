@@ -1,6 +1,6 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
 import { FullPage, Slide } from "react-full-page";
@@ -10,15 +10,16 @@ import Fade from "react-reveal/Fade";
 import pictogram from "../image/pictogram.png";
 import Cards from "./Cards";
 import Footer from "./Footer";
+import { throttle } from "lodash";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
+  const [isNavOn, setIsNavOn] = useState(true);
   const token = window.localStorage.getItem("token");
-  let beforeScrollY = 0; //이전 스크롤 초기값
-  let standard = document.body.clientHeight; //메뉴 높이
-  let menu = document.getElementsByClassName("main__first");
+  //이전 스크롤 초기값
+  let beforeScrollY = 0;
 
   useEffect(() => {
-    window.addEventListener("scroll", scrollDirection);
+    window.addEventListener("scroll", scrollEvent);
     if (token) {
       setIsLoggedIn(true);
     } else {
@@ -26,29 +27,28 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
 
-  function scrollDirection() {
-    //메뉴 높이값과 스크롤된 양 비교
-    if (document.documentElement.scrollTop > standard) {
-      menu[0].classList.add("hidden");
-    } else {
-      menu[0].classList.remove("hidden");
-    }
-    //이전 스크롤된 양과 현재 스크롤된 양 비교하여 방향 감지
-    if (document.documentElement.scrollTop > beforeScrollY) {
-      //아래방향
-      menu[0].classList.add("hidden");
-    } else {
-      menu[0].classList.remove("hidden"); //위방향
-    }
-    beforeScrollY = document.documentElement.scrollTop; //직전 스크롤양 저장
-  }
+  const scrollEvent = useMemo(
+    () =>
+      throttle(() => {
+        if (window.pageYOffset > beforeScrollY) {
+          setIsNavOn(false);
+          console.log("켜기");
+        } else {
+          setIsNavOn(true);
+          console.log("끄기");
+        }
+        //이전 스크롤값 저장
+        beforeScrollY = window.pageYOffset;
+      }, 300),
+    [isNavOn]
+  );
 
   return (
     <div>
       <FullPage controls controlsProps={{ className: "slide-navigation" }}>
         <Slide>
           <div className="main">
-            <div className="main__first">
+            <div className={isNavOn ? "main__first" : "main__first hidden"}>
               <Link to="/">
                 <img src={logo} width="166" height="30" alt="pillgood logo" />
               </Link>
