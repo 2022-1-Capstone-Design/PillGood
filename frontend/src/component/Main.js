@@ -1,6 +1,6 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../image/logo.png";
 import { FullPage, Slide } from "react-full-page";
@@ -16,8 +16,21 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
   const [isNavOn, setIsNavOn] = useState(true);
   const token = window.localStorage.getItem("token");
   //이전 스크롤 초기값
-  let beforeScrollY = 0;
-
+  const beforeScrollY = useRef(0);
+  const scrollEvent = useMemo(
+    () =>
+      throttle(() => {
+        const currentScrollY = window.scrollY;
+        if (beforeScrollY.current < currentScrollY) {
+          setIsNavOn(false);
+        } else {
+          setIsNavOn(true);
+        }
+        //이전 스크롤값 저장
+        beforeScrollY.current = currentScrollY;
+      }, 300),
+    [beforeScrollY]
+  );
   useEffect(() => {
     window.addEventListener("scroll", scrollEvent);
     if (token) {
@@ -25,23 +38,7 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
     } else {
       setIsLoggedIn(false);
     }
-  }, [isLoggedIn, setIsLoggedIn, token]);
-
-  const scrollEvent = useMemo(
-    () =>
-      throttle(() => {
-        if (window.pageYOffset > beforeScrollY) {
-          setIsNavOn(false);
-          console.log("켜기");
-        } else {
-          setIsNavOn(true);
-          console.log("끄기");
-        }
-        //이전 스크롤값 저장
-        beforeScrollY = window.pageYOffset;
-      }, 300),
-    [isNavOn]
-  );
+  }, [setIsLoggedIn, token, scrollEvent]);
 
   return (
     <div>

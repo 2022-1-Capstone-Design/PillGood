@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 
 export function Logout() {
   const token = window.localStorage.getItem("token");
