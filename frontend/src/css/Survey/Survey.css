@@ -2,8 +2,11 @@
 .surveyfirst{
     display:flex;
     flex-direction: column;
-    margin: 0px 100px;
+    margin: 0px 300px;
+    margin-top: 50px;
+    padding-top: 10px;
     height:100%;
+    justify-content: center;
     box-shadow: 
     rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, 
@@ -13,6 +16,7 @@
 .para, button{
     font-family:  'GyeonggiTitleM';
     font-size: 24px;
+    padding-bottom: 10px;
 }
 /* 설문진단 내부 '질문 # (번호)' 부분 */
 .number{
@@ -29,8 +33,8 @@
 }
 /* 설문진단 inner 내용 */
 .survey_main{
-    padding-top: 40px;
-    padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     width:500px;
     height: 175px;
     padding-left: 177px;
@@ -53,18 +57,21 @@
 /* 설문진단 inner 이전버튼 부분 */
 .before{
     background-color: rgb(211, 211, 211);
+    cursor: pointer;
 }
 /* 설문진단 inner 다음버튼 부분 */
 .next{
-    background-color: rgb(253, 53, 53);
+    background-color: #ffdba2;
+    cursor: pointer;
+    
 }
 /* 설문진단 outer 네비바 중 홈버튼 부분 */
 .surveyhome{
     background-image: url('../../image/home.png');
-    width:50px;
-    height:50px;
+    width:40px;
+    height:40px;
     background-repeat: no-repeat;
-    margin-left: 81px;
+    margin-left: 200px;
     margin-top: 36px;
     margin-bottom: 5px;
     background-size: 100% 100%;
@@ -75,8 +82,8 @@
 /* 설문진단 outer 네비바 중 문의하기버튼 부분 */
 .surveyask{
     background-image: url('../../image/chat-bubble.png');
-    width:50px;
-    height:50px;
+    width: 40px;
+    height:40px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: inline-block;
@@ -87,8 +94,8 @@
 /* 설문진단 outer 네비바 중 전체보기 버튼 부분 */
 .surveyall{
     background-image: url('../../image/list.png');
-    width:50px;
-    height:50px;
+    width:40px;
+    height:40px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: inline-block;

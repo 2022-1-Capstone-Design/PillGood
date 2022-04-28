@@ -1,7 +1,7 @@
 .navbar__element {
   display: flex;
   list-style: none;
-  padding-right: 100px;
+  padding-right: 140px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -10,7 +10,7 @@
   padding-left: 0px;
 }
 .navbar__element > li {
-  padding-right: 50px;
+  padding-right: 60px;
   font-family: "GyeonggiTitleM";
   display: inline-block;
 }
@@ -54,7 +54,7 @@ li:hover:after {
     align-items: center;
   }
   .navbar__element > li {
-    padding-right: 0px;
+    padding-right: 100px;
     padding-bottom: 40px;
   }
   .behind {

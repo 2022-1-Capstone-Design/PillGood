@@ -29,6 +29,7 @@ body {
     margin-top: 60px;
     margin-left: 1480px; 
     font-size: 0px;
+    
     cursor: pointer;
   }
   
@@ -74,7 +75,8 @@ a>img{
     padding-bottom: 5px;
     backface-visibility: hidden;
     display: inline-block;
-    padding-left: 100px;
+  
+    text-align: center;
 }
 
 /* 로고 포함 네비바 */
@@ -90,7 +92,7 @@ a>img{
     width: 100%; 
     z-index: 1; 
     transition:.5s;
-
+    padding-left: 100px;
 }
 
 .hidden {

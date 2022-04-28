@@ -1,12 +1,14 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import CommonSurvey from "./Common/CommonSurvey";
 import DetailSurvey from "./Detail/DetailSurvey";
 import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyNav from "./SurveyNav";
 import axios from "axios";
-import '../../css/Survey/Survey.css';
+import "../../css/Survey/Survey.css";
 import { Link } from "react-router-dom";
+import SurveyBar from "./SurveyBar";
+
 const Survey = () => {
   //선택한 관심 분야에 따라 표시해 줄 상세 질문 번호를 저장해두는 배열
   const [detailNum, setdetailNum] = useState([]);
@@ -24,6 +26,13 @@ const Survey = () => {
   ]);
   //현재 질문에서 선택한 값
   const [checkedInputs, setCheckedInputs] = useState([]);
+
+  //프로그레스 바
+  const [percentage]=useState(20);
+  const [setNumber]=useState('');
+  const onClickFunc = () => {
+    setNumber(percentage+10)
+  }
 
   let tmpArr = [...detailNum];
   let removeArr = [...prevDetailNum];
@@ -131,25 +140,27 @@ const Survey = () => {
       .catch((err) => console.log(err));
   };
 
+  
+
   return (
     <div className="survey">
-
       <div className="surveyButton">
-        <Link to='/'>
+        <Link to="/">
           <div className="surveyhome"></div>
         </Link>
 
-        <Link to='/ask'>
+        <Link to="/ask">
           <div className="surveyask"></div>
         </Link>
 
-        <Link to='/all'>
+        <Link to="/all">
           <div className="surveyall"></div>
         </Link>
       </div>
 
       <div className="surveyfirst">
         <SurveyNav />
+        <SurveyBar percentage={percentage} />
         <div className="survey_main">
           {detailNum.length === 0 && !common ? (
             <SurveyStartForm onChange={onChange} />
@@ -191,7 +202,7 @@ const Survey = () => {
             }}
             className="next"
           >
-            다음
+            {detailNum.length === 0 && commonNum.length === 0? "제출" : "다음"}
           </button>
         </div>
       </div>
