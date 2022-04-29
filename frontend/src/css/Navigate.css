@@ -7,18 +7,17 @@
   justify-content: space-between;
   background-color: white;
   margin: 0px;
-  padding-left: 0px;
+  font-size: 18px;
 }
-.navbar__element > li {
+.navbar__element  li {
   padding-right: 60px;
   font-family: "GyeonggiTitleM";
-  display: inline-block;
 }
 
-a {
+.navbar__element a {
   text-decoration: none;
   color: black;
-  padding: 0px 16px;
+  padding: 0px;
   transition: all 0.3s ease;
   font-size: 18px;
   font-family: "GyeonggiTitleM";
@@ -30,11 +29,13 @@ a {
   font-weight: normal;
   font-style: normal;
 }
-li > a:hover, li:hover {
+
+.navbar__element li:hover,
+.navbar__element a:hover {
   color: #39d9c8;
   transition: transform 100ms ease-in-out;
 }
-.navbar__element > li:after {
+.navbar__element li:after {
   display: block;
   content: "";
   border-bottom: solid 3px #39d9c8;
@@ -42,7 +43,8 @@ li > a:hover, li:hover {
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
-li:hover:after {
+.navbar__element li:hover:after
+{
   transform: scaleX(1);
 }
 @media screen and (max-width: 887px) {

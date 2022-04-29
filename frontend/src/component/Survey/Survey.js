@@ -8,6 +8,10 @@ import axios from "axios";
 import "../../css/Survey/Survey.css";
 import { Link } from "react-router-dom";
 import SurveyBar from "./SurveyBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouseChimneyUser } from "@fortawesome/free-solid-svg-icons";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { faTableList } from "@fortawesome/free-solid-svg-icons";
 
 const Survey = () => {
   //선택한 관심 분야에 따라 표시해 줄 상세 질문 번호를 저장해두는 배열
@@ -140,21 +144,28 @@ const Survey = () => {
       .catch((err) => console.log(err));
   };
 
-  
+  axios.get('http://localhost:3000/form/survey')
+      .then(response=>console.log(response.data));
 
   return (
     <div className="survey">
-      <div className="surveyButton">
+      <div className="surveyButton iconbox">
         <Link to="/">
-          <div className="surveyhome"></div>
+          <div className="surveyhome ">
+            <FontAwesomeIcon icon={faHouseChimneyUser} className="icon"/>
+          </div>
         </Link>
 
         <Link to="/ask">
-          <div className="surveyask"></div>
+          <div className="surveyask">
+          <FontAwesomeIcon icon= { faCommentDots } className="icon"/>
+          </div>
         </Link>
 
         <Link to="/all">
-          <div className="surveyall"></div>
+          <div className="surveyall ">
+          <FontAwesomeIcon icon={ faTableList } className="icon"/>
+          </div>
         </Link>
       </div>
 
