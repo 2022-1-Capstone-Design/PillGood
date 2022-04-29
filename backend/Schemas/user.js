@@ -11,9 +11,8 @@ const userSchema = new Schema({
     name: {
         type: String,
         required: true,
-    },
-    versionKey: false
-});
+    },   
+}, { versionKey: false });
 userSchema.plugin(findOrCreate);
 
 module.exports = mongoose.model('User', userSchema);

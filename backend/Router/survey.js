@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send({ test: "hi" });
-});
+const Survey = require("../Controller/survey");
+
+router.get("/", Survey.getQuestion); 
 
 module.exports = router;
