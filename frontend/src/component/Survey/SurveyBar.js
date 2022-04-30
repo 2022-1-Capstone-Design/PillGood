@@ -1,15 +1,31 @@
-import React from "react";
-import '../../css/Survey/SurveyBar.css';
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
-const SurveyBar = () => {
-  return (
-<div class="progressbar">
-    <div class="progress-step" data-title="기본정보"></div>
-    <div class="progress-step" data-title="관심분야"></div>
-    <div class="progress-step" data-title="분야별정보"></div>
-    <div class="progress-step" data-title="식습관"></div>
-</div>
-  );
+const Track = styled.div`
+    width: 100%;
+    height: 10px;
+    background-color: 
+    border-radius: inset 0 0 5px #white;
+`;
+
+const Thumb = styled.div`
+    width: ${props => props.percentage}%;
+    height: 100%;
+    background-color: #6bccf9;
+    border-radius: 8px;
+`;
+
+export default class SurveyBar extends React.Component {
+    render() {
+        return (
+                <Track>
+                    <Thumb percentage={50} />
+                </Track>
+            );
+    }
+}
+
+SurveyBar.propTypes = {
+    percentage: PropTypes.number,
 };
-
-export default SurveyBar;
