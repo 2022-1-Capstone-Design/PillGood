@@ -3,7 +3,6 @@
     display:flex;
     flex-direction: column;
     margin: 0px 300px;
-    margin-top: 50px;
     padding-top: 10px;
     height:100%;
     justify-content: center;
@@ -11,6 +10,7 @@
     rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, 
     rgba(17, 17, 26, 0.1) 0px 16px 56px;
+    /* width:600px; */
 }
 /* 설문진단 내부 '~를 선택해주세요' 부분 */
 .para, button{
@@ -65,44 +65,55 @@
     cursor: pointer;
     
 }
+.surveyButton{
+    padding-top: 10vh;
+    padding-bottom: 3vh;
+    padding-right: 24vw;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    width:738px;
+}
 /* 설문진단 outer 네비바 중 홈버튼 부분 */
 .surveyhome{
-    background-image: url('../../image/home.png');
-    width:40px;
-    height:40px;
-    background-repeat: no-repeat;
-    margin-left: 200px;
-    margin-top: 36px;
-    margin-bottom: 5px;
-    background-size: 100% 100%;
-    display:inline-block; 
-    border-radius: 50%;
-    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+ 
+    /* filter: drop-shadow(3px 3px 3px rgb(107, 107, 107)); */
 }
 /* 설문진단 outer 네비바 중 문의하기버튼 부분 */
 .surveyask{
-    background-image: url('../../image/chat-bubble.png');
-    width: 40px;
-    height:40px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-left: 29px;
-    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+   
+    /* filter: drop-shadow(3px 3px 3px rgb(107, 107, 107)); */
 }
 /* 설문진단 outer 네비바 중 전체보기 버튼 부분 */
-.surveyall{
-    background-image: url('../../image/list.png');
-    width:40px;
-    height:40px;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    display: inline-block;
-    margin-bottom: 5px;
-    margin-left: 29px;
-    filter: drop-shadow(3px 3px 3px rgb(107, 107, 107));
+.surveyall,
+.surveyhome,
+.surveyask{
+     width:50px;
+     height: 50px;
+     border-radius: 50%;
+    margin-left:12px;
+    /* filter: drop-shadow(3px 3px 3px rgb(107, 107, 107)); */
+
 }
 .survey>a{
     padding:0px;
+}
+.surveyButton>a{
+    padding:0px;
+}
+.iconbox{
+
+}
+.icon{
+    font-size: 26px;
+    color:rgb(22, 64, 83);
+   padding: 25% 25%;
+}
+.surveyhome:hover,
+.surveyask:hover,
+.surveyall:hover,
+.icon:hover{
+   background-color: rgb(255, 174, 0);
+   color:antiquewhite;
+   border-radius: 50%;
 }

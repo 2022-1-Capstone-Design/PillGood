@@ -85,7 +85,6 @@ a>img{
     flex-direction: row;
     justify-content: space-between;
     padding: 10px;
-    /* background-color: #fec89a; */
     background-color: white;
     position: fixed;
     transform: initial;

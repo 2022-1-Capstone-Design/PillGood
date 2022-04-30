@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import '../../css/Survey/SurveyEnd.css';
 function Detail_Result({ surveyNum }) {
   return (
