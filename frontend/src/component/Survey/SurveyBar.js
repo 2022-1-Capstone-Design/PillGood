@@ -13,3 +13,4 @@ const SurveyBar = () => {
 };
 
 export default SurveyBar;
+

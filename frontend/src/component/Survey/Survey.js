@@ -31,6 +31,13 @@ const Survey = () => {
   //현재 질문에서 선택한 값
   const [checkedInputs, setCheckedInputs] = useState([]);
 
+  //프로그레스 바
+  const [percentage]=useState(20);
+  const [setNumber]=useState('');
+  const onClickFunc = () => {
+    setNumber(percentage+10)
+  }
+
   let tmpArr = [...detailNum];
   let removeArr = [...prevDetailNum];
   let comArr = [...commonNum];
