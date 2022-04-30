@@ -3,7 +3,7 @@ import CommonSurvey from "./Common/CommonSurvey";
 import DetailSurvey from "./Detail/DetailSurvey";
 import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
-import SurveyNav from "./SurveyNav";
+//import SurveyNav from "./SurveyNav";
 import axios from "axios";
 import "../../css/Survey/Survey.css";
 import { Link } from "react-router-dom";
@@ -30,13 +30,6 @@ const Survey = () => {
   ]);
   //현재 질문에서 선택한 값
   const [checkedInputs, setCheckedInputs] = useState([]);
-
-  //프로그레스 바
-  const [percentage]=useState(20);
-  const [setNumber]=useState('');
-  const onClickFunc = () => {
-    setNumber(percentage+10)
-  }
 
   let tmpArr = [...detailNum];
   let removeArr = [...prevDetailNum];
@@ -170,8 +163,7 @@ const Survey = () => {
       </div>
 
       <div className="surveyfirst">
-        <SurveyNav />
-        <SurveyBar percentage={percentage} />
+        <SurveyBar />
         <div className="survey_main">
           {detailNum.length === 0 && !common ? (
             <SurveyStartForm onChange={onChange} />
