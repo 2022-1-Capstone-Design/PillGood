@@ -5,6 +5,7 @@ import "../css/Navigate.css";
 import * as Logout from "../component/Logout";
 
 function Navigate({ isLoggedIn }) {
+
   return (
     <ul className={"navbar__element"}>
       <li>
@@ -22,7 +23,7 @@ function Navigate({ isLoggedIn }) {
         <Link to="/all">전체보기</Link>
       </li>
       {isLoggedIn ? (
-        <li style={{ cursor: "pointer" }} onClick={Logout.Logout}>
+        <li style={{ cursor: "pointer" }}>
           로그아웃
         </li>
       ) : null}
