@@ -1,0 +1,16 @@
+.survey_navbar_ul{
+    display: flex;
+    flex-direction: row;
+    list-style:none;
+    padding-left:0px;
+    justify-content: center;
+}
+.survey_navbar_ul>li{
+    width:200px;
+    text-align: center;
+    font-family:  'GyeonggiTitleM';
+    font-size: 20px;
+}
+.survey_navbar{
+    font-size:24px;
+}

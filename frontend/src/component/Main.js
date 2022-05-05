@@ -1,36 +1,21 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
-import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../image/logo.png";
 import { FullPage, Slide } from "react-full-page";
-//import blue from '../image/blue.jpg';
 import Fade from "react-reveal/Fade";
-//import food from '../image/food.png';
 import pictogram from "../image/pictogram.png";
 import Cards from "./Cards";
 import Footer from "./Footer";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
-  const token = window.localStorage.getItem("token");
-  useEffect(() => {
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  }, [isLoggedIn, setIsLoggedIn, token]);
 
   return (
     <div>
       <FullPage controls controlsProps={{ className: "slide-navigation" }}>
         <Slide>
           <div className="main">
-            <div className="main__first">
-              <Link to="/">
-                <img src={logo} width="166" height="30" alt="pillgood logo" />
-              </Link>
-              <Navigate isLoggedIn={isLoggedIn} />
+            <div>
+              <Navigate isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
             </div>
             <div className="main__intro">
               <div className="main__intro__">
@@ -47,7 +32,7 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
                     안심하고 믿을 수 있는 영양제 조회로 쉽고 빠르게 건강관리를
                     시작하세요.
                   </p>
-                  <Link to="/form">
+                  <Link to={isLoggedIn ? "/form" : "auth"}>
                     <input
                       className="startForm"
                       type="submit"

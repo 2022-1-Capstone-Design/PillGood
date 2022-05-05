@@ -10,6 +10,7 @@
    display:flex;
    flex-direction: column;
    justify-content: space-evenly;
+   align-items: center;
 }
 .form__first h2{
     padding:30px 0px;
@@ -28,17 +29,16 @@
 border-radius: 40px;
 padding:23px 48px;
 /* background-color: #ffe5d9; */
-background-color: rgb(255, 37, 37);
+background-color: #ff9d00;
 border:0px;
-color:rgb(245, 241, 241);
+color:rgb(255, 255, 255);
 font-weight: bold;
 font-size:20px;
-box-shadow: 0px 0px 20px 1px rgb(139, 138, 138);
 font-weight: 600;
  cursor: pointer;
  padding:20px 0px;
 font-family:'GyeonggiTitleM' ;
-width: 600px;
+width: 500px;
 }
 .form__first>p{
     font-weight:700;

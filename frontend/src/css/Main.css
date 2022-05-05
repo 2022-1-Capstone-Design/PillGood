@@ -29,6 +29,7 @@ body {
     margin-top: 60px;
     margin-left: 1480px; 
     font-size: 0px;
+    
     cursor: pointer;
   }
   
@@ -37,7 +38,6 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin-top: 200px;
   }
   
   .slide-navigation button:disabled {
@@ -67,31 +67,7 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
     flex-direction: column;
     justify-content: space-between;
 }
-/* 필굿 로고 사진 */
-a>img{
-    position: relative;
-    margin-top: 0px;
-    height:60px;
-    padding-bottom: 5px;
-    backface-visibility: hidden;
-    display: inline-block;
-    padding-left: 100px;
-}
 
-/* 로고 포함 네비바 */
-.main__first{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px;
-    /* background-color: #fec89a; */
-    background-color: white;
-    position: fixed;
-    top: 0px;
-    left: 0;
-    right: 0;
-    z-index: 1;
-}
 /* 폰트 적용 */
 @font-face {
     font-family: 'GyeonggiTitleM';
@@ -109,7 +85,7 @@ a>img{
     padding-right: 109px;
     padding-top: 230px;
 }
-.main__intro__main__list, span{
+.main__intro__main__list{
     font-size: 30px;
     font-family:  'GyeonggiTitleM';
     
@@ -127,7 +103,6 @@ a>img{
 .main__intro__main__change__list{
     padding-left:12px;
     width:203px;
-    /* animation: upchange 9s infinite ;  */
     margin:0px;
     
 }
@@ -141,7 +116,6 @@ ul{
 /* 메인페이지 내 큰 글씨 */
 .main__intro__main> h2{
     width:527px;
-    /* padding-left: 109px; */
     font-family:'GyeonggiTitleM';
     line-height: 1.7;
     font-weight: 500;
@@ -162,7 +136,6 @@ ul{
 .startForm{
     border-radius: 40px;
     padding:23px 40px;
-    /* background-color: #ffe5d9; */
     background-color: #ff9d00;
     border:0px;
     color:rgb(245, 241, 241);
@@ -172,8 +145,6 @@ ul{
      cursor: pointer;
     font-family:'GyeonggiTitleM' ;
     font-weight: 500;
-    /* animation:fadeIn 3s ease-in-out; */
-    /* animation:updown 3s infinite; */
     position: relative;
     
 }
@@ -211,9 +182,7 @@ ul{
         padding-right: 100px;
     }
 }
-.main__first>img{
-    width: 166px;
-}
+
 .main__intro__>p{
     padding-bottom: 10px;
     width:610px;
@@ -233,14 +202,9 @@ ul{
     opacity: 0;
 }
 .secondpage{
-    /* background:linear-gradient(90deg, pink 50%,rgb(251, 252, 243) 50%); */
     background-color: white;
     height:100vh;
     width:100%;
-    /* background-image: url('../image/blue.jpg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 50%; */
 }
 /* 텍스트 설정 */
 .secondpage__context>p{
@@ -264,7 +228,7 @@ ul{
     align-items: center;
 }
 .secondpage__right>img{
-    width:700px;
+    width:680px;
     height:auto;
 }
 .triangle{
@@ -297,15 +261,13 @@ ul{
     justify-content: center;
     align-items:center;
     padding-right: 0px;
-    padding-top: 100px;
-
+    padding-top: 85px;
+    padding-bottom: 48px;
 }
-
-span{
-    padding-bottom: 20px;
-}   
+  
 .secondpage__left>h4{
-    font-family: 'GyeonggiTitleM' ;;
+    font-family: 'GyeonggiTitleM' ;
+    margin-top: 6px;
 }
 .head{
     font-size: 30px;
@@ -346,10 +308,12 @@ span{
     align-items: center;
     background-color:aliceblue;
     justify-content: center;
+    padding-top:40px;
 }
 .thirdpage>h1{
     text-align: center;
     margin-top: 40px;
+    margin-bottom: 0px;
 }
 .thirdpage>h1:after{
     content: "";
@@ -357,23 +321,23 @@ span{
     width: 30%;
     border-bottom: 2.5px solid rgb(255, 69, 12);
     margin:5px auto;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 .thirdpage__{
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .thirdpage__{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 21px;
+    padding-top: 10px;
 }
 .circle1, 
 .circle2{
     background-color: white;
     font-size: 80px;
-    width: 200px;
-    height: 200px; 
+    width: 150px;
+    height: 150px; 
     border-radius: 70%;
     overflow: hidden;
     margin-right: 0px;
@@ -412,13 +376,16 @@ span{
     border-radius: 10%;
     padding-top: 40px;
     padding:20px;
+    margin-bottom: 10px;
 }
 .thirdpage__first{
     padding-left: 15px;padding-right: 17px;
+    background-color: rgb(255, 255, 255);
 }
 .thirdpage__second{
     padding-left: 37px;margin-left: 115px;padding-right: 37px;
     margin-right: 0px;
+    background-color: rgb(255, 255, 255);
 }
 .thirdpage__text1,
 .thirdpage__text2{
@@ -443,10 +410,4 @@ span{
 .thirdpage__text2>h2{
     padding-top: 40px;
     border-bottom: 2px solid rgb(255, 69, 12);
-}
-.footer{
-    height:150px;
-    width:100%;
-    background-color: #222;
-    color: aliceblue;
 }
