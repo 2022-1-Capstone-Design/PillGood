@@ -51,8 +51,7 @@ const getResult = async (req, res) => {
             let buff = Buffer.from(data, 'base64');
             let text = buff.toString('utf-8');
             const list = eval(text);
-            console.log(test);
-            
+            console.log(list);
         });
     } catch(error) {
         console.error(error)
