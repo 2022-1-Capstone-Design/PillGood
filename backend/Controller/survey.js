@@ -41,15 +41,19 @@ const getResult = async (req, res) => {
                          }
                      ]);
                     if (result[question[0].main_category] === undefined) result[question[0].main_category] = new Object( );
-                    result[question[0].main_category][question[0].sub_category.name] === undefined ? result[question[0].main_category][question[0].sub_category.name] = [ ] : result[question[0].main_category][question[0].sub_category.name].push(score[0].score); 
+                    result[question[0].main_category][question[0].sub_category.name] === undefined ? result[question[0].main_category][question[0].sub_category.name] = [] : result[question[0].main_category][question[0].sub_category.name].push(score[0].score); 
                 }
             }
         } 
         const spawn = require("child_process").spawn;
         const python = spawn('python', ['example.py', JSON.stringify(result)])
         python.stdout.on('data', (data) => {
-            console.log(data.toString('utf8'))
-        })
+            let buff = Buffer.from(data, 'base64');
+            let text = buff.toString('utf-8');
+            const list = eval(text);
+            console.log(test);
+            
+        });
     } catch(error) {
         console.error(error)
         return res.status(500).json(error);
