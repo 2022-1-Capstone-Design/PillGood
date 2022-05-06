@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import CommonSurvey from "./Common/CommonSurvey";
 import DetailSurvey from "./Detail/DetailSurvey";
-import SurveyStartForm from "./SurveyStartForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyInfo from "./SurveyInfo";
 //import SurveyNav from "./SurveyNav";
@@ -194,7 +193,7 @@ const Survey = () => {
       if (inputRef.current !== null) {
         inputRef.current.value = "";
       }
-      if (surveyNum == 2) {
+      if (surveyNum === 2) {
         setUserName("");
       }
 
@@ -204,8 +203,9 @@ const Survey = () => {
 
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
+    const id = window.localStorage.getItem("token");
     axios
-      .post("/survey", { surveyAnswer }, { withCredentials: true })
+      .post("/survey", { id }, { surveyAnswer }, { withCredentials: true })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -219,7 +219,6 @@ const Survey = () => {
     getQuestions();
   }, []);
 
-  console.log(questions);
   return (
     <div className="survey">
       <div className="surveyButton iconbox">
@@ -287,7 +286,7 @@ const Survey = () => {
           </button>
           <button
             onClick={() => {
-              if (surveyNum == 5) saveSurveyNum();
+              if (surveyNum === 5) saveSurveyNum();
               else if (detailNum.length === 0 && commonNum.length === 0)
                 onSubmit();
               else nextSurvey();
