@@ -5,6 +5,11 @@ import '../../css/All/ItemList.css';
 
 const ItemList = () => {
     const [products, setProducts] = useState(null);
+    const [search, setSearch]=useState("");
+    const [btnClick, setBtnClick]=useState(false);
+    const [productNames, setProductNames]=useState([]);
+    const [productName, setProductName]=useState([]);
+    const [product, setProduct]=useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -24,12 +29,45 @@ const ItemList = () => {
         return null;
     }
     
+    const writePill=(e)=>{
+        setSearch(e.target.value);
+      }
+    
+    const searchPill=(e)=>{
+        e.preventDefault();
+        console.log(search);
+        setBtnClick(true);
+        setProduct(
+            products.filter(item=>item.PRDLST_NM.includes(e.target.pname.value))
+        )
+        console.log(product);
+    }
+
     return (
+        <div>
+        <form onSubmit={searchPill}>
+            <input type="text" name="pname" placeholder="영양제 검색하기"
+            value={search} onChange={writePill}/>
+            <input type="submit" name="btn" value='검색하기'/>
+        </form>
+    
         <div className="list-block">
-            {products.map((items) => (
-                <ShowItem key={items.INDEX} items={items} />
-            ))}
+
+            {btnClick?
+                product.map(item=>{
+                  return <ShowItem key={item.INDEX} items={item}/>
+                }
+                )
+                
+            : 
+            products.map(items => {
+                return <ShowItem key={items.INDEX} items={items} />
+            })
+            }
+            
         </div>
+        </div>
+            
     );
 };
 
