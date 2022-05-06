@@ -7,8 +7,6 @@ const ItemList = () => {
     const [products, setProducts] = useState(null);
     const [search, setSearch]=useState("");
     const [btnClick, setBtnClick]=useState(false);
-    const [productNames, setProductNames]=useState([]);
-    const [productName, setProductName]=useState([]);
     const [product, setProduct]=useState([]);
 
     useEffect(() => {
@@ -38,7 +36,8 @@ const ItemList = () => {
         console.log(search);
         setBtnClick(true);
         setProduct(
-            products.filter(item=>item.PRDLST_NM.includes(e.target.pname.value))
+            products.filter(item=>item.PRDLST_NM.includes(e.target.pname.value)
+            || item.BSSH_NM.includes(e.target.pname.value))
         )
         console.log(product);
     }
