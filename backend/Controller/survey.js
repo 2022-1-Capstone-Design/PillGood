@@ -1,4 +1,3 @@
-const { encode } = require("punycode");
 const Question = require("../Schemas/question");
 const Score =  require("../Schemas/score");
 const ObjectId = require("mongodb").ObjectId;
@@ -41,10 +40,12 @@ const getResult = async (req, res) => {
                          }
                      ]);
                     if (result[question[0].main_category] === undefined) result[question[0].main_category] = new Object( );
-                    result[question[0].main_category][question[0].sub_category.name] === undefined ? result[question[0].main_category][question[0].sub_category.name] = [] : result[question[0].main_category][question[0].sub_category.name].push(score[0].score); 
+                    if (result[question[0].main_category][question[0].sub_category.name] === undefined) result[question[0].main_category][question[0].sub_category.name] = []
+                    result[question[0].main_category][question[0].sub_category.name].push(score[0].score); 
                 }
             }
         } 
+        console.log(result);
         const spawn = require("child_process").spawn;
         const python = spawn('python', ['example.py', JSON.stringify(result)])
         python.stdout.on('data', (data) => {
@@ -53,6 +54,7 @@ const getResult = async (req, res) => {
             const list = eval(text);
             console.log(list);
         });
+        python.stderr.on('data', (data) => { console.log(data.toString( )); });
     } catch(error) {
         console.error(error)
         return res.status(500).json(error);
