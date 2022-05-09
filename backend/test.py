@@ -9,7 +9,6 @@ def calc(vJson):
 
     dict_key = []
     dict_key += vJson['세부'].keys()
-    print(dict_key)
     AA = np.array([0 for i in range(26)])
     BB = list(vJson['공통'].values())
     
@@ -36,7 +35,7 @@ def calc(vJson):
 
     for i in range(len(vJson['세부'].values())):
         for j in range(len(B[i])):
-            dist[i].append(0.7 * (1.3 ** np.array(B[i][j] + AA)))
+            dist[i].append(0.7 * (1.4 ** np.array(B[i][j] + AA)))
 
     def distance(x, y):
         x = x.to_numpy()
@@ -52,13 +51,27 @@ def calc(vJson):
         A2 = list(dist[i][0])
         pill_distance_list = []
         food_distance_list = []
+        A3 = list(pill_train)
+        remove_list = []
+        for a in range(len(A2)):
+            if A2[a] == 0.7:
+                remove_list.append(a)
+        remove_col_name = []        
+
+        for idx in sorted(remove_list, reverse=True):
+            del A2[idx]
+            remove_col_name.append(A3[idx])
+            del A3[idx]
+        
+        new_pill_train = pill_train.drop(remove_col_name, axis=1)
+        new_food_train = food_train.drop(remove_col_name, axis=1)
 
         for j in range(len(pill_train)):
-            v = distance(pill_train.iloc[j], A2)
+            v = distance(new_pill_train.iloc[j], A2)
             pill_distance_list.append(v)
 
         for k in range(len(food_train)):
-            v = distance(food_train.iloc[k], A2)
+            v = distance(new_food_train.iloc[k], A2)
             food_distance_list.append(v)
 
         set_pill_distance_list = set(pill_distance_list)
@@ -85,4 +98,4 @@ def calc(vJson):
         vJson['세부'][i] = final_list[count]
         count += 1
     
-    return vJson
+    return vJson['세부']
