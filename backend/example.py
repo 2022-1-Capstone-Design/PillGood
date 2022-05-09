@@ -10,5 +10,5 @@ if __name__ == "__main__":
     vString = sys.argv[1]
     vJson = json.loads(vString)
     newvJson = test.calc(vJson)
-    print("dict = ", newvJson)
+    print(newvJson)
     

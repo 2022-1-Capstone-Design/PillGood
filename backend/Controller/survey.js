@@ -13,8 +13,13 @@ const getQuestion = async (req, res) => {
 
 const getResult = async (req, res) => {
     try {
-        let result = new Object( );
-        for (elements of req.body.surveyAnswer) {
+        const answer = req.body.surveyAnswer;
+        let result = {
+            height: answer[1],
+            weight: answer[2],
+            age: answer[3]
+        }
+        for (elements of answer) {
             if (typeof elements === "object") {
                 for (element of elements) {
                     const question = await Question.aggregate([
@@ -50,11 +55,14 @@ const getResult = async (req, res) => {
         const python = spawn('python', ['example.py', JSON.stringify(result)])
         python.stdout.on('data', (data) => {
             let buff = Buffer.from(data, 'base64');
-            let text = buff.toString('utf-8');
+            const text = buff.toString('utf-8');
+        });
+        python.stdout.on('data', (data) => {
+            let buff = Buffer.from(data, 'base64');
+            const text = buff.toString('utf-8');
             console.log(text);
         });
-        python.stderr.on('data', (data) => { console.log(data.toString( )); });
-    } catch(error) {
+        } catch(error) {
         console.error(error)
         return res.status(500).json(error);
     }
