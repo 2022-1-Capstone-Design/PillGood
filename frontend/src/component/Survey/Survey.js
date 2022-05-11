@@ -3,7 +3,6 @@ import CommonSurvey from "./Common/CommonSurvey";
 import DetailSurvey from "./Detail/DetailSurvey";
 import SurveyEnd from "./SurveyEnd";
 import SurveyInfo from "./SurveyInfo";
-//import SurveyNav from "./SurveyNav";
 import axios from "axios";
 import "../../css/Survey/Survey.css";
 import { Link } from "react-router-dom";
@@ -38,20 +37,15 @@ const Survey = () => {
   const [selectAmount, setSelectAmount] = useState([]);
   //경고메세지 출력 변수
   const [showWarn, setShowWarn] = useState(false);
+  //프로그레스바 진행률 변수
+  const [detailLength, setDetailLength] = useState(0);
   const inputRef = useRef(null);
-  //프로그레스 바
-  // const [percentage] = useState(20);
-  // const [setNumber] = useState("");
-  // const onClickFunc = () => {
-  //   setNumber(percentage + 10);
-  // };
 
   let tmpArr = [...detailNum];
   let removeArr = [...prevDetailNum];
   let comArr = [...commonNum];
   let tmpAnswer = [...surveyAnswer];
   let tmpSelect = [...selectAmount];
-
   const onChange = (e) => {
     //체크 해재시 배열에서 지움
     if (tmpArr.includes(e.target.value)) {
@@ -63,9 +57,10 @@ const Survey = () => {
       tmpArr[tmpArr.length] = e.target.value;
     }
   };
-  //상세 질문 번호 오름차순으로 저장
+  //상세 질문 번호 오름차순으로 저장 및 진행률 변수 설정
   const saveSurveyNum = () => {
     if (tmpArr.length >= 3) {
+      setDetailLength(tmpArr.length);
       setdetailNum(tmpArr.sort());
       setSurveyNum(surveyNum + 1);
     }
@@ -74,7 +69,6 @@ const Survey = () => {
   const nextSurvey = () => {
     setShowWarn(false);
     const selectValue = [...checkedInputs];
-
     if (surveyNum === 1) {
       //사용자 이름 값 삽입
       if (userName !== "") {
@@ -143,7 +137,6 @@ const Survey = () => {
       if (tmpArr.length === 0) setCommon(true);
     }
   };
-
   const prevSurvey = () => {
     if (surveyNum > 1) {
       setShowWarn(false);
@@ -158,9 +151,10 @@ const Survey = () => {
       if (surveyNum === 2) {
         setUserName("");
       }
-      //첫번째 상세 질문에서 뒤로가면 상세 질문 번호 초기화
+      //첫번째 상세 질문에서 뒤로가면 상세 질문 번호 초기화 및 진행률 변수 초기화
       if (surveyNum === 6) {
         setdetailNum([]);
+        setDetailLength(0);
       }
       //공통 질문 -> 상세 질문
       if (common && detailNum.length === 0 && commonNum.length === 3) {
@@ -193,7 +187,6 @@ const Survey = () => {
       setSurveyNum(surveyNum - 1);
     }
   };
-
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
     const id = window.localStorage.getItem("token");
@@ -237,7 +230,7 @@ const Survey = () => {
       </div>
 
       <div className="surveyfirst">
-        <SurveyBar />
+        <SurveyBar surveyNum={surveyNum} detailLength={detailLength} />
         <div className="survey_main">
           {surveyNum >= 1 && surveyNum <= 5 ? (
             <SurveyInfo

@@ -14,7 +14,11 @@ const SurveyInfo = ({
     setUserName(e.target.value);
   };
   const onChangeInfo = (e) => {
-    setUserInfo(e.target.value);
+    //숫자만 입력 가능하게 제한하는 정규식
+    const regex = /^[0-9]+$/;
+    if (regex.test(e.target.value)) {
+      setUserInfo(e.target.value);
+    }
   };
   if (surveyNum === 1) {
     return (
