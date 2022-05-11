@@ -1,7 +1,11 @@
 import pandas as pd
 import numpy as np
 
+pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
+food_data = pd.read_csv('MinMax_food_data.csv', header=0, index_col=0, encoding='cp949')
+food_data = food_data.drop(['NAME'], axis=1)
 
+# 어린이 전용 영양제 인덱스
 child_pill_index = [2,33,40,50,63,69,85,87,89,106,129,142,143,148,161,164,
 166,168,182,188,191,200,210,225,232,235,237,238,245,246,258,265,266,
 269,271,274,296,304,308,315,343,348,350,353,376,383,386,394,395,397,
@@ -13,8 +17,10 @@ child_pill_index = [2,33,40,50,63,69,85,87,89,106,129,142,143,148,161,164,
 1193,1195,1204,1212,1237,1240,1242,1245,1251,1258,1260,1266,1278,1281,
 1286]
 
+# 제외할 영양제 인덱스
 except_list_index = [51,52,53,54,55,56,64,507,553,554,954]
 
+# BMI 판별 메소드
 def bmicalc(x):
     
     if x < 18.5:
@@ -29,23 +35,24 @@ def bmicalc(x):
         y = "고도 비만"
     return y
 
-
+# 거리 계산 메소드
 def distance(x, y):
         x = x.to_numpy()
         a = np.linalg.norm(x - y)
         return a
 
-
+# 추천 메소드
 def calc(vJson):
-    pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
-    food_data = pd.read_csv('MinMax_food_data.csv', header=0, index_col=0, encoding='cp949')
-    food_data = food_data.drop(['NAME'], axis=1)
+    
+    # 키, 몸무게, 나이
     height = vJson['height']
     height = int(height)/100
     weight = vJson['weight']
     weight = int(weight)
     age = vJson['age']
     age = int(age)
+    
+    
     dict_key = []
     dict_key += vJson['세부'].keys()
     common_list_sum = np.array([0 for i in range(26)])
@@ -99,6 +106,7 @@ def calc(vJson):
         new_pill_train = pill_data.drop(remove_col_name, axis=1)
         new_food_train = food_data.drop(remove_col_name, axis=1)
 
+        # 영양제, 음식 거리 계산
         for j in range(len(pill_data)):
             v = distance(new_pill_train.iloc[j], A2)
             pill_distance_list.append(v)
@@ -106,17 +114,20 @@ def calc(vJson):
         for k in range(len(food_data)):
             v = distance(new_food_train.iloc[k], A2)
             food_distance_list.append(v)
-
+            
+        # 각 영양제 거리 중복 제거 및 정렬
         set_pill_distance_list = set(pill_distance_list)
         list_pill_distance_list = list(set_pill_distance_list)
         sort_pill_distance_list = sorted(list_pill_distance_list)
 
+        # 각 음식 거리 중복 제거 및 정렬
         set_food_distance_list = set(food_distance_list)
         list_food_distance_list = list(set_food_distance_list)
         sort_food_distance_list = sorted(list_food_distance_list)
 
-        total_list = []
+        total_list = [] # 추천할 영양제, 음식 인덱스 리스트
         
+        # 영양제 추천 부분
         if age > 20:
             for x in range(len(pill_distance_list)):
                 if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index:
@@ -135,7 +146,8 @@ def calc(vJson):
                     continue
                 if len(total_list) == 3:
                     break
-        
+                
+        # 음식 추천 부분
         if age > 20:
             for y in range(len(food_distance_list)):
                 if food_distance_list.index(sort_food_distance_list[y]) not in child_pill_index:
@@ -157,16 +169,18 @@ def calc(vJson):
                 
         final_list.append(total_list)
     
+    # 각 카테고리 별 영양제 인덱스 전달
     count = 0
-    
     for i in dict_key:
         vJson['세부'][i] = final_list[count]
         count += 1
+        
+    # BMI 계산 후 딕셔너리 추가    
     BMI = weight / (height * height)
     bmi_list = []
     bmi_string = bmicalc(BMI)
     bmi_list.append(BMI)
-    
     bmi_list.append(bmi_string)
     vJson['세부']['BMI'] = bmi_list
+    
     return vJson['세부']
