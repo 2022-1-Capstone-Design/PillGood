@@ -14,7 +14,6 @@ const ItemList = () => {
   const [btnClick, setBtnClick] = useState(false);
   const [product, setProduct] = useState([]);
   const [searchWord, setSearchWord]=useState("");
-  const [hashWords, setHashWords]=useState([]);
   const navigate = useNavigate();
     const location=useLocation();
 
@@ -30,7 +29,6 @@ const ItemList = () => {
         try{
             const response = await axios.get('/product/');
             setProducts(response.data);
-            setHashWords(nutrients); 
             setLoading(false);
         }catch (e) {
             console.log(e);
@@ -55,6 +53,7 @@ const ItemList = () => {
   const searchPill = (e) => {
     e.preventDefault();
     console.log(search);
+    setSearchWord(search);
     setBtnClick(true);
     setProduct(
       products.filter(
@@ -65,8 +64,6 @@ const ItemList = () => {
     );
     setSearch("");
     if(searchWord){
-        let data={key : {searchWord}};
-        // console.log(data);
     }
     navigate({
         pathname:"/all",
@@ -89,11 +86,6 @@ const ItemList = () => {
         axiosData();
     }
   };
-   
-  const hashwordClick=()=>{
-    setBtnClick(true);
-}
-
 
   return (
     <div>
@@ -112,17 +104,10 @@ const ItemList = () => {
         {btnClick?
           (loading?<div>Loading...</div>:
           <div>
-              {/* <ul>
-                  {hashWords.map(item=><li>
-                 {item} </li>)}
-              </ul> */}
               <ShowItem products={currentPosts} loading={loading}/>
           </div>)
         :(loading?<div>Loading...</div>:
         <div>
-            <ul>
-                {hashWords.map(item=><li onClick={hashwordClick}>{item}</li>)}
-            </ul>
             <ShowItem products={currentPosts} loading={loading}/>
         </div>
         )}
