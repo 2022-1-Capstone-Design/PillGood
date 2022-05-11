@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 
+# 영양제, 음식 데이터셋
 pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
 food_data = pd.read_csv('MinMax_food_data.csv', header=0, index_col=0, encoding='cp949')
 food_data = food_data.drop(['NAME'], axis=1)
@@ -33,12 +34,15 @@ def bmicalc(x):
         y = "경도 비만"
     else:
         y = "고도 비만"
+        
     return y
 
 # 거리 계산 메소드
 def distance(x, y):
+    
         x = x.to_numpy()
         a = np.linalg.norm(x - y)
+        
         return a
 
 # 추천 메소드
@@ -46,73 +50,80 @@ def calc(vJson):
     
     # 키, 몸무게, 나이
     height = vJson['height']
-    height = int(height)/100
-    weight = vJson['weight']
+    height = int(height)/100    
+    
+    weight = vJson['weight']   
     weight = int(weight)
-    age = vJson['age']
+    
+    age = vJson['age']  
     age = int(age)
     
     
     dict_key = []
-    dict_key += vJson['세부'].keys()
-    common_list_sum = np.array([0 for i in range(26)])
-    BB = list(vJson['공통'].values())
+    dict_key += vJson['세부'].keys() # 선택한 카테고리 추출
     
-    A = vJson['세부'].keys()
-    B = [[] for i in range(len(A))]
-    new_B = np.array(B)
+    common_zero_score_list = np.array([0 for i in range(26)]) # 공통 카테고리 전용 기본 리스트 생성
+    common_value_list = list(vJson['공통'].values()) # 공통 카테고리 value
+    
+    detail_score_list = [[] for i in range(len(dict_key))] # 세부 카테고리 점수 합산 리스트 생성
+    detail_score_set = list(vJson['세부'].values()) # 세부 카테고리 선택한 질문 점수 집합
+    
+    # 선택한 세부 카테고리별 점수 리스트 합산
+    for i in range(len(vJson['세부'].values())):  
+        detail_zero_score_list = np.array([0 for i in range(26)])
+        for j in range(len(detail_score_set[i])):
+            detail_zero_score_list += detail_score_set[i][j]            
+        detail_score_list[i].append(detail_zero_score_list)
 
-    CC = list(vJson['세부'].values())
+    # 선택한 공통 카테고리 점수 리스트 합산
+    for i in range(len(vJson['공통'].values())):       
+        for j in range(len(common_value_list[i])):     
+            common_zero_score_list += common_value_list[i][j]
+
+    # 체크된 영양소 수 확인 후 연산값 저장할 리스트 (계산식 수정 예정)
+    count_check_list = [[] for i in range(len(vJson['세부'].values()))]
     
     for i in range(len(vJson['세부'].values())):
-        testlist = np.array([0 for i in range(26)])
-        for j in range(len(CC[i])):
-            # new_CC = np.array(CC[i][j])
-            testlist += CC[i][j]
-        B[i].append(testlist)
-        
-
-    for i in range(len(vJson['공통'].values())):
-        for j in range(len(BB[i])):
-            # new_BB = np.array(BB[i][j])
-            common_list_sum += BB[i][j]
-
-    dist = [[] for i in range(len(vJson['세부'].values()))]
+        for j in range(len(detail_score_list[i])):
+            count_check_list[i].append(0.8 * (1.2 ** np.array(detail_score_list[i][j] + common_zero_score_list)))
     
-    for i in range(len(vJson['세부'].values())):
-        for j in range(len(B[i])):
-            dist[i].append(0.8 * (1.2 ** np.array(B[i][j] + common_list_sum)))
-    # print(dist)
-    vJson.pop('공통')
+    vJson.pop('공통') # vJson 공통 key, value 제거
     
-    final_list = []
+    final_list = [] # 최종으로 추천할 영양제 + 음식 인덱스 리스트 
     
-    for i in range(len(dist)):
-        A2 = list(dist[i][0])
+    # 선택한 카테고리만큼 연산
+    for i in range(len(count_check_list)):
+        # 각 count_check_list 확인 후 count=0인 피처 삭제
+        each_count_check_list = list(count_check_list[i][0]) # count_check_list 분리
         pill_distance_list = []
         food_distance_list = []
-        A3 = list(pill_data)
-        remove_list = []
-        for a in range(len(A2)):
-            if A2[a] == 0.8:
-                remove_list.append(a)
-        remove_col_name = []        
-
-        for idx in sorted(remove_list, reverse=True):
-            del A2[idx]
-            remove_col_name.append(A3[idx])
-            del A3[idx]
+        nutrient_list = list(pill_data) # 영양소 목록 리스트 (ex. 루테인, 비타민A, 비타민D ...)
+        remove_list = [] # 삭제할 피처 인덱스 리스트
         
-        new_pill_train = pill_data.drop(remove_col_name, axis=1)
+        # 선택된 영양소가 없을 경우 삭제할 피처 인덱스 리스트에 추가
+        for a in range(len(each_count_check_list)):
+            if each_count_check_list[a] == 0.8:
+                remove_list.append(a)   
+                
+        remove_col_name = []      
+        
+        # 역순으로 리스트 삭제  
+        for idx in sorted(remove_list, reverse=True):
+            del each_count_check_list[idx]   
+            remove_col_name.append(nutrient_list[idx])
+            del nutrient_list[idx]
+        
+        # 피처 제거
+        new_pill_train = pill_data.drop(remove_col_name, axis=1)  
         new_food_train = food_data.drop(remove_col_name, axis=1)
 
         # 영양제, 음식 거리 계산
-        for j in range(len(pill_data)):
-            v = distance(new_pill_train.iloc[j], A2)
+        for j in range(len(pill_data)):  
+            v = distance(new_pill_train.iloc[j], each_count_check_list)
             pill_distance_list.append(v)
 
         for k in range(len(food_data)):
-            v = distance(new_food_train.iloc[k], A2)
+            v = distance(new_food_train.iloc[k], each_count_check_list)    
             food_distance_list.append(v)
             
         # 각 영양제 거리 중복 제거 및 정렬
@@ -125,14 +136,13 @@ def calc(vJson):
         list_food_distance_list = list(set_food_distance_list)
         sort_food_distance_list = sorted(list_food_distance_list)
 
-        total_list = [] # 추천할 영양제, 음식 인덱스 리스트
+        total_list = [] # 각 카테고리별 추천할 영양제 + 음식 인덱스 리스트
         
         # 영양제 추천 부분
         if age > 20:
             for x in range(len(pill_distance_list)):
                 if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index:
                     total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
-                    
                 else:
                     continue
                 if len(total_list) == 3:
@@ -141,7 +151,6 @@ def calc(vJson):
             for x in range(len(pill_distance_list)):
                 if pill_distance_list.index(sort_pill_distance_list[x]) in child_pill_index:
                     total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
-                    
                 else:
                     continue
                 if len(total_list) == 3:
@@ -152,7 +161,6 @@ def calc(vJson):
             for y in range(len(food_distance_list)):
                 if food_distance_list.index(sort_food_distance_list[y]) not in child_pill_index:
                     total_list.append(food_distance_list.index(sort_food_distance_list[y]))
-                    
                 else:
                     continue
                 if len(total_list) == 6:
@@ -161,16 +169,15 @@ def calc(vJson):
             for y in range(len(food_distance_list)):
                 if food_distance_list.index(sort_food_distance_list[y]) in child_pill_index:
                     total_list.append(food_distance_list.index(sort_food_distance_list[y]))
-                    
                 else:
                     continue
                 if len(total_list) == 6:
                     break
-                
         final_list.append(total_list)
     
-    # 각 카테고리 별 영양제 인덱스 전달
+    # 각 카테고리의 value에 영양제 + 음식 인덱스 전달
     count = 0
+    
     for i in dict_key:
         vJson['세부'][i] = final_list[count]
         count += 1
