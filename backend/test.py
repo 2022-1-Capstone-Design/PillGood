@@ -99,7 +99,7 @@ def calc(vJson):
         food_distance_list = []
         nutrient_list = list(pill_data) # 영양소 목록 리스트 (ex. 루테인, 비타민A, 비타민D ...)
         remove_list = [] # 삭제할 피처 인덱스 리스트
-        
+        print("체크리스트 : ", each_count_check_list)
         # 선택된 영양소가 없을 경우 삭제할 피처 인덱스 리스트에 추가
         for a in range(len(each_count_check_list)):
             if each_count_check_list[a] == 0.8:
@@ -112,7 +112,7 @@ def calc(vJson):
             del each_count_check_list[idx]   
             remove_col_name.append(nutrient_list[idx])
             del nutrient_list[idx]
-        
+        print("삭제후 체크리스트 :  ",each_count_check_list)
         # 피처 제거
         new_pill_train = pill_data.drop(remove_col_name, axis=1)  
         new_food_train = food_data.drop(remove_col_name, axis=1)
@@ -141,7 +141,7 @@ def calc(vJson):
         # 영양제 추천 부분
         if age > 20:
             for x in range(len(pill_distance_list)):
-                if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index:
+                if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
                     total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
                 else:
                     continue
@@ -149,7 +149,7 @@ def calc(vJson):
                     break
         else:
             for x in range(len(pill_distance_list)):
-                if pill_distance_list.index(sort_pill_distance_list[x]) in child_pill_index:
+                if pill_distance_list.index(sort_pill_distance_list[x]) in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
                     total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
                 else:
                     continue
@@ -157,22 +157,10 @@ def calc(vJson):
                     break
                 
         # 음식 추천 부분
-        if age > 20:
-            for y in range(len(food_distance_list)):
-                if food_distance_list.index(sort_food_distance_list[y]) not in child_pill_index:
-                    total_list.append(food_distance_list.index(sort_food_distance_list[y]))
-                else:
-                    continue
-                if len(total_list) == 6:
-                    break
-        else:
-            for y in range(len(food_distance_list)):
-                if food_distance_list.index(sort_food_distance_list[y]) in child_pill_index:
-                    total_list.append(food_distance_list.index(sort_food_distance_list[y]))
-                else:
-                    continue
-                if len(total_list) == 6:
-                    break
+        for y in range(3):
+            total_list.append(food_distance_list.index(sort_food_distance_list[y]))
+            
+                
         final_list.append(total_list)
     
     # 각 카테고리의 value에 영양제 + 음식 인덱스 전달
