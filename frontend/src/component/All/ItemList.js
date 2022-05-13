@@ -9,15 +9,13 @@ const ItemList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(20);     //총 데이터를 postsPerPage만큼 등분
+  const [postsPerPage] = useState(20);
   const [search, setSearch] = useState("");
   const [btnClick, setBtnClick] = useState(false);
   const [product, setProduct] = useState([]);
-  const [searchWord, setSearchWord]=useState("");
   const navigate = useNavigate();
-    const location=useLocation();
-
-    let data={key : {searchWord}};
+  const location=useLocation();
+    
   useEffect(() => {
     const fetchData = async () => {
         const nutrients=[
@@ -27,8 +25,7 @@ const ItemList = () => {
             "엽산","구리","몰리브덴"
         ]
         try{
-            setLoading(true);
-            const response = await axios.get('/product/');
+            const response = await axios.get("/product" + location.search);
             setProducts(response.data);
             setLoading(false);
         }catch (e) {
@@ -43,57 +40,59 @@ const ItemList = () => {
     return null;
   }
 
-  //postsPerPage로 등분한 배열의 데이터를 나누어서 보여주기위한 변수들 선언
-  const indexOfLastPost = currentPage * postsPerPage;  //1*10 = 10번 포스트
-  const indexOfFirstPost = indexOfLastPost - postsPerPage; //10-10 = 0번 포스트
-  
-  //위 처음,끝 인덱스 구한 번호를 아래 currentPosts를 통해 배열데이터를 slice로 분할
-  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost); //0~10번까지 포스트
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
 
   const writePill = (e) => {
     setSearch(e.target.value);
+
   };
 
+   let data;
+
+   const params=new URLSearchParams(location.search);
+
   const searchPill = (e) => {
-    e.preventDefault();
+    console.log("2. searchPill함수: ");
     console.log(search);
-    setSearchWord(search);
+    e.preventDefault();
+    if(search ){    
+      console.log("3. searchPill함수 내 if문 들어감 :");
+      console.log(search);
+    data={key : {search}};
+    //검색단어 저장
     setBtnClick(true);
-    setProduct(
-      products.filter(
-        (item) =>
-          item.PRDLST_NM.includes(e.target.pname.value) ||
-          item.BSSH_NM.includes(e.target.pname.value)
-      )
-    );
-    setSearch("");
-    if(searchWord){
-    }
-    navigate({
-        pathname:"/all",
-        search:`?search=${searchWord}`,
-        data:data,
-        });
-    console.log(product);
-    if(location.search){
-        const axiosData= async()=>{
+    const axiosData= async()=>{
             try{
-                const responseData =await axios.get('/product',
-                                    {params: {search: location.search}},
-                                    {withCredentials:true}
-                                    );
-                console.log(responseData);
+              console.log("5. 백엔드 요청 들어가기 전 값 확인");
+              console.log(search);
+                const responseData =await axios.get('/product?search=' + search);
+
+                console.log(responseData.data);
+                setProducts(responseData.data);
             }catch(e){
                 console.log(e);
             }
         }
         axiosData();
-    }
-  };
-
+      }
+    };
   return (
     <div>
-    <form onSubmit={searchPill}>
+    <form onSubmit={(e)=>{
+      navigate({
+        pathname:"/all",
+        search:`?search=${search}`,
+        data:data,
+        });
+        console.log("4. search값 확인");
+       console.log(location.search);
+       console.log(params.get("search"));
+       searchPill(e);
+    }
+  }
+    >
         <input
           type="text"
           name="pname"
@@ -102,25 +101,23 @@ const ItemList = () => {
           onChange={writePill}
         />
         <input type="submit" name="btn" value="검색하기" />
-      </form>
+    </form>
 
     <div className="list-block">
-        {btnClick?
+      {btnClick
+        ?
           (loading?<div>Loading...</div>:
           <div>
               <ShowItem products={currentPosts} loading={loading}/>
           </div>)
-        :(loading?<div>Loading...</div>:
-        <div>
-            <ShowItem products={currentPosts} loading={loading}/>
-        </div>
-        )}
+        :
+          (loading?<div>Loading...</div>:
+          <div>
+              <ShowItem products={currentPosts} loading={loading}/>
+          </div>
+          )}
         
-        <Pagination 
-        postsPerPage={postsPerPage} 
-        totalPosts={products.length} 
-        paginate={setCurrentPage}>
-        </Pagination>
+        <Pagination postsPerPage={postsPerPage} totalPosts={products.length} paginate={setCurrentPage}></Pagination>
  
     </div>
     </div>
