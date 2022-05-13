@@ -1,3 +1,40 @@
+/* 필굿 로고 사진 */
+a>img{
+  position: relative;
+  margin-top: 0px;
+  height:60px;
+  padding-bottom: 5px;
+  backface-visibility: hidden;
+  display: inline-block;
+
+  text-align: center;
+}
+
+/* 로고 포함 네비바 */
+.main__first{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  position: fixed;
+  transform: initial;
+  width: 100%; 
+  z-index: 1; 
+  transition:.5s;
+  padding-left: 100px;
+}
+
+.hidden {
+  opacity: 0;
+  top: -100px;
+  transition:.3s;
+}
+
+.main__first>img{
+  width: 166px;
+}
+
 .navbar__element {
   display: flex;
   list-style: none;

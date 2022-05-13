@@ -1,55 +1,31 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
-import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../image/logo.png";
 import { FullPage, Slide } from "react-full-page";
-//import blue from '../image/blue.jpg';
 import Fade from "react-reveal/Fade";
-//import food from '../image/food.png';
 import pictogram from "../image/pictogram.png";
 import Cards from "./Cards";
 import Footer from "./Footer";
-import { throttle } from "lodash";
+import { useEffect } from "react";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
-  const [isNavOn, setIsNavOn] = useState(true);
   const token = window.localStorage.getItem("token");
-  //이전 스크롤 초기값
-  const beforeScrollY = useRef(0);
-  const scrollEvent = useMemo(
-    () =>
-      throttle(() => {
-        const currentScrollY = window.scrollY;
-        if (beforeScrollY.current < currentScrollY) {
-          setIsNavOn(false);
-        } else {
-          setIsNavOn(true);
-        }
-        //이전 스크롤값 저장
-        beforeScrollY.current = currentScrollY;
-      }, 300),
-    [beforeScrollY]
-  );
+
   useEffect(() => {
-    window.addEventListener("scroll", scrollEvent);
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-  }, [setIsLoggedIn, token, scrollEvent]);
+  }, [isLoggedIn, setIsLoggedIn, token]);
 
   return (
     <div>
       <FullPage controls controlsProps={{ className: "slide-navigation" }}>
         <Slide>
           <div className="main">
-            <div className={isNavOn ? "main__first" : "main__first hidden"}>
-              <Link to="/">
-                <img src={logo} width="166" height="30" alt="pillgood logo" />
-              </Link>
-              <Navigate isLoggedIn={isLoggedIn} />
+            <div>
+              <Navigate isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             </div>
             <div className="main__intro">
               <div className="main__intro__">

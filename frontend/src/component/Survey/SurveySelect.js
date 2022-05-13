@@ -1,11 +1,13 @@
 import React from "react";
-import '../../css/Survey/SurveyStartForm.css';
-const SurveyStartForm = ({ onChange }) => {
+import "../../css/Survey/SurveyStartForm.css";
+const SurveySelect = ({ userName, surveyNum, onChange }) => {
   return (
     <div className="survey_main_question">
-      <div className="number">질문 # 1</div>
+      <div className="number">질문 # {surveyNum}</div>
       <br />
-      <div className="para">분야를 선택해주세요</div>
+      <div className="para">
+        {userName}님이 불편하거나 걱정되는 분야를 선택해주세요
+      </div>
       <ul className="survey_main_question_answer">
         <li data="혈관/혈액순환">
           <label>
@@ -29,7 +31,7 @@ const SurveyStartForm = ({ onChange }) => {
             소화/위/간/장
           </label>
         </li>
-        <li data="눈">
+        <li data="피로감">
           <label>
             <input
               type="checkbox"
@@ -37,10 +39,10 @@ const SurveyStartForm = ({ onChange }) => {
               value="3"
               onChange={onChange}
             />
-            눈
+            피로감
           </label>
         </li>
-        <li data="피로감">
+        <li data="눈">
           <label>
             <input
               type="checkbox"
@@ -48,7 +50,7 @@ const SurveyStartForm = ({ onChange }) => {
               value="4"
               onChange={onChange}
             />
-            피로감
+            눈
           </label>
         </li>
         <li data="뼈와 관절">
@@ -78,4 +80,4 @@ const SurveyStartForm = ({ onChange }) => {
   );
 };
 
-export default SurveyStartForm;
+export default SurveySelect;
