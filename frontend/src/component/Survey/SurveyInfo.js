@@ -27,6 +27,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">이름을 입력해 주세요</div>
         <input
+          type="text"
           maxLength="7"
           ref={inputRef}
           onChange={onChangeName}
@@ -41,6 +42,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 키를 입력해주세요</div>
         <input
+          type="text"
           maxLength="3"
           ref={inputRef}
           onChange={onChangeInfo}
@@ -57,6 +59,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 몸무게를 입력해주세요</div>
         <input
+          type="text"
           maxLength="3"
           ref={inputRef}
           onChange={onChangeInfo}
@@ -73,6 +76,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 나이를 입력해주세요</div>
         <input
+          type="text"
           maxLength="3"
           ref={inputRef}
           onChange={onChangeInfo}

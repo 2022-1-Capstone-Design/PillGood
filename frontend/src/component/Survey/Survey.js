@@ -232,7 +232,7 @@ const Survey = () => {
       <div className="surveyfirst">
         <SurveyBar surveyNum={surveyNum} detailLength={detailLength} />
         <div className="survey_main">
-          {surveyNum >= 1 && surveyNum <= 5 ? (
+          {surveyNum >= 1 && surveyNum <= 5 && (
             <SurveyInfo
               userName={userName}
               setUserName={setUserName}
@@ -242,7 +242,7 @@ const Survey = () => {
               onChange={onChange}
               showWarn={showWarn}
             />
-          ) : null}
+          )}
           {detailNum.length > 0 && (
             <DetailSurvey
               detailNum={detailNum}
@@ -252,7 +252,7 @@ const Survey = () => {
               questions={questions}
             />
           )}
-          {common && commonNum.length !== 0 ? (
+          {common && commonNum.length !== 0 && (
             <CommonSurvey
               commonNum={commonNum}
               surveyNum={surveyNum}
@@ -260,10 +260,10 @@ const Survey = () => {
               setCheckedInputs={setCheckedInputs}
               questions={questions}
             />
-          ) : null}
-          {detailNum.length === 0 && commonNum.length === 0 ? (
+          )}
+          {detailNum.length === 0 && commonNum.length === 0 && (
             <SurveyEnd surveyNum={surveyNum} />
-          ) : null}
+          )}
         </div>
 
         <div className="survey_footer">
