@@ -1,16 +1,13 @@
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
-const scoreSchema = new Schema(
-  {
+const scoreSchema = new Schema({
     ref: {
-      type: Schema.Types.ObjectId,
-      ref: "Question",
-      required: true,
+        type: Schema.Types.ObjectId,
+        ref: 'Question',
+        required: true
     },
-    score: [Number],
-  },
-  { versionKey: false }
-);
+    score: [Number]
+}, { versionKey: false });
 
-module.exports = mongoose.model("Score", scoreSchema);
+module.exports = mongoose.model('Score', scoreSchema);
