@@ -6,8 +6,18 @@ import Fade from "react-reveal/Fade";
 import pictogram from "../image/pictogram.png";
 import Cards from "./Cards";
 import Footer from "./Footer";
+import { useEffect } from "react";
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
+  const token = window.localStorage.getItem("token");
+
+  useEffect(() => {
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, [isLoggedIn, setIsLoggedIn, token]);
 
   return (
     <div>
@@ -15,7 +25,7 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
         <Slide>
           <div className="main">
             <div>
-              <Navigate isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+              <Navigate isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
             </div>
             <div className="main__intro">
               <div className="main__intro__">

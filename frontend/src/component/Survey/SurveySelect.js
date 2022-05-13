@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/Survey/SurveyStartForm.css";
-const SurveyStartForm = ({ userName, surveyNum, onChange }) => {
+const SurveySelect = ({ userName, surveyNum, onChange }) => {
   return (
     <div className="survey_main_question">
       <div className="number">질문 # {surveyNum}</div>
@@ -80,4 +80,4 @@ const SurveyStartForm = ({ userName, surveyNum, onChange }) => {
   );
 };
 
-export default SurveyStartForm;
+export default SurveySelect;
