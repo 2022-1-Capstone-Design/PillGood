@@ -9,7 +9,7 @@ const ItemList = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(20);
+  const [postsPerPage] = useState(20);     //총 데이터를 postsPerPage만큼 등분
   const [search, setSearch] = useState("");
   const [btnClick, setBtnClick] = useState(false);
   const [product, setProduct] = useState([]);
@@ -27,6 +27,7 @@ const ItemList = () => {
             "엽산","구리","몰리브덴"
         ]
         try{
+            setLoading(true);
             const response = await axios.get('/product/');
             setProducts(response.data);
             setLoading(false);
@@ -42,9 +43,12 @@ const ItemList = () => {
     return null;
   }
 
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+  //postsPerPage로 등분한 배열의 데이터를 나누어서 보여주기위한 변수들 선언
+  const indexOfLastPost = currentPage * postsPerPage;  //1*10 = 10번 포스트
+  const indexOfFirstPost = indexOfLastPost - postsPerPage; //10-10 = 0번 포스트
+  
+  //위 처음,끝 인덱스 구한 번호를 아래 currentPosts를 통해 배열데이터를 slice로 분할
+  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost); //0~10번까지 포스트
 
   const writePill = (e) => {
     setSearch(e.target.value);
@@ -112,7 +116,11 @@ const ItemList = () => {
         </div>
         )}
         
-        <Pagination postsPerPage={postsPerPage} totalPosts={products.length} paginate={setCurrentPage}></Pagination>
+        <Pagination 
+        postsPerPage={postsPerPage} 
+        totalPosts={products.length} 
+        paginate={setCurrentPage}>
+        </Pagination>
  
     </div>
     </div>

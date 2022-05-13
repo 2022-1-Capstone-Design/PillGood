@@ -3,7 +3,11 @@ import "../../css/All/ShowItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
 
-const ShowItem = ({ products }) => {
+const ShowItem = ({ products, loading }) => {
+  if (loading) {
+    return <h2> ....Loading...</h2>;
+}
+
   return (
     <ul className="list">
       {products.map((product) => (

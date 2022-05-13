@@ -1,9 +1,8 @@
 import React from "react";
 import '../../css/All/Pagination.css';
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate}) => {
   const pageNumber = [];
-  
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
     pageNumber.push(i);
