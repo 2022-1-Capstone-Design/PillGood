@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import copy
 
 # 영양제, 음식 데이터셋
 pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
@@ -99,7 +100,7 @@ def calc(vJson):
         food_distance_list = []
         nutrient_list = list(pill_data) # 영양소 목록 리스트 (ex. 루테인, 비타민A, 비타민D ...)
         remove_list = [] # 삭제할 피처 인덱스 리스트
-        print("체크리스트 : ", each_count_check_list)
+
         # 선택된 영양소가 없을 경우 삭제할 피처 인덱스 리스트에 추가
         for a in range(len(each_count_check_list)):
             if each_count_check_list[a] == 0.8:
@@ -112,11 +113,26 @@ def calc(vJson):
             del each_count_check_list[idx]   
             remove_col_name.append(nutrient_list[idx])
             del nutrient_list[idx]
-        print("삭제후 체크리스트 :  ",each_count_check_list)
+        
         # 피처 제거
         new_pill_train = pill_data.drop(remove_col_name, axis=1)  
         new_food_train = food_data.drop(remove_col_name, axis=1)
-
+        check_col_name = list(new_pill_train)
+        
+        # 카테고리별 중요 영양소 선별
+        copy_check_col_name = copy.deepcopy(check_col_name)
+        copy_each_count_check_list = copy.deepcopy(each_count_check_list)
+        choice_col_name = []
+        for i in range(3):
+            sort_copy_each_count_check_list = sorted(copy_each_count_check_list, reverse=True)
+            check_index = copy_each_count_check_list.index(sort_copy_each_count_check_list[0])
+            if sort_copy_each_count_check_list[0] != 0.8:
+                choice_col_name.append(copy_check_col_name[check_index])
+            else:
+                break
+            del copy_check_col_name[check_index]
+            del copy_each_count_check_list[check_index]
+        
         # 영양제, 음식 거리 계산
         for j in range(len(pill_data)):  
             v = distance(new_pill_train.iloc[j], each_count_check_list)
@@ -159,11 +175,15 @@ def calc(vJson):
         # 음식 추천 부분
         for y in range(3):
             total_list.append(food_distance_list.index(sort_food_distance_list[y]))
-            
+        
+        # 카테고리별 중요 영양소 추가
+        for k in range(len(choice_col_name)):
+            total_list.append(choice_col_name[k])   
                 
         final_list.append(total_list)
+        
     
-    # 각 카테고리의 value에 영양제 + 음식 인덱스 전달
+    # 각 카테고리의 value에 영양제 + 음식 인덱스, 중요 영양소 전달
     count = 0
     
     for i in dict_key:
