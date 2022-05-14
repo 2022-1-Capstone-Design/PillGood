@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import "../../css/All/ShowItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faHeart} from "@fortawesome/free-regular-svg-icons";
@@ -9,12 +9,15 @@ const ShowItem = ({ products, loading }) => {
   const [likeArray, setLikeArray]=useState([]);
   const [logginToken, setLogginToken]=useState(true);
 
+  useEffect(()=>{
+    console.log("배열값 : ",likeArray);
+  },[likeArray]);
+
   if (loading) {
     return <h2> ....Loading...</h2>;
-}
+  }
 
 const token=window.localStorage.getItem("token");
-console.log("배열값 : ",likeArray);
 const likeItEvent=(e,id)=>{
   e.preventDefault();
   if(token){
@@ -23,13 +26,15 @@ const likeItEvent=(e,id)=>{
       axios
       .delete('/product', 
       {
-         headers: {
-             'Authorization' :  `Bearer ${token}`          
-         },
-         data: {
-           'productId' : `${id}`
-         }
-      })
+        data: {
+          'productId' : `${id}`
+        }
+      },
+      {
+        headers: {
+        'Authorization' :  `Bearer ${token}`          
+      }
+    })
       .then(console.log("delete 성공"))
       .catch((error)=>{
         console.log(error);
@@ -40,13 +45,15 @@ const likeItEvent=(e,id)=>{
     }else{
       axios
       .post('/product', 
-      {
-         headers: {
-             'Authorization' :  `Bearer ${token}`          
-         },
-         data: {
-           'productId' : `${id}`
-         }
+        {
+          data: {
+            'productId' : `${id}`
+          }
+        },
+        {
+          headers: {
+          'Authorization' :  `Bearer ${token}`          
+        }
       })
       .then(()=>{
         console.log("get 성공")
@@ -71,7 +78,7 @@ const likeItEvent=(e,id)=>{
           <p>{product.PRDLST_NM}</p>
           <p>{product.BSSH_NM}</p>
           <img src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
-          <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product.PRDLST_NM);}}/>
+          <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id);}}/>
         </li>
       ))}
     </ul>
