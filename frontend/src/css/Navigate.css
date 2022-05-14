@@ -30,7 +30,8 @@ a {
   font-weight: normal;
   font-style: normal;
 }
-li > a:hover, li:hover {
+.navbar__element li > a:hover,
+.navbar__element li:hover {
   color: #39d9c8;
   transition: transform 100ms ease-in-out;
 }
@@ -42,7 +43,7 @@ li > a:hover, li:hover {
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
-li:hover:after {
+.navbar__element li:hover:after {
   transform: scaleX(1);
 }
 @media screen and (max-width: 887px) {

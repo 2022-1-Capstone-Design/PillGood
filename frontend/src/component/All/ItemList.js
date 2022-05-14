@@ -47,58 +47,40 @@ const ItemList = () => {
     }
   });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
+  //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
+  const axiosData = async () => {
+    try{
         const response = await axios.get("/product" + location.search);
         setProducts(response.data);
         setLoading(false);
-      } catch (e) {
+    }catch (e) {
         console.log(e);
-      }
-    };
-    fetchData();
-  }, []);
+    }
 
-  if (!products) {
-    return null;
-  }
+  };
+  
+  // 처음에 렌더링 되는 구간, 이후에는 location.search 값이 변할때마다 렌더링 
+  useEffect(() => {
+    axiosData();
+  }, [location.search]);
 
+  //검색창에 검색어 작성할때마다 해당 검색어로 search 상태값 변경
   const writePill = (e) => {
     setSearch(e.target.value);
   };
 
   let data;
 
-  const params = new URLSearchParams(location.search);
-
-  const searchPill = (e) => {
-    console.log("2. searchPill함수: ");
-    console.log(search);
+   //검색창에서 검색 기능 수행
+   const searchPill = (e) => {
     e.preventDefault();
-    if (search) {
-      console.log("3. searchPill함수 내 if문 들어감 :");
-      console.log(search);
-      data = { key: { search } };
-      //검색단어 저장
-      setBtnClick(true);
-      const axiosData = async () => {
-        try {
-          console.log("5. 백엔드 요청 들어가기 전 값 확인");
-          console.log(search);
-          const responseData = await axios.get("/product?search=" + search);
+    if(search ){    
+    data={key : {search}};
+    setBtnClick(true);
+      }
+    };
 
-          console.log(responseData.data);
-          setProducts(responseData.data);
-        } catch (e) {
-          console.log(e);
-        }
-      };
-      axiosData();
-    }
-  };
-//페이지네이션 버튼
+  //페이지네이션 버튼
   const handleNextbtn = () => {
     setCurrentPage(currentPage + 1);
     if (currentPage + 1 > maxPageNumberLimit) {
@@ -126,19 +108,17 @@ const ItemList = () => {
 
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          navigate({
-            pathname: "/all",
-            search: `?search=${search}`,
-            data: data,
-          });
-          console.log("4. search값 확인");
-          console.log(location.search);
-          console.log(params.get("search"));
-          searchPill(e);
-        }}
-      >
+      <form onSubmit={(e)=>{
+      navigate({
+        pathname:"/all",
+        search:`?search=${search}`,
+        data:data,
+        });
+        location.search={search};
+       searchPill(e);
+    }
+  }
+    >
         <input
           type="text"
           name="pname"

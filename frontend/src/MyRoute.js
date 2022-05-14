@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./component/Main";
+import Main from "./component/Main/Main";
 import Auth from "./component/Auth";
 import Form from "./component/Form";
 import { Fragment, useState } from "react";

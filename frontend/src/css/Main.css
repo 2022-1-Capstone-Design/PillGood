@@ -186,7 +186,7 @@ ul{
 }
 
 /* 화면 너비가 줄어들 경우 반응형으로 메뉴바 나오도록 */
-@media screen and (max-width:887px){
+@media screen and (max-width:800px){
     .main{
         background-color: #fec89a;
     }
