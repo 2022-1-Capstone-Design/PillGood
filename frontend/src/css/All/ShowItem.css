@@ -1,0 +1,18 @@
+.item-card {
+    display: inline-block;
+    justify-content: space-between;
+    white-space: nowrap;
+    font-size: 15px;
+    list-style-type: none;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 350px;
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+img {
+    width: 50%;
+}
