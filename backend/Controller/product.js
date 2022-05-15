@@ -5,18 +5,39 @@ const getProduct = async (req, res) => {
     try {
         const params = req.query;
         const user = req.user;
-        let products;
+        let products, arr;
         if (params.search) {
             const split = params.search.split(' ');
-            const arr = split.map(e => new RegExp(e))
-            products = await Product.find( 
-                {
-                    PRDLST_NM: arr
-                }
-            );
-        } else {
-            products = await Product.find( );
+            arr = split.map(e => new RegExp(e))
         }
+        const match = arr ? { '$match': { $or: [
+            { PRDLST_NM: { $in: arr }},
+            { BSSH_NM: { $in: arr } }
+          ] } } : { $match: { } };
+        products = await Product.aggregate([
+            match,
+            {
+                '$lookup': {
+                'from': 'likes', 
+                'localField': '_id', 
+                'foreignField': 'product_id', 
+                'as': 'likes'
+                }
+            }, {
+                '$project': {
+                    'INDEX': 1, 
+                    'PRDLST_NM': 1, 
+                    'BSSH_NM': 1, 
+                    'likes': {
+                        '$filter': {
+                            'input': '$likes', 
+                            'as': 'like', 
+                            'cond': { '$eq': [ '$$like.user_id', user ] }
+                        }
+                    }
+                }
+            }
+        ]);
         return res.status(200).json(products);
     } catch (error) {
         console.error(error);
@@ -41,7 +62,6 @@ const addLike = async (req, res) => {
 
 const deleteLike = async (req, res) => {
     try {
-        console.log(req);
         await Like.deleteOne(
             {
                 user_id: req.user,
