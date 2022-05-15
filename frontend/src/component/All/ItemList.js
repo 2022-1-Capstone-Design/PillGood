@@ -46,22 +46,33 @@ const ItemList = () => {
       return null;
     }
   });
+  const token=window.localStorage.getItem("token");
 
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
   const axiosData = async () => {
     try{
-        const response = await axios.get("/product" + location.search);
+        const response = 
+        await axios
+        .get("/product"+location.search, 
+        {
+          headers: {
+          'Authorization' :  `Bearer ${JSON.parse(token)}`          
+        }}
+        );
         setProducts(response.data);
         setLoading(false);
+        
     }catch (e) {
         console.log(e);
     }
 
   };
   
+  
   // 처음에 렌더링 되는 구간, 이후에는 location.search 값이 변할때마다 렌더링 
   useEffect(() => {
     axiosData();
+    console.log(products);
   }, [location.search]);
 
   //검색창에 검색어 작성할때마다 해당 검색어로 search 상태값 변경
@@ -109,16 +120,15 @@ const ItemList = () => {
   return (
     <div>
       <form onSubmit={(e)=>{
-      navigate({
-        pathname:"/all",
-        search:`?search=${search}`,
-        data:data,
-        });
-        location.search={search};
-       searchPill(e);
-    }
-  }
-    >
+        navigate({
+          pathname:"/all",
+          search:`?search=${search}`,
+          data:data,
+          });
+          location.search={search};
+        searchPill(e);
+      }}
+      >
         <input
           type="text"
           name="pname"
