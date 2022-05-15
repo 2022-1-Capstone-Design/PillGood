@@ -1,7 +1,0 @@
-/* 설문진단 inner 중 '질문 # (번호), ~을 선택해주세요' 박스 부분 */
-.survey_main_question_detail{
-    position:fixed;
-    top:60px;
-    left:60px;
-    right:60px;
-}

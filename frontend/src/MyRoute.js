@@ -10,6 +10,7 @@ import Cards from "./component/Cards";
 import Footer from "./component/Footer";
 import Survey from "./component/Survey/Survey";
 import Kakao from "./component/Kakao";
+import SurveyLoading from "./component/Survey/SurveyLoading";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +31,7 @@ function MyRoute() {
         <Route path="/cards" element={<Cards />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
+        <Route path="/form/survey/loading" element={<SurveyLoading />} />
       </Routes>
     </Fragment>
   );
