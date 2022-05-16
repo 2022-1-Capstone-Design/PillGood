@@ -6,4 +6,4 @@ const foodSchema = new Schema({
     NAME: String
 }, { versionKey: false })
 
-module.exports = mongoose.model('food', foodSchema);
+module.exports = mongoose.model('Food', foodSchema);
