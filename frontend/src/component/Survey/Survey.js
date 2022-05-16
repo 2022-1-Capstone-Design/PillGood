@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-import CommonSurvey from "./Common/CommonSurvey";
-import DetailSurvey from "./Detail/DetailSurvey";
+import SurveyForm from "./Form/SurveyForm";
 import SurveyEnd from "./SurveyEnd";
 import SurveyInfo from "./SurveyInfo";
 import axios from "axios";
 import "../../css/Survey/Survey.css";
-import { Link } from "react-router-dom";
-import SurveyBar from "./SurveyBar";
+import { Link, useNavigate } from "react-router-dom";
+import SurveyNav from "./SurveyNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseChimneyUser } from "@fortawesome/free-solid-svg-icons";
 import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +39,7 @@ const Survey = () => {
   //프로그레스바 진행률 변수
   const [detailLength, setDetailLength] = useState(0);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   let tmpArr = [...detailNum];
   let removeArr = [...prevDetailNum];
@@ -56,13 +56,18 @@ const Survey = () => {
     else {
       tmpArr[tmpArr.length] = e.target.value;
     }
+    console.log(tmpArr);
   };
   //상세 질문 번호 오름차순으로 저장 및 진행률 변수 설정
   const saveSurveyNum = () => {
     if (tmpArr.length >= 3) {
       setDetailLength(tmpArr.length);
       setdetailNum(tmpArr.sort());
+      setShowWarn(false);
       setSurveyNum(surveyNum + 1);
+    } else {
+      setShowWarn(true);
+      setdetailNum(tmpArr.sort());
     }
   };
 
@@ -77,6 +82,8 @@ const Survey = () => {
         setSurveyAnswer(tmp);
         setSurveyNum(surveyNum + 1);
         inputRef.current.value = "";
+      } else {
+        setShowWarn(true);
       }
     }
     //키, 몸무게, 나이 입력값 검사 후 배열에 값 삽입
@@ -98,43 +105,51 @@ const Survey = () => {
     }
 
     //공통 질문에서 다음 버튼 클릭시
-    else if (common && checkedInputs.length > 0) {
-      //답변 결과 정렬 후 배열에 저장
-      selectValue.forEach((element) => tmpAnswer[1].push(element));
-      setSurveyAnswer(tmpAnswer);
-      //선택한 답변 갯수 저장
-      tmpSelect.push(checkedInputs.length);
-      setSelectAmount(tmpSelect);
-      //선택한 답변 값들 초기화
-      checkedInputs.length = 0;
-      setCheckedInputs(checkedInputs);
+    else if (common) {
+      if (selectValue.length === 0) {
+        setShowWarn(true);
+      } else {
+        //답변 결과 정렬 후 배열에 저장
+        selectValue.forEach((element) => tmpAnswer[1].push(element));
+        setSurveyAnswer(tmpAnswer);
+        //선택한 답변 갯수 저장
+        tmpSelect.push(checkedInputs.length);
+        setSelectAmount(tmpSelect);
+        //선택한 답변 값들 초기화
+        checkedInputs.length = 0;
+        setCheckedInputs(checkedInputs);
 
-      //다음 공통 질문으로 이동
-      comArr.shift();
-      setCommonNum(comArr);
-      setSurveyNum(surveyNum + 1);
+        //다음 공통 질문으로 이동
+        comArr.shift();
+        setCommonNum(comArr);
+        setSurveyNum(surveyNum + 1);
+      }
     }
 
     //상세 질문에서 다음 버튼 클릭시
-    else if (!common && checkedInputs.length > 0) {
-      //이전 질문 번호 저장
-      removeArr.push(tmpArr.shift());
-      setPrevDetailNum(removeArr);
-      //답변 결과 정렬 후 배열에 저장
-      selectValue.forEach((element) => tmpAnswer[1].push(element));
-      setSurveyAnswer(tmpAnswer);
-      //선택한 답변 갯수 저장
-      tmpSelect.push(checkedInputs.length);
-      setSelectAmount(tmpSelect);
-      //선택한 답변 값들 초기화
-      checkedInputs.length = 0;
-      setCheckedInputs(checkedInputs);
+    else if (!common) {
+      if (selectValue.length === 0) {
+        setShowWarn(true);
+      } else {
+        //이전 질문 번호 저장
+        removeArr.push(tmpArr.shift());
+        setPrevDetailNum(removeArr);
+        //답변 결과 정렬 후 배열에 저장
+        selectValue.forEach((element) => tmpAnswer[1].push(element));
+        setSurveyAnswer(tmpAnswer);
+        //선택한 답변 갯수 저장
+        tmpSelect.push(checkedInputs.length);
+        setSelectAmount(tmpSelect);
+        //선택한 답변 값들 초기화
+        checkedInputs.length = 0;
+        setCheckedInputs(checkedInputs);
 
-      //다음 상세 질문으로 이동
-      setdetailNum(tmpArr);
-      setSurveyNum(surveyNum + 1);
-      //상세 질문이 끝나면 공통 질문으로 이동
-      if (tmpArr.length === 0) setCommon(true);
+        //다음 상세 질문으로 이동
+        setdetailNum(tmpArr);
+        setSurveyNum(surveyNum + 1);
+        //상세 질문이 끝나면 공통 질문으로 이동
+        if (tmpArr.length === 0) setCommon(true);
+      }
     }
   };
   const prevSurvey = () => {
@@ -189,11 +204,21 @@ const Survey = () => {
   };
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
-    const id = window.localStorage.getItem("token");
+    const token = window.localStorage.getItem("token");
     axios
-      .post("/survey", { id, surveyAnswer }, { withCredentials: true })
+      .post(
+        "/survey",
+        { surveyAnswer },
+        {
+          headers: {
+            Authorization: `${token}`,
+          },
+        },
+        { withCredentials: true }
+      )
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
+    navigate("/form/survey/loading", true);
   };
 
   const getQuestions = async () => {
@@ -205,82 +230,66 @@ const Survey = () => {
     getQuestions();
   }, []);
 
-  console.log(surveyAnswer);
-
   return (
     <div className="survey">
-      <div className="surveyButton iconbox">
-        <Link to="/">
-          <div className="surveyhome ">
-            <FontAwesomeIcon icon={faHouseChimneyUser} className="icon" />
-          </div>
+      <div className="surveyContainer">
+        <Link to="/" className="icon1">
+          <FontAwesomeIcon icon={faHouseChimneyUser} className="icon" />
         </Link>
-
-        <Link to="/ask">
-          <div className="surveyask">
-            <FontAwesomeIcon icon={faCommentDots} className="icon" />
+        <div className="surveyfirst">
+          <SurveyNav
+            surveyNum={surveyNum}
+            detailLength={detailLength}
+            detailNumLength={detailNum.length}
+          />
+          <div className="survey_main">
+            {surveyNum >= 1 && surveyNum <= 5 && (
+              <SurveyInfo
+                userName={userName}
+                setUserName={setUserName}
+                setUserInfo={setUserInfo}
+                inputRef={inputRef}
+                surveyNum={surveyNum}
+                onChange={onChange}
+                showWarn={showWarn}
+                questions={questions}
+              />
+            )}
+            {surveyNum > 5 && surveyNum < 9 + detailLength && (
+              <SurveyForm
+                detailNum={detailNum}
+                commonNum={commonNum}
+                common={common}
+                surveyNum={surveyNum}
+                checkedInputs={checkedInputs}
+                setCheckedInputs={setCheckedInputs}
+                showWarn={showWarn}
+                questions={questions}
+              />
+            )}
+            {detailNum.length === 0 && commonNum.length === 0 && (
+              <SurveyEnd surveyNum={surveyNum} />
+            )}
           </div>
-        </Link>
 
-        <Link to="/all">
-          <div className="surveyall ">
-            <FontAwesomeIcon icon={faTableList} className="icon" />
+          <div className="survey_footer">
+            <button onClick={prevSurvey} className="before">
+              이전
+            </button>
+            <button
+              onClick={() => {
+                if (surveyNum === 5) saveSurveyNum();
+                else if (detailNum.length === 0 && commonNum.length === 0)
+                  onSubmit();
+                else nextSurvey();
+              }}
+              className="next"
+            >
+              {detailNum.length === 0 && commonNum.length === 0
+                ? "제출"
+                : "다음"}
+            </button>
           </div>
-        </Link>
-      </div>
-
-      <div className="surveyfirst">
-        <SurveyBar surveyNum={surveyNum} detailLength={detailLength} />
-        <div className="survey_main">
-          {surveyNum >= 1 && surveyNum <= 5 && (
-            <SurveyInfo
-              userName={userName}
-              setUserName={setUserName}
-              setUserInfo={setUserInfo}
-              inputRef={inputRef}
-              surveyNum={surveyNum}
-              onChange={onChange}
-              showWarn={showWarn}
-            />
-          )}
-          {detailNum.length > 0 && (
-            <DetailSurvey
-              detailNum={detailNum}
-              surveyNum={surveyNum}
-              checkedInputs={checkedInputs}
-              setCheckedInputs={setCheckedInputs}
-              questions={questions}
-            />
-          )}
-          {common && commonNum.length !== 0 && (
-            <CommonSurvey
-              commonNum={commonNum}
-              surveyNum={surveyNum}
-              checkedInputs={checkedInputs}
-              setCheckedInputs={setCheckedInputs}
-              questions={questions}
-            />
-          )}
-          {detailNum.length === 0 && commonNum.length === 0 && (
-            <SurveyEnd surveyNum={surveyNum} />
-          )}
-        </div>
-
-        <div className="survey_footer">
-          <button onClick={prevSurvey} className="before">
-            이전
-          </button>
-          <button
-            onClick={() => {
-              if (surveyNum === 5) saveSurveyNum();
-              else if (detailNum.length === 0 && commonNum.length === 0)
-                onSubmit();
-              else nextSurvey();
-            }}
-            className="next"
-          >
-            {detailNum.length === 0 && commonNum.length === 0 ? "제출" : "다음"}
-          </button>
         </div>
       </div>
     </div>

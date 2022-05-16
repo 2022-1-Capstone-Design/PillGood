@@ -1,6 +1,7 @@
 import React from "react";
-import "../../css/Survey/SurveyStartForm.css";
 import SurveySelect from "./SurveySelect";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 const SurveyInfo = ({
   userName,
   setUserName,
@@ -9,6 +10,7 @@ const SurveyInfo = ({
   surveyNum,
   onChange,
   showWarn,
+  questions,
 }) => {
   const onChangeName = (e) => {
     setUserName(e.target.value);
@@ -27,12 +29,19 @@ const SurveyInfo = ({
         <br />
         <div className="para">이름을 입력해 주세요</div>
         <input
+          className="input"
           type="text"
           maxLength="7"
           ref={inputRef}
           onChange={onChangeName}
           placeholder="이름"
         />
+        <br />
+        {showWarn && (
+          <span className="warning">
+            <FontAwesomeIcon icon={faWarning} /> 이름을 입력해 주세요
+          </span>
+        )}
       </div>
     );
   } else if (surveyNum === 2) {
@@ -42,6 +51,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 키를 입력해주세요</div>
         <input
+          className="input"
           type="text"
           maxLength="3"
           ref={inputRef}
@@ -49,7 +59,12 @@ const SurveyInfo = ({
           placeholder="키"
         />
         <br />
-        {showWarn && <span>100에서 250사이의 숫자만 입력 가능합니다</span>}
+        {showWarn && (
+          <span className="warning">
+            <FontAwesomeIcon icon={faWarning} /> 100에서 250사이의 숫자만 입력
+            가능합니다
+          </span>
+        )}
       </div>
     );
   } else if (surveyNum === 3) {
@@ -59,6 +74,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 몸무게를 입력해주세요</div>
         <input
+          className="input"
           type="text"
           maxLength="3"
           ref={inputRef}
@@ -66,7 +82,12 @@ const SurveyInfo = ({
           placeholder="몸무게"
         />
         <br />
-        {showWarn && <span>30에서 190사이의 숫자만 입력 가능합니다</span>}
+        {showWarn && (
+          <span className="warning">
+            <FontAwesomeIcon icon={faWarning} /> 30에서 190사이의 숫자만 입력
+            가능합니다
+          </span>
+        )}
       </div>
     );
   } else if (surveyNum === 4) {
@@ -76,6 +97,7 @@ const SurveyInfo = ({
         <br />
         <div className="para">{userName}님의 나이를 입력해주세요</div>
         <input
+          className="input"
           type="text"
           maxLength="3"
           ref={inputRef}
@@ -83,7 +105,12 @@ const SurveyInfo = ({
           placeholder="나이"
         />
         <br />
-        {showWarn && <span>10에서 110사이의 숫자만 입력 가능합니다</span>}
+        {showWarn && (
+          <span className="warning">
+            <FontAwesomeIcon icon={faWarning} /> 10에서 110사이의 숫자만 입력
+            가능합니다
+          </span>
+        )}
       </div>
     );
   } else if (surveyNum === 5) {
@@ -92,6 +119,8 @@ const SurveyInfo = ({
         userName={userName}
         surveyNum={surveyNum}
         onChange={onChange}
+        questions={questions}
+        showWarn={showWarn}
       />
     );
   }
