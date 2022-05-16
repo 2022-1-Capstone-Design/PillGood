@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ShowItem from "./ShowItem";
 import axios from "axios";
 import "../../css/All/ItemList.css";
-import Loading from '../Loading';
+
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
@@ -53,6 +53,7 @@ const ItemList = () => {
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
   const axiosData = async () => {
     try{
+        
         const response= 
         await axios
         .get("/product"+location.search, 
@@ -160,11 +161,8 @@ const ItemList = () => {
           <div>
             Loading...
           </div>
-        ) : (
-          <div>
-            <ShowItem products={currentPosts} loading={loading} likeItArray={likeArray}/>
-          </div>
-        )}
+        ) : 
+          <ShowItem products={currentPosts} loading={loading} likeItArray={likeArray}/>}
       </div>
       <ul className="pageNumbers">
         <li>

@@ -63,7 +63,7 @@ const likeItEvent=(e,id)=>{
   }else{
     //로그인 토큰 값이 없다면 /auth 페이지로 이동시킴
     console.log("토큰이 없음");
-    
+    navigate("/auth");
   }
 }
  let click;
