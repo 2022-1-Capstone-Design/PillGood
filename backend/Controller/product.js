@@ -1,44 +1,53 @@
 const Product = require('../Schemas/product');
 const Like = require("../Schemas/like");
+const { ObjectId } = require("mongodb");
+
+const getMatch = (product_name, company_name, arr) => {
+    return arr ? { $or: [
+            { [product_name] : { $in: arr} },
+            { [company_name] : { $in: arr } }
+        ]
+    } : { }
+}
 
 const getProduct = async (req, res) => {
     try {
         const params = req.query;
         const user = req.user;
-        let products, arr;
+        let products, like, arr;
         if (params.search) {
             const split = params.search.split(' ');
             arr = split.map(e => new RegExp(e))
         }
-        const match = arr ? { '$match': { $or: [
-            { PRDLST_NM: { $in: arr }},
-            { BSSH_NM: { $in: arr } }
-          ] } } : { $match: { } };
-        products = await Product.aggregate([
-            match,
+        products = await Product.aggregate([{
+            $match: getMatch("PRDLST_NM", "BSSH_NM", arr)
+        }]);
+        like = await Like.aggregate([
             {
                 '$lookup': {
-                'from': 'likes', 
-                'localField': '_id', 
-                'foreignField': 'product_id', 
-                'as': 'likes'
+                'from': 'products', 
+                'localField': 'product_id', 
+                'foreignField': '_id', 
+                'as': 'child'
                 }
             }, {
-                '$project': {
-                    'INDEX': 1, 
-                    'PRDLST_NM': 1, 
-                    'BSSH_NM': 1, 
-                    'likes': {
-                        '$filter': {
-                            'input': '$likes', 
-                            'as': 'like', 
-                            'cond': { '$eq': [ '$$like.user_id', user ] }
-                        }
-                    }
+                '$match': {
+                '$and': [
+                    { 'user_id': user }, 
+                    getMatch("child.PRDLST_NM", "child.BSSH_NM", arr)
+                ]
+                }
+            }, {
+                '$group': {
+                '_id': new ObjectId( ), 
+                'products': {
+                    '$push': '$product_id'
+                }
                 }
             }
         ]);
-        return res.status(200).json(products);
+        const likes = like[0] ? like[0]["products"] : like;
+        return res.status(200).json({ products, likes });
     } catch (error) {
         console.error(error);
         return res.status(500).json(error);
