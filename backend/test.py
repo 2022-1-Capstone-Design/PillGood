@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import copy
+import json
 
 # 영양제, 음식 데이터셋
 pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
@@ -198,4 +199,6 @@ def calc(vJson):
     bmi_list.append(bmi_string)
     vJson['세부']['BMI'] = bmi_list
     
-    return vJson['세부']
+    testString = json.dumps(vJson['세부'], ensure_ascii=False)
+    
+    return testString

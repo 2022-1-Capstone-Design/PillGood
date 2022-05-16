@@ -1,0 +1,28 @@
+.survey_question_select_answer {
+  list-style: none;
+  padding-left: 0px;
+  margin-top: 10px;
+  padding-bottom: 0px;
+}
+
+.survey_question_select_answer > li {
+  font-family: "GyeonggiTitleM";
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+
+.survey_question_select_answer input[type="checkbox"] {
+  display: none;
+}
+
+.survey_question_select_answer input[type="checkbox"] + label {
+  display: inline-block;
+  cursor: default;
+  line-height: 30px;
+  padding-left: 30px;
+  background: url("../../image/check_off.png") left/22px no-repeat;
+}
+
+.survey_question_select_answer input[type="checkbox"]:checked + label {
+  background-image: url("../../image/check_on.png");
+}

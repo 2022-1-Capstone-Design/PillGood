@@ -1,24 +1,40 @@
 import React from "react";
-import '../../css/Survey/SurveyNav.css';
+import "../../css/Survey/SurveyNav.css";
 
-const SurveyNav = () => {
+const SurveyNav = ({ surveyNum, detailLength, detailNumLength }) => {
   return (
-    <nav className="survey_navbar">
-      <ul className="survey_navbar_ul">
-        <li data="관심분야">
-          <span>관심분야</span>
-        </li>
-        <li data="분야별 정보">
-          <span>분야별 정보</span>
-        </li>
-        <li data="식습관">
-          <span>식습관</span>
-        </li>
-        <li data="기본정보">
-          <span>기본정보</span>
-        </li>
-      </ul>
-    </nav>
+    <div>
+      <nav className="survey_navbar">
+        <ul className="survey_navbar_ul">
+          <li className={surveyNum < 5 ? "now" : undefined}>
+            <span>
+              기본정보&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;
+            </span>
+          </li>
+          <li className={surveyNum === 5 ? "now" : undefined}>
+            <span>
+              분야
+              선택&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;
+            </span>
+          </li>
+          <li className={detailNumLength > 0 ? "now" : undefined}>
+            <span>
+              상세질문&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;
+            </span>
+          </li>
+
+          <li className={surveyNum > 5 + detailLength ? "now" : undefined}>
+            <span>공통질문</span>
+          </li>
+        </ul>
+      </nav>
+      <br />
+      <progress
+        className="survey_progress"
+        max={detailLength > 0 ? 15 - (6 - detailLength) : 15}
+        value={surveyNum}
+      ></progress>
+    </div>
   );
 };
 

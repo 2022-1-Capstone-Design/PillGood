@@ -1,3 +1,40 @@
+/* 필굿 로고 사진 */
+a>img{
+  position: relative;
+  margin-top: 0px;
+  height:60px;
+  padding-bottom: 5px;
+  backface-visibility: hidden;
+  display: inline-block;
+
+  text-align: center;
+}
+
+/* 로고 포함 네비바 */
+.main__first{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white;
+  position: fixed;
+  transform: initial;
+  width: 100%; 
+  z-index: 1; 
+  transition:.5s;
+  padding-left: 100px;
+}
+
+.hidden {
+  opacity: 0;
+  top: -100px;
+  transition:.3s;
+}
+
+.main__first>img{
+  width: 166px;
+}
+
 .navbar__element {
   display: flex;
   list-style: none;
@@ -7,18 +44,17 @@
   justify-content: space-between;
   background-color: white;
   margin: 0px;
-  padding-left: 0px;
+  font-size: 18px;
 }
-.navbar__element > li {
+.navbar__element  li {
   padding-right: 60px;
   font-family: "GyeonggiTitleM";
-  display: inline-block;
 }
 
-a {
+.navbar__element a {
   text-decoration: none;
   color: black;
-  padding: 0px 16px;
+  padding: 0px;
   transition: all 0.3s ease;
   font-size: 18px;
   font-family: "GyeonggiTitleM";
@@ -30,12 +66,13 @@ a {
   font-weight: normal;
   font-style: normal;
 }
-.navbar__element li > a:hover,
-.navbar__element li:hover {
+
+.navbar__element li:hover,
+.navbar__element a:hover {
   color: #39d9c8;
   transition: transform 100ms ease-in-out;
 }
-.navbar__element > li:after {
+.navbar__element li:after {
   display: block;
   content: "";
   border-bottom: solid 3px #39d9c8;
@@ -43,7 +80,8 @@ a {
   transform: scaleX(0);
   transition: transform 250ms ease-in-out;
 }
-.navbar__element li:hover:after {
+.navbar__element li:hover:after
+{
   transform: scaleX(1);
 }
 @media screen and (max-width: 887px) {
