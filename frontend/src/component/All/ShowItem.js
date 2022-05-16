@@ -5,15 +5,13 @@ import {faHeart} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useNavigate} from 'react-router-dom';
 
-const ShowItem = ({ products, loading }) => {
-  const [likeArray, setLikeArray]=useState([]);
+const ShowItem = ({ products, loading , likeItArray}) => {
+  const [likeArray, setLikeArray]= useState(likeItArray);
   const navigate = useNavigate();
 
   useEffect(()=>{
-    console.log("배열값 : ",likeArray);
-
-  },[likeArray]);
-  console.log(products);
+    console.log("넘겨받은 likeArray: ", likeArray);
+  },[likeItArray]);
 
   if (loading) {
     return <h2> ....Loading...</h2>;
@@ -29,13 +27,9 @@ const likeItEvent=(e,id)=>{
       axios
       .delete('/product', 
       {
-        'productId' : `${id}`
-      },
-      {
-        headers: {
-        'Authorization' :  `Bearer ${JSON.parse(token)}`          
-      }
-    })
+        data:{'productId' : `${id}`},
+        headers: { 'Authorization' :  `Bearer ${JSON.parse(token)}` }
+      })
       .then(console.log("delete 성공"))
       .catch((error)=>{
         console.log(error);
@@ -43,7 +37,7 @@ const likeItEvent=(e,id)=>{
       
       console.log(id,", 좋아요 해제");
       setLikeArray(likeArray.filter(element=>element!==id));
-      
+      console.log("likeArray : ",likeArray);
     }else{
       axios
       .post('/product', 
@@ -63,6 +57,7 @@ const likeItEvent=(e,id)=>{
       });
       console.log(id,", 좋아요 설정");
       setLikeArray(prev=>[id, ...prev]);
+      console.log("likeArray : ",likeArray);
       e.target.style.color='red';
     }
   }else{
@@ -80,7 +75,7 @@ const likeItEvent=(e,id)=>{
             <p>{product.PRDLST_NM}</p>
             <p>{product.BSSH_NM}</p>
             <img src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
-            {token? (product.likes.length===1?
+            {token? (likeItArray.includes(product._id)?
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color:'red'}}/> : 
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color: 'gray'}}/>)
             :
