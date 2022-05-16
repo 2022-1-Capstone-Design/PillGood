@@ -40,70 +40,54 @@ const SurveyForm = ({
     }
   };
   return (
-    <>
-      <div className="survey">
-        <div className="survey_main_question">
-          <div className="survey_main_question_detail">
-            <div className="number">
-              질문 #{surveyNum}&nbsp;
-              {!common
-                ? questions[0].sub_category[detailNum[0] - 1].name
-                : questions[1].sub_category[commonNum[0] - 1].name}
-            </div>
-            <br />
-            <div className="para"> 해당되는 문장을 선택해주세요</div>
-            <br />
-          </div>
-
-          <ul className="survey_main_question_answer">
-            {!common
-              ? questions[0].sub_category[detailNum[0] - 1].question.map(
-                  (item) => (
-                    <li key={item._id}>
-                      <input
-                        type="checkbox"
-                        className="checkbox"
-                        value={item.name}
-                        id={item._id}
-                        onChange={(e) =>
-                          onChange(e.currentTarget.checked, item._id)
-                        }
-                        checked={
-                          checkedInputs.includes(item._id) ? true : false
-                        }
-                      />
-                      <label htmlFor={item._id}>{item.name}</label>
-                    </li>
-                  )
-                )
-              : questions[1].sub_category[commonNum[0] - 1].question.map(
-                  (item) => (
-                    <li key={item._id}>
-                      <input
-                        type="checkbox"
-                        className="checkbox"
-                        value={item.name}
-                        id={item._id}
-                        onChange={(e) =>
-                          onChange(e.currentTarget.checked, item._id)
-                        }
-                        checked={
-                          checkedInputs.includes(item._id) ? true : false
-                        }
-                      />
-                      <label htmlFor={item._id}> {item.name}</label>
-                    </li>
-                  )
-                )}
-          </ul>
-          {showWarn && (
-            <span className="warning">
-              <FontAwesomeIcon icon={faWarning} /> 답변을 선택해주세요
-            </span>
-          )}
+    <div className="survey_main_question">
+      <div className="survey_main_question_detail">
+        <div className="number">
+          질문 #{surveyNum}&nbsp;
+          {!common
+            ? questions[0].sub_category[detailNum[0] - 1].name
+            : questions[1].sub_category[commonNum[0] - 1].name}
         </div>
+        <br />
+        <div className="para"> 해당되는 문장을 선택해주세요</div>
+        <br />
       </div>
-    </>
+
+      <ul className="survey_main_question_answer">
+        {!common
+          ? questions[0].sub_category[detailNum[0] - 1].question.map((item) => (
+              <li key={item._id}>
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  value={item.name}
+                  id={item._id}
+                  onChange={(e) => onChange(e.currentTarget.checked, item._id)}
+                  checked={checkedInputs.includes(item._id) ? true : false}
+                />
+                <label htmlFor={item._id}>{item.name}</label>
+              </li>
+            ))
+          : questions[1].sub_category[commonNum[0] - 1].question.map((item) => (
+              <li key={item._id}>
+                <input
+                  type="checkbox"
+                  className="checkbox"
+                  value={item.name}
+                  id={item._id}
+                  onChange={(e) => onChange(e.currentTarget.checked, item._id)}
+                  checked={checkedInputs.includes(item._id) ? true : false}
+                />
+                <label htmlFor={item._id}> {item.name}</label>
+              </li>
+            ))}
+      </ul>
+      {showWarn && (
+        <span className="warning">
+          <FontAwesomeIcon icon={faWarning} /> 답변을 선택해주세요
+        </span>
+      )}
+    </div>
   );
 };
 

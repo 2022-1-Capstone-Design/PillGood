@@ -229,80 +229,67 @@ const Survey = () => {
   useEffect(() => {
     getQuestions();
   }, []);
-  console.log(surveyAnswer);
+
   return (
     <div className="survey">
-      <div className="surveyButton iconbox">
-        <Link to="/">
-          <div className="surveyhome ">
-            <FontAwesomeIcon icon={faHouseChimneyUser} className="icon" />
-          </div>
+      <div className="surveyContainer">
+        <Link to="/" className="icon1">
+          <FontAwesomeIcon icon={faHouseChimneyUser} className="icon" />
         </Link>
-
-        <Link to="/ask">
-          <div className="surveyask">
-            <FontAwesomeIcon icon={faCommentDots} className="icon" />
+        <div className="surveyfirst">
+          <SurveyNav
+            surveyNum={surveyNum}
+            detailLength={detailLength}
+            detailNumLength={detailNum.length}
+          />
+          <div className="survey_main">
+            {surveyNum >= 1 && surveyNum <= 5 && (
+              <SurveyInfo
+                userName={userName}
+                setUserName={setUserName}
+                setUserInfo={setUserInfo}
+                inputRef={inputRef}
+                surveyNum={surveyNum}
+                onChange={onChange}
+                showWarn={showWarn}
+                questions={questions}
+              />
+            )}
+            {surveyNum > 5 && surveyNum < 9 + detailLength && (
+              <SurveyForm
+                detailNum={detailNum}
+                commonNum={commonNum}
+                common={common}
+                surveyNum={surveyNum}
+                checkedInputs={checkedInputs}
+                setCheckedInputs={setCheckedInputs}
+                showWarn={showWarn}
+                questions={questions}
+              />
+            )}
+            {detailNum.length === 0 && commonNum.length === 0 && (
+              <SurveyEnd surveyNum={surveyNum} />
+            )}
           </div>
-        </Link>
 
-        <Link to="/all">
-          <div className="surveyall ">
-            <FontAwesomeIcon icon={faTableList} className="icon" />
+          <div className="survey_footer">
+            <button onClick={prevSurvey} className="before">
+              이전
+            </button>
+            <button
+              onClick={() => {
+                if (surveyNum === 5) saveSurveyNum();
+                else if (detailNum.length === 0 && commonNum.length === 0)
+                  onSubmit();
+                else nextSurvey();
+              }}
+              className="next"
+            >
+              {detailNum.length === 0 && commonNum.length === 0
+                ? "제출"
+                : "다음"}
+            </button>
           </div>
-        </Link>
-      </div>
-
-      <div className="surveyfirst">
-        <SurveyNav
-          surveyNum={surveyNum}
-          detailLength={detailLength}
-          detailNumLength={detailNum.length}
-        />
-        <div className="survey_main">
-          {surveyNum >= 1 && surveyNum <= 5 && (
-            <SurveyInfo
-              userName={userName}
-              setUserName={setUserName}
-              setUserInfo={setUserInfo}
-              inputRef={inputRef}
-              surveyNum={surveyNum}
-              onChange={onChange}
-              showWarn={showWarn}
-              questions={questions}
-            />
-          )}
-          {surveyNum > 5 && surveyNum < 9 + detailLength && (
-            <SurveyForm
-              detailNum={detailNum}
-              commonNum={commonNum}
-              common={common}
-              surveyNum={surveyNum}
-              checkedInputs={checkedInputs}
-              setCheckedInputs={setCheckedInputs}
-              showWarn={showWarn}
-              questions={questions}
-            />
-          )}
-          {detailNum.length === 0 && commonNum.length === 0 && (
-            <SurveyEnd surveyNum={surveyNum} />
-          )}
-        </div>
-
-        <div className="survey_footer">
-          <button onClick={prevSurvey} className="before">
-            이전
-          </button>
-          <button
-            onClick={() => {
-              if (surveyNum === 5) saveSurveyNum();
-              else if (detailNum.length === 0 && commonNum.length === 0)
-                onSubmit();
-              else nextSurvey();
-            }}
-            className="next"
-          >
-            {detailNum.length === 0 && commonNum.length === 0 ? "제출" : "다음"}
-          </button>
         </div>
       </div>
     </div>
