@@ -20,6 +20,7 @@ const ShowItem = ({ products, loading , likeItArray}) => {
 const token=window.localStorage.getItem("token");
 const likeItEvent=(e,id)=>{
   e.preventDefault();
+  console.log(token);
   if(token){
     console.log("토큰이 존재 : ", token);
     if(likeArray.includes(id)){
@@ -63,7 +64,6 @@ const likeItEvent=(e,id)=>{
   }else{
     //로그인 토큰 값이 없다면 /auth 페이지로 이동시킴
     console.log("토큰이 없음");
-    navigate("/auth");
   }
 }
  let click;
@@ -79,7 +79,7 @@ const likeItEvent=(e,id)=>{
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color:'red'}}/> : 
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color: 'gray'}}/>)
             :
-              <FontAwesomeIcon icon={faHeart} onClick={navigate("/auth")}  style={{color: 'gray'}}/>
+              <FontAwesomeIcon icon={faHeart} onClick={()=>{console.log("이동"); navigate("/auth");}}  style={{color: 'gray'}}/>
               }
 
           </li>
