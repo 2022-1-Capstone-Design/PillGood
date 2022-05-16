@@ -62,8 +62,23 @@ const logout = async (req, res) => {
     }
 };
 
+const verifyUser = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        if (token) {
+            const decryption = jwt.verify(token.split(' ')[1], process.env.JWT_KEY);
+            req.user = decryption.id;
+        }
+        next( );
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+}
+
 module.exports = {
     getProfile,
     login,
     logout,
+    verifyUser,
 };

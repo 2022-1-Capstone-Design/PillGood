@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
-const Login = require("../Controller/login");
+const Auth = require("../Controller/auth");
 
-router.post("/kakao", Login.login);
-router.post("/kakao/logout", Login.logout);
+router.post("/kakao", Auth.login);
+router.post("/kakao/logout", Auth.logout);
 
 module.exports = router;
