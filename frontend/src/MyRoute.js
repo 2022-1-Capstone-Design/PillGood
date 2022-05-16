@@ -1,11 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Main from "./component/Main";
+import Main from "./component/Main/Main";
 import Auth from "./component/Auth";
 import Form from "./component/Form";
 import { Fragment, useState } from "react";
 import All from "./component/All/All";
-//import Ask from "./component/Ask";
 import Cards from "./component/Cards";
 import Footer from "./component/Footer";
 import Survey from "./component/Survey/Survey";
@@ -24,8 +23,7 @@ function MyRoute() {
         />
         <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/form" element={<Form />} />
-        <Route path="/all" element={<All />} />
-        {/* <Route path="/ask" element={<Ask />} /> */}
+        <Route path="/all" element={<All token={isLoggedIn}/>} />
         <Route path="/form/survey" element={<Survey />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/footer" element={<Footer />} />

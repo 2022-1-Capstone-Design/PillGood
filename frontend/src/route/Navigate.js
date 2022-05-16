@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { throttle } from "lodash";
 import logo from "../image/logo.png";
 
-function Navigate({ isLoggedIn, setIsLoggedIn }) {
+function Navigate({ isLoggedIn}) {
   const [isNavOn, setIsNavOn] = useState(true);
 
   //이전 스크롤 초기값
@@ -16,10 +16,8 @@ function Navigate({ isLoggedIn, setIsLoggedIn }) {
         const currentScrollY = window.scrollY;
         if (beforeScrollY.current < currentScrollY) {
           setIsNavOn(false);
-          console.log("켜기");
         } else {
           setIsNavOn(true);
-          console.log("끄기");
         }
         //이전 스크롤값 저장
         beforeScrollY.current = currentScrollY;
