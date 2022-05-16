@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 // Router
 const authRouter = require("./Router/auth");
 const surveyRouter = require("./Router/survey");
+const productRouter = require("./Router/product")
 
 // Express
 const app = express();
@@ -22,6 +23,7 @@ connect();
 // Router 연결
 app.use("/test", authRouter); //경로 잠깐 바꿔놨습니다
 app.use("/survey", surveyRouter);
+app.use("/product", productRouter);
 
 const port = 5000; //React가 3000번 포트를 사용하기 때문에 node 서버가 사용할 포트넘버는 다른 넘버로 지정해준다.
 

@@ -1,0 +1,9 @@
+.list-block {
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    text-align: center;
+}
