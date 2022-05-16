@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ShowItem from "./ShowItem";
 import axios from "axios";
 import "../../css/All/ItemList.css";
-
+import Loading from "../Loading";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
@@ -135,22 +135,21 @@ const ItemList = () => {
       }}
       >
         <input
+          className="searchInput"
           type="text"
           name="pname"
           placeholder="영양제 검색하기"
           value={search}
           onChange={writePill}
         />
-        <input type="submit" name="btn" value="검색하기" />
+        <input className="searchBtn" type="submit" name="btn" value="검색하기" />
         
       </form>
 
       <div className="list-block">
         {btnClick ? (
           loading ? (
-            <div>
-              Loading...
-            </div>
+            <Loading />
           ) : (
             <div>
               
@@ -158,13 +157,14 @@ const ItemList = () => {
             </div>
           )
         ) : loading ? (
-          <div>
-            Loading...
-          </div>
+          <Loading />
         ) : 
           <ShowItem products={currentPosts} loading={loading} likeItArray={likeArray}/>}
       </div>
-      <ul className="pageNumbers">
+      
+      {loading?null: 
+      <div>
+        <ul className="pageNumbers">
         <li>
           <button
             onClick={handlePrevbtn}
@@ -184,7 +184,9 @@ const ItemList = () => {
           &gt;&gt;
           </button>
         </li>
-      </ul>
+      </ul>  
+      </div>}
+      
     </div>
   );
 };
