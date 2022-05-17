@@ -12,11 +12,14 @@ const getQuestion = async (req, res) => {
   }
 };
 
-const insertResult = async (input) => {
+const insertResult = async (input, id, name, age) => {
     try {
         input = JSON.parse(input);
         const keys = Object.keys(input);
         const insert = {
+            kakao_id: id,
+            user_name: name,
+            age: age,
             BMI: {
                 bmi_figure: input.BMI[0],
                 bmi_result: input.BMI[1]
@@ -41,6 +44,8 @@ const insertResult = async (input) => {
 const getResult = async (req, res) => {
     try {
         const surveyAnswer = req.body.surveyAnswer;
+        const user = req.user;
+        if (!user) throw new Error("no user");
         let result = {
             height: surveyAnswer[0][1],
             weight: surveyAnswer[0][2],
@@ -85,7 +90,7 @@ const getResult = async (req, res) => {
         python.stdout.on("data", (data) => {
             let buff = Buffer.from(data, "base64");
             let text = buff.toString("utf-8");
-            return insertResult(text).then(data => res.status(200).json({
+            return insertResult(text, user, surveyAnswer[0][0], result.age).then(data => res.status(200).json({
                 success: true,
                 _id: data._id
             }));
@@ -99,7 +104,81 @@ const getResult = async (req, res) => {
     }
 };
 
+const getResultDetails = async (req, res) => {
+    try {
+        console.log(req.params);
+        const id = req.params.id;
+        let result = await Result.aggregate([
+            {
+              '$match': {
+                '_id': new ObjectId(id)
+              }
+            }, {
+              '$project': {
+                '_id': 1, 
+                'user_name': 1, 
+                'BMI': 1, 
+                'age': 1, 
+                'user_date': 1
+              }
+            }
+        ]);
+        const category = await Result.aggregate([
+            {
+              '$match': {
+                '_id': new ObjectId(id)
+              }
+            }, {
+              '$unwind': '$result'
+            }, {
+              '$unwind': '$result.product'
+            }, {
+              '$unwind': '$result.food'
+            }, {
+              '$lookup': {
+                'from': 'products', 
+                'localField': 'result.product', 
+                'foreignField': 'INDEX', 
+                'as': 'product'
+              }
+            }, {
+              '$unwind': '$product'
+            }, {
+              '$lookup': {
+                'from': 'foods', 
+                'localField': 'result.food', 
+                'foreignField': 'INDEX', 
+                'as': 'food'
+              }
+            }, {
+              '$unwind': '$food'
+            }, {
+              '$group': {
+                '_id': '$result.category_name', 
+                'product': {
+                  '$addToSet': '$product'
+                }, 
+                'food': {
+                  '$addToSet': '$food'
+                }
+              }
+            }, {
+              '$project': {
+                '_id': 0, 
+                'category': '$_id', 
+                'product': 1, 
+                'food': 1
+              }
+            }
+        ]);
+        return res.status(200).json(result.concat(category));
+    } catch (error) {
+        return res.status(500).json(error);
+    }
+}
+
 module.exports = {
     getQuestion,
-    getResult
+    getResult,
+    getResultDetails
 };

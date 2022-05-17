@@ -211,7 +211,7 @@ const Survey = () => {
         { surveyAnswer },
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
           },
         },
         { withCredentials: true }
