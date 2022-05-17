@@ -16,7 +16,7 @@ const bmiSchema = new Schema({
 
 const resultSchema = new Schema({
     kakao_id: Number,
-    user_date: {type: Date, default: () => new Date()},
+    user_date: {type: Date, default: () => new Date( ).setHours(new Date( ).getHours( ) + 9)},
     user_name: String,
     BMI: bmiSchema,
     age: Number,
