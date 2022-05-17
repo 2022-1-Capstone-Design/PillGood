@@ -145,14 +145,16 @@ const getResultDetails = async (req, res) => {
               '$group': {
                 '_id': '$result.category_name', 
                 'product': { '$addToSet': '$product' }, 
-                'food': { '$addToSet': '$food' }
+                'food': { '$addToSet': '$food' },
+                'nutrient' : { $first: "$result.nutrient" }
               }
             }, {
               '$project': {
                 '_id': 0, 
                 'category': '$_id', 
                 'product': 1, 
-                'food': 1
+                'food': 1,
+                'nutrient': 1
               }
             }
         ]);
