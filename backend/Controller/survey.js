@@ -109,11 +109,8 @@ const getResultDetails = async (req, res) => {
         console.log(req.params);
         const id = req.params.id;
         let result = await Result.aggregate([
+            { '$match': { '_id': new ObjectId(id) } }, 
             {
-              '$match': {
-                '_id': new ObjectId(id)
-              }
-            }, {
               '$project': {
                 '_id': 1, 
                 'user_name': 1, 
@@ -124,43 +121,31 @@ const getResultDetails = async (req, res) => {
             }
         ]);
         const category = await Result.aggregate([
+            { '$match': { '_id': new ObjectId(id) } }, 
+            { '$unwind': '$result' }, 
+            { '$unwind': '$result.product' }, 
+            { '$unwind': '$result.food' }, 
             {
-              '$match': {
-                '_id': new ObjectId(id)
-              }
-            }, {
-              '$unwind': '$result'
-            }, {
-              '$unwind': '$result.product'
-            }, {
-              '$unwind': '$result.food'
-            }, {
               '$lookup': {
                 'from': 'products', 
                 'localField': 'result.product', 
                 'foreignField': 'INDEX', 
                 'as': 'product'
               }
-            }, {
-              '$unwind': '$product'
-            }, {
+            }, { '$unwind': '$product' }, 
+            {
               '$lookup': {
                 'from': 'foods', 
                 'localField': 'result.food', 
                 'foreignField': 'INDEX', 
                 'as': 'food'
               }
-            }, {
-              '$unwind': '$food'
-            }, {
+            }, { '$unwind': '$food' }, 
+            {
               '$group': {
                 '_id': '$result.category_name', 
-                'product': {
-                  '$addToSet': '$product'
-                }, 
-                'food': {
-                  '$addToSet': '$food'
-                }
+                'product': { '$addToSet': '$product' }, 
+                'food': { '$addToSet': '$food' }
               }
             }, {
               '$project': {
