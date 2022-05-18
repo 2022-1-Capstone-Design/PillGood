@@ -10,6 +10,7 @@ import Footer from "./component/Footer";
 import Survey from "./component/Survey/Survey";
 import Kakao from "./component/Kakao";
 import SurveyLoading from "./component/Survey/SurveyLoading";
+import SurveyResult from "./component/Survey/Result/SurveyResult";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -24,12 +25,13 @@ function MyRoute() {
         />
         <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/form" element={<Form />} />
-        <Route path="/all" element={<All token={isLoggedIn}/>} />
+        <Route path="/all" element={<All token={isLoggedIn} />} />
         <Route path="/form/survey" element={<Survey />} />
         <Route path="/cards" element={<Cards />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
-        <Route path="/form/survey/loading" element={<SurveyLoading />} />
+        <Route path="/survey/loading" element={<SurveyLoading />} />
+        <Route path="/survey/:id" element={<SurveyResult />} />
       </Routes>
     </Fragment>
   );

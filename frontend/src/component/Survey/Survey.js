@@ -204,21 +204,13 @@ const Survey = () => {
   };
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
-    const token = window.localStorage.getItem("token");
-    axios
-      .post(
-        "/survey",
-        { surveyAnswer },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-        { withCredentials: true }
-      )
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-    navigate("/form/survey/loading", true);
+    navigate(
+      "/survey/loading",
+      {
+        state: { surveyAnswer },
+      },
+      true
+    );
   };
 
   const getQuestions = async () => {
