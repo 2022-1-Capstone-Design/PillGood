@@ -65,6 +65,7 @@ const logout = async (req, res) => {
 const verifyUser = async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
+        console.log(token);
         if (JSON.parse(token)) {
             const decryption = jwt.verify(JSON.parse(token), process.env.JWT_KEY);
             req.user = decryption.id;
