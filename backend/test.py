@@ -4,8 +4,10 @@ import copy
 import json
 
 # 영양제, 음식 데이터셋
-pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, index_col=0, encoding='cp949')
+pill_data = pd.read_csv('Final_Pill_Standardization_Content_Dataset.csv', header=0, encoding='cp949')
 food_data = pd.read_csv('MinMax_food_data.csv', header=0, index_col=0, encoding='cp949')
+pill_test_data = pd.read_csv('Final_Pill_Content_Dataset.csv', header=0, encoding='cp949')
+pill_data = pill_data.drop(['INDEX'], axis=1)
 food_data = food_data.drop(['NAME'], axis=1)
 
 # 어린이 전용 영양제 인덱스
@@ -160,7 +162,7 @@ def calc(vJson):
         if age > 20:
             for x in range(len(pill_distance_list)):
                 if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
-                    total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
+                    total_list.append(pill_test_data.loc[pill_distance_list.index(sort_pill_distance_list[x])][0])
                 else:
                     continue
                 if len(total_list) == 3:
@@ -168,7 +170,7 @@ def calc(vJson):
         else:
             for x in range(len(pill_distance_list)):
                 if pill_distance_list.index(sort_pill_distance_list[x]) in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
-                    total_list.append(pill_distance_list.index(sort_pill_distance_list[x]))
+                    total_list.append(pill_test_data.loc[pill_distance_list.index(sort_pill_distance_list[x])][0])
                 else:
                     continue
                 if len(total_list) == 3:
