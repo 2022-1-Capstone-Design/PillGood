@@ -21,7 +21,7 @@ child_pill_index = [2,33,40,50,63,69,85,87,89,106,129,142,143,148,161,164,
 1286]
 
 # 제외할 영양제 인덱스
-except_list_index = [51,52,53,54,55,56,64,507,553,554,954]
+except_list_index = []
 
 # BMI 판별 메소드
 def bmicalc(x):
@@ -100,6 +100,7 @@ def calc(vJson):
         pill_distance_list = []
         food_distance_list = []
         nutrient_list = list(pill_data) # 영양소 목록 리스트 (ex. 루테인, 비타민A, 비타민D ...)
+        
         remove_list = [] # 삭제할 피처 인덱스 리스트
 
         # 선택된 영양소가 없을 경우 삭제할 피처 인덱스 리스트에 추가
@@ -195,7 +196,7 @@ def calc(vJson):
     BMI = weight / (height * height)
     bmi_list = []
     bmi_string = bmicalc(BMI)
-    bmi_list.append(BMI)
+    bmi_list.append(round(BMI, 2))
     bmi_list.append(bmi_string)
     vJson['세부']['BMI'] = bmi_list
     
