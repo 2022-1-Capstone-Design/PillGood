@@ -59,7 +59,7 @@ const ItemList = () => {
         .get("/product"+location.search, 
         {
           headers: {
-          'Authorization' :  `Bearer ${JSON.parse(token)}`          
+          'Authorization' :  `Bearer ${token}`          
         }
       })
           console.log(response.data);

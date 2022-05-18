@@ -29,7 +29,7 @@ const likeItEvent=(e,id)=>{
       .delete('/product', 
       {
         data:{'productId' : `${id}`},
-        headers: { 'Authorization' :  `Bearer ${JSON.parse(token)}` }
+        headers: { 'Authorization' :  `Bearer ${token}` }
       })
       .then(console.log("delete 성공"))
       .catch((error)=>{
@@ -47,7 +47,7 @@ const likeItEvent=(e,id)=>{
         },
         {
           headers: {
-          'Authorization' :  `Bearer ${JSON.parse(token)}`          
+          'Authorization' :  `Bearer ${token}`          
         }
       })
       .then(()=>{
