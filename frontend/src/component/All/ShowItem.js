@@ -79,8 +79,9 @@ const ShowItem = ({ products, loading, likeItArray }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
+            <img className="productImg "src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
           </a>
+          <p>{product.PRDT_SHAP_CD_NM}</p>
           {token ? (
             likeItArray.includes(product._id) ? (
               <FontAwesomeIcon

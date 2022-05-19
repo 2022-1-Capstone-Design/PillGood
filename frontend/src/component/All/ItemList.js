@@ -112,6 +112,21 @@ const ItemList = () => {
     }
   };
 
+  const handleDoubleNextbtn = () => {
+    setCurrentPage(currentPage + pageNumberLimit);
+    if (currentPage + 5 > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+  const handleDoublePrevbtn = () => {
+    setCurrentPage(currentPage - pageNumberLimit);
+    if ((currentPage - 5) % pageNumberLimit === 0) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
   let pageIncrementBtn = null;
   if (pageNumber.length > maxPageNumberLimit) {
     pageIncrementBtn = <li onClick={handleNextbtn}>&hellip;</li>;
@@ -167,10 +182,18 @@ const ItemList = () => {
         <ul className="pageNumbers">
         <li>
           <button
-            onClick={handlePrevbtn}
+            onClick={handleDoublePrevbtn}
             disabled={currentPage === pageNumber[0] ? true : false}
           >
           &lt;&lt;
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={handlePrevbtn}
+            disabled={currentPage === pageNumber[0] ? true : false}
+          >
+          &lt;
           </button>
         </li>
         {pageDecrementBtn}
@@ -179,6 +202,14 @@ const ItemList = () => {
         <li>
           <button
             onClick={handleNextbtn}
+            disabled={currentPage === pageNumber[pageNumber.length - 1] ? true : false}
+          >
+          &gt;
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={handleDoubleNextbtn}
             disabled={currentPage === pageNumber[pageNumber.length - 1] ? true : false}
           >
           &gt;&gt;
