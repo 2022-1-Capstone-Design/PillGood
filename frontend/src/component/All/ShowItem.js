@@ -72,7 +72,7 @@ const ShowItem = ({ products, loading, likeItArray }) => {
     <ul className="list">
       {products.map((product) => (
         <li key={product.INDEX} className="item-card">
-          <p>{product.PRDLST_NM}</p>
+          <p className="product-name">{product.PRDLST_NM}</p>
           <p>{product.BSSH_NM}</p>
           <a
             href={`https://search.shopping.naver.com/search/all?query=${product.PRDLST_NM}`}
@@ -81,7 +81,7 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           >
             <img className="productImg "src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
           </a>
-          <p>{product.PRDT_SHAP_CD_NM}</p>
+          <p className="tag-box">{product.PRDT_SHAP_CD_NM}</p>
           {token ? (
             likeItArray.includes(product._id) ? (
               <FontAwesomeIcon
