@@ -75,7 +75,7 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           <p>{product.PRDLST_NM}</p>
           <p>{product.BSSH_NM}</p>
           <a
-            href={`https://search.shopping.naver.com/search/all?query=${product.PRDLST_NM}${product.BSSH_NM}`}
+            href={`https://search.shopping.naver.com/search/all?query=${product.PRDLST_NM}`}
             target="_blank"
             rel="noopener noreferrer"
           >

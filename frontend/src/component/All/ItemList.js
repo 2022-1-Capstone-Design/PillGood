@@ -114,14 +114,14 @@ const ItemList = () => {
 
   const handleDoubleNextbtn = () => {
     setCurrentPage(currentPage + pageNumberLimit);
-    if (currentPage + 5 > maxPageNumberLimit) {
+    if (currentPage + pageNumberLimit > maxPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
     }
   };
   const handleDoublePrevbtn = () => {
     setCurrentPage(currentPage - pageNumberLimit);
-    if ((currentPage - 5) % pageNumberLimit === 0) {
+    if (currentPage - pageNumberLimit < minPageNumberLimit) {
       setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
@@ -183,7 +183,7 @@ const ItemList = () => {
         <li>
           <button
             onClick={handleDoublePrevbtn}
-            disabled={currentPage === pageNumber[0] ? true : false}
+            disabled={currentPage === pageNumber[0] || currentPage <= pageNumber[4] ? true : false}
           >
           &lt;&lt;
           </button>
@@ -210,7 +210,7 @@ const ItemList = () => {
         <li>
           <button
             onClick={handleDoubleNextbtn}
-            disabled={currentPage === pageNumber[pageNumber.length - 1] ? true : false}
+            disabled={currentPage === pageNumber[pageNumber.length - 1] || currentPage >= pageNumber[60] ? true : false}
           >
           &gt;&gt;
           </button>
