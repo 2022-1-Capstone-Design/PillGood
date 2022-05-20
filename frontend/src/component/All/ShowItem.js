@@ -47,7 +47,7 @@ const ShowItem = ({ products, loading, likeItArray }) => {
             },
             {
               headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`,
+                Authorization: `Bearer ${token}`
               },
             }
           )
@@ -73,7 +73,6 @@ const ShowItem = ({ products, loading, likeItArray }) => {
       {products.map((product) => (
         <li key={product.INDEX} className="item-card">
           <p className="product-name">{product.PRDLST_NM}</p>
-          <p>{product.BSSH_NM}</p>
           <a
             href={`https://search.shopping.naver.com/search/all?query=${product.PRDLST_NM}`}
             target="_blank"

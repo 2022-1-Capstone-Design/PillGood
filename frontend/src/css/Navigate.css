@@ -84,12 +84,16 @@ a>img{
   transform: scaleX(1);
 }
 @media screen and (max-width: 887px) {
-  .navbar__element {
+  .main__first {
     display: flex;
     background-color: #ffffff;
     flex-direction: column;
     padding: 0px;
     align-items: center;
+  }
+  .navbar__element{
+    display:flex;
+    flex-direction: column;
   }
   .navbar__element > li {
     padding-right: 100px;
@@ -98,6 +102,7 @@ a>img{
   .behind {
     display: none;
   }
+
 }
 .behind {
   display: block;

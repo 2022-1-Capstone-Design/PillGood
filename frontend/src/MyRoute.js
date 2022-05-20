@@ -10,7 +10,7 @@ import Footer from "./component/Footer";
 import Survey from "./component/Survey/Survey";
 import Kakao from "./component/Kakao";
 import SurveyLoading from "./component/Survey/SurveyLoading";
-
+import SurveyResult from "./component/Survey/SurveyResult";
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
@@ -30,6 +30,7 @@ function MyRoute() {
         <Route path="/footer" element={<Footer />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/form/survey/loading" element={<SurveyLoading />} />
+        <Route path="/survey/result" element={<SurveyResult/>}/>
       </Routes>
     </Fragment>
   );

@@ -59,12 +59,11 @@ const ItemList = () => {
         .get("/product"+location.search, 
         {
           headers: {
-          'Authorization' :  `Bearer ${JSON.parse(token)}`          
+          'Authorization' :  `Bearer ${token}`          
         }
       })
           console.log(response.data);
           setLikeArray(response.data.likes);
-          console.log("백엔드에서 받아온 likeArray 배열: ", likeArray);  
           setProducts(response.data.products);
           setLoading(false);
         
