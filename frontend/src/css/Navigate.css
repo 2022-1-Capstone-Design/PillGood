@@ -1,12 +1,12 @@
 /* 필굿 로고 사진 */
-a>img{
+.main__first_logo{
   position: relative;
   margin-top: 0px;
   height:60px;
   padding-bottom: 5px;
   backface-visibility: hidden;
   display: inline-block;
-
+  width:150px;
   text-align: center;
 }
 
@@ -31,10 +31,6 @@ a>img{
   transition:.3s;
 }
 
-.main__first>img{
-  width: 166px;
-}
-
 .navbar__element {
   display: flex;
   list-style: none;
@@ -57,7 +53,6 @@ a>img{
   padding: 0px;
   transition: all 0.3s ease;
   font-size: 18px;
-  font-family: "GyeonggiTitleM";
 }
 @font-face {
   font-family: "GyeonggiTitleM";
@@ -67,39 +62,32 @@ a>img{
   font-style: normal;
 }
 
-.navbar__element li:hover,
-.navbar__element a:hover {
-  color: #39d9c8;
-  transition: transform 100ms ease-in-out;
-}
-.navbar__element li:after {
-  display: block;
-  content: "";
-  border-bottom: solid 3px #39d9c8;
-  margin-top: 3px;
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-}
-.navbar__element li:hover:after
-{
-  transform: scaleX(1);
-}
-@media screen and (max-width: 887px) {
+@media screen and (max-width: 780px) {
   .navbar__element {
     display: flex;
     background-color: #ffffff;
     flex-direction: column;
     padding: 0px;
     align-items: center;
+    
   }
   .navbar__element > li {
-    padding-right: 100px;
-    padding-bottom: 40px;
+    padding:20px 0px;
   }
   .behind {
     display: none;
   }
+  .main__first{
+    display:flex;
+    flex-direction: column;
+    padding-left: 10px;
+    align-items: center;
+  }
+  .main__first_logo{
+    padding-right: 0px;
+  }
 }
+
 .behind {
   display: block;
 }

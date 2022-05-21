@@ -16,29 +16,19 @@
     padding:30px 0px;
 }
 .start{
-    /* margin:0px 12px;
     border-radius: 40px;
-    padding:10px 30px;
-    background-color: #ffe5d9;
+    padding:23px 48px;
+    /* background-color: #ffe5d9; */
+    background-color: #ff9d00;
     border:0px;
-    color:black;
+    color:rgb(255, 255, 255);
     font-weight: bold;
-    font-size:15px;
-    box-shadow: 2px 2px 2px rgb(158, 157, 157);
-} */
-border-radius: 40px;
-padding:23px 48px;
-/* background-color: #ffe5d9; */
-background-color: #ff9d00;
-border:0px;
-color:rgb(255, 255, 255);
-font-weight: bold;
-font-size:20px;
-font-weight: 600;
- cursor: pointer;
- padding:20px 0px;
-font-family:'GyeonggiTitleM' ;
-width: 500px;
+    font-size:20px;
+    font-weight: 600;
+    cursor: pointer;
+    padding:20px 0px;
+    font-family:'GyeonggiTitleM' ;
+    width: 500px;
 }
 .form__first>p{
     font-weight:700;

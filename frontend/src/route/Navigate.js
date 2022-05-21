@@ -31,7 +31,7 @@ function Navigate({ isLoggedIn}) {
   return (
     <div className={isNavOn ? "main__first" : "main__first hidden"}>
       <Link to="/">
-        <img src={logo} width="166" height="30" alt="pillgood logo" />
+        <img className="main__first_logo" src={logo} alt="pillgood logo" />
       </Link>
       <ul className={"navbar__element"}>
         <li>

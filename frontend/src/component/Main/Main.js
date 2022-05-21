@@ -1,4 +1,4 @@
-import "../../css/Main.css";
+import "../../css/Main/Main.css";
 import React, { useEffect } from "react";
 import { FullPage, Slide } from "react-full-page";
 import Cards from "../Cards";
