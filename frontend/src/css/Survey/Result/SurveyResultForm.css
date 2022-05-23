@@ -1,20 +1,58 @@
+.result {
+  padding-top: 68px;
+  font-family: "GyeonggiTitleM";
+  background: snow;
+}
 .result .resultContainer {
-  height: 800px;
+  background-color: white;
+  height: 900px;
   width: 800px;
   position: relative;
   margin: 0 auto;
-  border: 1px solid;
-  border-top: 0;
-  border-bottom: 0;
 }
 .result .resultContainer .resultUserInfo {
-  height: 200px;
-  border: 1px solid;
-  border-top: 0;
+  height: 120px;
+  padding-bottom: 10px;
+  text-align: center;
+  background: #ccf3ee;
+}
+.result .resultContainer .resultUserInfo dl {
+  display: inline-block;
+}
+.result .resultContainer .resultUserInfo dl > dt {
+  float: left;
+}
+.result .resultContainer .resultUserInfo dl :nth-child(odd) {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.result .resultContainer .resultUserInfo dl :nth-child(even) {
+  margin: 0px 5px;
 }
 .result .resultContainer .resultCategory {
   height: 100px;
-  border: 1px solid;
+  padding: 10px 0px;
+  text-align: center;
+  border: 1px solid lightgrey;
   border-top: 0;
-  border-bottom: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.result .resultContainer .resultCategory {
+  font-size: 20px;
+}
+.result .resultContainer .resultCategory ul {
+  text-align: center;
+  margin-bottom: 0px;
+}
+.result .resultContainer .resultCategory ul > li {
+  display: inline-block;
+  list-style-type: none;
+  cursor: pointer;
+  font-size: 25px;
+  margin: 10px;
+}
+.result .resultContainer .resultCategory span {
+  font-size: 15px;
 }

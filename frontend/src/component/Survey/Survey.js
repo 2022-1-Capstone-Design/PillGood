@@ -8,8 +8,6 @@ import { Link, useNavigate } from "react-router-dom";
 import SurveyNav from "./SurveyNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseChimneyUser } from "@fortawesome/free-solid-svg-icons";
-import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
-import { faTableList } from "@fortawesome/free-solid-svg-icons";
 
 const Survey = () => {
   //설문자 이름

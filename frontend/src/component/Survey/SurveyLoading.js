@@ -21,7 +21,7 @@ const SurveyLoading = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        navigate(`/survey/${res.data._id}`, true);
+        navigate(`/form/survey/${res.data._id}`, true);
       })
       .catch((err) => console.log(err));
   });

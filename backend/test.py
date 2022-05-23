@@ -195,7 +195,7 @@ def calc(vJson):
     BMI = weight / (height * height)
     bmi_list = []
     bmi_string = bmicalc(BMI)
-    bmi_list.append(BMI)
+    bmi_list.append(round(BMI, 2))
     bmi_list.append(bmi_string)
     vJson['세부']['BMI'] = bmi_list
     
