@@ -91,10 +91,10 @@ def calc(vJson):
             count_check_list[i].append(1 * (1.4 ** np.array((detail_score_list[i][j])*2+ common_zero_score_list)))
 
     for i in range(len(count_check_list)):
-        for j in range(len(count_check_list[0])):
+        for j in range(len(count_check_list[0][0])):
             if count_check_list[i][0][j] > 5:
                 count_check_list[i][0][j] = 5
-    
+                
     vJson.pop('공통') # vJson 공통 key, value 제거
     
     final_list = [] # 최종으로 추천할 영양제 + 음식 인덱스 리스트 
