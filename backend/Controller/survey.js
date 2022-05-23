@@ -117,7 +117,7 @@ const getResultDetails = async (req, res) => {
                 'user_name': 1, 
                 'BMI': 1, 
                 'age': 1, 
-                'user_date': 1
+                'user_date': { $dateToString: { format: '%Y-%m-%d %H:%M', date: '$user_date' } },
               }
             }
         ]);
@@ -157,7 +157,7 @@ const getResultDetails = async (req, res) => {
                 'food': 1,
                 'nutrient': 1
               }
-            }
+            }, { '$sort': { category: 1 } }
         ]);
         return res.status(200).json(result.concat(category));
     } catch (error) {
