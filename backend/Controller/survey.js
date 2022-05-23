@@ -91,10 +91,11 @@ const getResult = async (req, res) => {
             let buff = Buffer.from(data, "base64");
             let text = buff.toString("utf-8");
             console.log(text);
+            /*
             return insertResult(text, user, surveyAnswer[0][0], result.age).then(data => res.status(200).json({
                 success: true,
                 _id: data._id
-            }));
+            }));*/
         });
         python.stderr.on("data", (data)=> {
           console.error(data.toString( ));

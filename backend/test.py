@@ -71,7 +71,6 @@ def calc(vJson):
     
     detail_score_list = [[] for i in range(len(dict_key))] # 세부 카테고리 점수 합산 리스트 생성
     detail_score_set = list(vJson['세부'].values()) # 세부 카테고리 선택한 질문 점수 집합
-    
     # 선택한 세부 카테고리별 점수 리스트 합산
     for i in range(len(vJson['세부'].values())):  
         detail_zero_score_list = np.array([0 for i in range(26)])
@@ -89,8 +88,13 @@ def calc(vJson):
     
     for i in range(len(vJson['세부'].values())):
         for j in range(len(detail_score_list[i])):
-            count_check_list[i].append(0.8 * (1.2 ** np.array(detail_score_list[i][j] + common_zero_score_list)))
-    
+            count_check_list[i].append(1 * (1.4 ** np.array((detail_score_list[i][j])*2+ common_zero_score_list)))
+
+    for i in range(len(count_check_list)):
+        for j in range(len(count_check_list[0][0])):
+            if count_check_list[i][0][j] > 5:
+                count_check_list[i][0][j] = 5
+                
     vJson.pop('공통') # vJson 공통 key, value 제거
     
     final_list = [] # 최종으로 추천할 영양제 + 음식 인덱스 리스트 
@@ -107,7 +111,7 @@ def calc(vJson):
 
         # 선택된 영양소가 없을 경우 삭제할 피처 인덱스 리스트에 추가
         for a in range(len(each_count_check_list)):
-            if each_count_check_list[a] == 0.8:
+            if each_count_check_list[a] == 1:
                 remove_list.append(a)   
                 
         remove_col_name = []      
