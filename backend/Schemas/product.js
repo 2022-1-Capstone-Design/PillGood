@@ -11,7 +11,8 @@ const productSchema = new Schema({
     STDR_STND: String,
     PRIMARY_FNCLTY: String,
     POG_DAYCNT: String,
-    NTK_MTHD: String
+    NTK_MTHD: String,
+    IS_KIDS: Number
 }, { versionKey: false })
 
 module.exports = mongoose.model('Product', productSchema);
