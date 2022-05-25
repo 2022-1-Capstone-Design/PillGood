@@ -13,8 +13,7 @@ const SurveyResult = () => {
 
   useEffect(() => {
     getResult();
-  }, []);
-  console.log(resultData);
+  }, []); 
   return (
     <div>{resultData[0] && <SurveyResultForm resultData={resultData} />}</div> //resultData 검사 안하면 오류남
   );
