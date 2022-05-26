@@ -11,11 +11,12 @@ const MyPageList = () => {
     const loadData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/myPage/", {
+        const res = await axios.get("/myPage", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMyPageData(res.data);
         console.log(res.data);
+        setLoading(false);
       } catch (e) {
         console.log(e);
       }
