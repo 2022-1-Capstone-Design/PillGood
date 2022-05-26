@@ -13,6 +13,6 @@
     margin-bottom: 30px;
 }
 
-img {
+.item-card>img {
     width: 50%;
 }

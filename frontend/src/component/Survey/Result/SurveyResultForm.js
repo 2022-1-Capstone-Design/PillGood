@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import SurveyResultCategoryForm from "./SurveyResultCategoryForm";
+import React from "react";
+import SurveyResultCategoryForm from "./ResultForm/SurveyResultCategoryForm";
 import "../../../css/Survey/Result/SurveyResultForm.css";
+
 const SurveyResultForm = ({ resultData }) => {
-  const [categoryIndex, setCategoryIndex] = useState(1);
-  const onClick = (index) => {
-    setCategoryIndex(index);
-  };
   return (
     <div className="result">
       <div className="resultContainer">
@@ -22,25 +19,7 @@ const SurveyResultForm = ({ resultData }) => {
             <dt>{resultData[0].user_date}</dt>
           </dl>
         </div>
-        <div className="resultCategory">
-          <nav>
-            {resultData[0].user_name}님이 선택하신 카테고리{" "}
-            <b>{resultData.length - 1}</b>
-          </nav>
-          <ul>
-            {resultData.slice(1).map((item, index) => (
-              <li key={index} onClick={() => onClick(index + 1)}>
-                {item.category}&nbsp;
-              </li>
-            ))}
-          </ul>
-          <span>* 카테고리 별로 클릭하면 결과를 볼 수 있어요.</span>
-          <br />
-          <SurveyResultCategoryForm
-            resultData={resultData}
-            categoryIndex={categoryIndex}
-          />
-        </div>
+        <SurveyResultCategoryForm resultData={resultData} />
       </div>
     </div>
   );
