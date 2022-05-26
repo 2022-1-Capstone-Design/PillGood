@@ -10,6 +10,7 @@ import Kakao from "./component/Kakao";
 import SurveyLoading from "./component/Survey/SurveyLoading";
 import SurveyResult from "./component/Survey/Result/SurveyResult";
 import Navigater from "../src/route/Navigate";
+import MyPage from "./component/MyPage/MyPage";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ function MyRoute() {
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/survey/loading" element={<SurveyLoading />} />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );
