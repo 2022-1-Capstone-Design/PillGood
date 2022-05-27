@@ -38,7 +38,7 @@ function MyRoute() {
           <Route path="/all" element={<All token={isLoggedIn} />} />
           <Route path="/form/survey/:id" element={<SurveyResult />} />
         </Route>
-        <Route path="/auth" element={<Auth setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
         <Route path="/form" element={<Form />} />
         <Route path="/form/survey" element={<Survey />} />
         <Route path="/auth/kakao/callback" element={<Kakao />} />

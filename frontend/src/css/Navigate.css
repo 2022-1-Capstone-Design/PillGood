@@ -1,28 +1,19 @@
-/* 필굿 로고 사진 */
-.main__first_logo {
-  position: relative;
-  margin-top: 0px;
-  height: 60px;
-  padding-bottom: 5px;
-  backface-visibility: hidden;
-  display: inline-block;
-  width: 150px;
-  text-align: center;
+body {
+  margin: 0;
+  font-family: "GyeonggiTitleM";
 }
-
 /* 로고 포함 네비바 */
-.main__first {
+.navbar {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  padding: 10px;
+  align-items: center;
   background-color: white;
   position: fixed;
   transform: initial;
   width: 100%;
   z-index: 1;
   transition: 0.5s;
-  padding-left: 100px;
+  padding: 8px 12px;
 }
 
 .hidden {
@@ -30,16 +21,21 @@
   top: -100px;
   transition: 0.3s;
 }
+/* 필굿 로고 사진 */
+.navbar_logo img {
+  position: relative;
+  margin-top: 0px;
+  padding-bottom: 5px;
+  backface-visibility: hidden;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+}
 
 .navbar__element {
   display: flex;
   list-style: none;
-  padding-right: 140px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  margin: 0px;
+  padding-left: 0;
   font-size: 18px;
 }
 .navbar__element li {
@@ -54,36 +50,60 @@
   transition: all 0.3s ease;
   font-size: 18px;
 }
-@font-face {
-  font-family: "GyeonggiTitleM";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
+.menu {
+  display: none;
+  position: absolute;
+  top: 15px;
+  right: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 780px) {
+.menu .line {
+  display: block;
+  width: 40px;
+  height: 3px;
+  background-color: #000;
+  margin-block: 10px;
+  border-radius: 4px;
+  transition: transform 0.5s, opacity 0.25s;
+}
+.menu.active .line:nth-child(1) {
+  transform: translateY(13px) rotate(45deg);
+}
+.menu.active .line:nth-child(2) {
+  opacity: 0; /*Hides this line.*/
+}
+.menu.active .line:nth-child(3) {
+  transform: translateY(-13px) rotate(-45deg);
+}
+
+@media screen and (max-width: 1023px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 24px;
+  }
   .navbar__element {
-    display: flex;
-    background-color: #ffffff;
-    flex-direction: column;
-    padding: 0px;
-    align-items: center;
-  }
-  .navbar__element > li {
-    padding: 20px 0px;
-  }
-  .behind {
     display: none;
-  }
-  .main__first {
-    display: flex;
     flex-direction: column;
-    padding-left: 10px;
     align-items: center;
+    width: 100%;
   }
-  .main__first_logo {
-    padding-right: 0px;
+  .navbar__element li {
+    width: 100%;
+    text-align: center;
+    margin: 30px 0px;
+  }
+  .menu {
+    display: block;
+  }
+
+  .navbar__element.active {
+    display: flex;
+    height: 100%;
   }
 }
 
