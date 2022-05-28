@@ -32,18 +32,23 @@ const SurveyResultForm = ({ resultData, resultId }) => {
       <div className="resultContainer">
         <div className="resultUserInfo">
           <h1>🩺 필굿이 검진한 {resultData[0].user_name}님의 설문결과에요</h1>
-          <dl>
-            <dt>나이 :</dt>
-            <dt>{resultData[0].age}</dt>
-            <dt>BMI :</dt>
-            <dt>
-              {resultData[0].BMI.bmi_figure}({resultData[0].BMI.bmi_result})
-            </dt>
-            <dt>검사일시</dt>
-            <dt>{resultData[0].user_date}</dt>
-          </dl>
+          <span>
+            <strong>나이 : </strong>
+            {resultData[0].age}
+          </span>
+          <span>
+            <strong>BMI : </strong>
+            {resultData[0].BMI.bmi_figure}({resultData[0].BMI.bmi_result})
+          </span>
+          <span>
+            <strong>검사일시 : </strong>
+            {resultData[0].user_date}
+          </span>
         </div>
         <SurveyResultCategoryForm resultData={resultData} />
+        <button onClick={shareResult} className="shareBtn">
+          카카오톡으로 공유하기
+        </button>
       </div>
     </div>
   );

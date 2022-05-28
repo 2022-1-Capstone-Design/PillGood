@@ -57,7 +57,8 @@ const ShowMyPage = ({ myPageData }) => {
           myPageData.results?.map((item) => (
             <li>
               <Link id="show_result_list" to={`/form/survey/${item._id}`}>
-              <p id="list_date">{item.user_date}</p>📃 {item.user_name}의 지난 설문조사 결과
+                <p id="list_date">{item.user_date}</p>📃 {item.user_name}의 지난
+                설문조사 결과
               </Link>
             </li>
           ))}

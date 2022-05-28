@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Main from "./component/Main/Main";
 import Auth from "./component/Auth";
 import Form from "./component/Form";
+import Ask from "./component/Ask";
 import { useState } from "react";
 import All from "./component/All/All";
 import Survey from "./component/Survey/Survey";
@@ -37,6 +38,8 @@ function MyRoute() {
           />
           <Route path="/all" element={<All token={isLoggedIn} />} />
           <Route path="/form/survey/:id" element={<SurveyResult />} />
+          <Route path="/ask" element={<Ask />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
         <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
         <Route path="/form" element={<Form />} />
@@ -44,7 +47,6 @@ function MyRoute() {
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/survey/loading" element={<SurveyLoading />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );
