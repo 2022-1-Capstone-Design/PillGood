@@ -23,30 +23,28 @@ const ShowMyPage = ({ myPageData }) => {
     <ul className="mypage_list">
       <li className="mypage_content" key={myPageData.name}>
         <p id="head_text">
-          💊 <b>{myPageData.name}</b>님의 PillGood
+          💊 <b>{myPageData.name}</b> 님의 PillGood
         </p>
         <p id="likes_text">관심상품</p>
         <Slider {...settings}>
           {myPageData.likes?.map((item) => (
-              <div className="set_box_all">
-                <a
-                  href={`https://search.shopping.naver.com/search/all?query=${item.PRDLST_NM}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img
-                    className="set_img"
-                    src={`..\\..\\..\\img\\${item.INDEX}.jpg`}
-                    alt=""
-                  />
-                </a>
-                <div className="btn_delete">
-                  <button>✖</button>
-                </div>
-                <br />
-               <p id="company_name">{item.BSSH_NM}</p>
-               <br />
-                <p id="prdt_name">{item.PRDLST_NM}</p>
+            <div className="set_box_all">
+                <button id="btn_delete">✖</button>
+              <a
+                href={`https://search.shopping.naver.com/search/all?query=${item.PRDLST_NM}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  className="set_img"
+                  src={`..\\..\\..\\img\\${item.INDEX}.jpg`}
+                  alt=""
+                />
+              </a>
+              <br />
+              <p id="company_name">{item.BSSH_NM}</p>
+              <br />
+              <p id="prdt_name">{item.PRDLST_NM}</p>
             </div>
           ))}
         </Slider>
@@ -59,14 +57,21 @@ const ShowMyPage = ({ myPageData }) => {
         >
           {visible ? "접기" : "지난 설문조사 결과 확인"}
         </button>
+
         {visible &&
           myPageData.results?.map((item) => (
-            <li>
-              <Link id="show_result_list" to={`/form/survey/${item._id}`}>
-                📃 {item.user_name}의 지난 설문조사 결과{" "}
-                <p id="list_date">{item.user_date}</p>
-              </Link>
-            </li>
+            <table>
+              <tr>
+                <td>
+                  <Link id="show_result_list" to={`/form/survey/${item._id}`}>
+                    📃 <b>{item.user_name}</b>님의 지난 설문조사 결과
+                  </Link>
+                </td>
+                <td>
+                  <p id="list_date">{item.user_date}</p>
+                </td>
+              </tr>
+            </table>
           ))}
       </li>
     </ul>

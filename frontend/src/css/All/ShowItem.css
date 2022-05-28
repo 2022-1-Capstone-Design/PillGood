@@ -1,3 +1,6 @@
+.show_item_list{
+  margin: 0;
+}
 .item-card {
   display: inline-block;
   justify-content: space-between;

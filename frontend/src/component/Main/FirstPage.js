@@ -1,4 +1,3 @@
-import Navigate from "../../route/Navigate";
 import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
 import "../../css/Main/FirstPage.css";
@@ -24,7 +23,7 @@ const FirstPage = ({ isLoggedIn }) => {
               <input
                 className="startForm"
                 type="submit"
-                value="내 몸에 필요한 바른 영양소 자가진단,지금 시작하기"
+                value="내 몸에 필요한 바른 영양소 자가진단, 지금 시작하기"
               />
             </Link>
           </Fade>

@@ -60,7 +60,7 @@ const ShowItem = ({ products, loading , likeItArray}) => {
     }
   };
   return (
-    <ul className="list">
+    <ul className="show_item_list">
       {products.map((product) => (
           <li key={product.INDEX} className="item-card">
             
