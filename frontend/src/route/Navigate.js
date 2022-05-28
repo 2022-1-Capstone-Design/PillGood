@@ -27,7 +27,10 @@ function Navigate({ isLoggedIn }) {
   );
 
   useEffect(() => {
-    window.addEventListener("scroll", scrollEvent);
+    //모바일 환경에서는 네비바 고정
+    if (window.innerWidth > 1023)
+      window.addEventListener("scroll", scrollEvent);
+    else window.removeEventListener("scroll", scrollEvent);
   }, [scrollEvent]);
 
   return (
@@ -65,7 +68,9 @@ function Navigate({ isLoggedIn }) {
           )}
           {isLoggedIn && (
             <li>
-              <Link to="/mypage">마이페이지</Link>
+              <Link to="/mypage" onClick={() => setIsActive(false)}>
+                마이페이지
+              </Link>
             </li>
           )}
           <li>

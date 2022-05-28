@@ -6,6 +6,7 @@ import Footer from "../Footer";
 import FirstPage from "./FirstPage";
 import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
+import KakaoChat from "../KakaoChat";
 
 function Main({ isLoggedIn }) {
   return (
@@ -30,6 +31,7 @@ function Main({ isLoggedIn }) {
         <Slide>
           <Footer />
         </Slide>
+        <KakaoChat />
       </FullPage>
     </div>
   );
