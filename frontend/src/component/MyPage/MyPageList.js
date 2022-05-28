@@ -34,7 +34,6 @@ const MyPageList = () => {
 
   return (
     <div>
-      불러오기
         <ShowMyPage myPageData={myPageData} loading={loading} />
     </div>
   );

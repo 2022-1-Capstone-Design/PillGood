@@ -66,7 +66,12 @@ const ShowItem = ({ products, loading , likeItArray}) => {
             
             <p>{product.PRDLST_NM}</p>
             <p>{product.BSSH_NM}</p>
-            <img src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" />
+            <a
+            href={`https://search.shopping.naver.com/search/all?query=${product.PRDLST_NM}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img id="all_img" src={`..\\..\\..\\img\\${product.INDEX}.jpg`} alt="" /></a>
             {token? (likeItArray.includes(product._id)?
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color:'red'}}/> : 
             <FontAwesomeIcon icon={faHeart} onClick={(e)=>{likeItEvent(e,product._id); }} style={{color: 'gray'}}/>)
