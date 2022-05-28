@@ -46,6 +46,9 @@
   flex-direction: column;
   align-items: center;
 }
+.contents__details__one {
+  margin-bottom: 0px;
+}
 .contents__details__one__choose__pill,
 .contents__details__nutrients {
   padding-top: 20px;
@@ -80,6 +83,7 @@
   .contents__details__one__choose__pill,
   .contents__details__nutrients {
     display: grid;
+    text-align: -webkit-center;
   }
   .contents__details__nutrients li,
   .contents__details__one__choose__pillImg {

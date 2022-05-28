@@ -11,6 +11,7 @@
   position: relative;
   margin: 0 auto;
   text-align: center;
+  padding-bottom: 70px;
 }
 html,
 body {
@@ -22,6 +23,9 @@ body {
   padding-bottom: 10px;
   text-align: center;
   background: #ccf3ee;
+}
+.result .resultContainer .resultUserInfo h1 {
+  padding-top: 40px;
 }
 .result .resultContainer .resultUserInfo span {
   display: inline-block;
@@ -86,6 +90,9 @@ body {
   }
   .result .resultContainer .resultUserInfo {
     word-break: keep-all;
+  }
+  .result .resultContainer .resultUserInfo h1 {
+    padding-top: 0px;
   }
   .result .resultContainer .resultUserInfo span {
     display: block;
