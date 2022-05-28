@@ -4,8 +4,8 @@
     background: rgb(252, 244, 244);
     height: 100%;
     padding-top: 62px;
+    margin: 0;
 }
-
 .mypage_content{
     background-color: white;
     height: 100%;
@@ -25,6 +25,7 @@
     margin: auto;
     margin-top: 30px;
 }
+
 #head_text {
     text-align: center;
     font-size: 1.5rem;
@@ -48,7 +49,7 @@
 }
 
 #show_result_list{
-    width: 500px;
+    width: 250px;
     margin: auto;
     display: block;
     margin-bottom: 20px;

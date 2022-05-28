@@ -37,6 +37,7 @@ function MyRoute() {
           />
           <Route path="/all" element={<All token={isLoggedIn} />} />
           <Route path="/form/survey/:id" element={<SurveyResult />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Route>
         <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
         <Route path="/form" element={<Form />} />
@@ -44,7 +45,6 @@ function MyRoute() {
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/survey/loading" element={<SurveyLoading />} />
         <Route path="*" element={<Navigate to="/" replace />} />
-        <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </BrowserRouter>
   );
