@@ -24,7 +24,7 @@ const SurveyInfo = ({
   };
   if (surveyNum === 1) {
     return (
-      <div className="survey_main_question">
+      <div className="survey_info_question">
         <div className="number">질문 # {surveyNum}</div>
         <br />
         <div className="para">이름을 입력해 주세요</div>
@@ -46,7 +46,7 @@ const SurveyInfo = ({
     );
   } else if (surveyNum === 2) {
     return (
-      <div className="survey_main_question">
+      <div className="survey_info_question">
         <div className="number">질문 # {surveyNum}</div>
         <br />
         <div className="para">{userName}님의 키를 입력해주세요</div>
@@ -69,7 +69,7 @@ const SurveyInfo = ({
     );
   } else if (surveyNum === 3) {
     return (
-      <div className="survey_main_question">
+      <div className="survey_info_question">
         <div className="number">질문 # {surveyNum}</div>
         <br />
         <div className="para">{userName}님의 몸무게를 입력해주세요</div>
@@ -92,7 +92,7 @@ const SurveyInfo = ({
     );
   } else if (surveyNum === 4) {
     return (
-      <div className="survey_main_question">
+      <div className="survey_info_question">
         <div className="number">질문 # {surveyNum}</div>
         <br />
         <div className="para">{userName}님의 나이를 입력해주세요</div>

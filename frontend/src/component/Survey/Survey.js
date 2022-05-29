@@ -87,11 +87,11 @@ const Survey = () => {
     //키, 몸무게, 나이 입력값 검사 후 배열에 값 삽입
     else if (surveyNum === 2 || surveyNum === 3 || surveyNum === 4) {
       setUserInfo(0);
-      if (surveyNum === 2 && (userInfo <= 100 || userInfo >= 250)) {
+      if (surveyNum === 2 && (userInfo < 100 || userInfo > 250)) {
         setShowWarn(true);
-      } else if (surveyNum === 3 && (userInfo <= 30 || userInfo >= 190)) {
+      } else if (surveyNum === 3 && (userInfo < 30 || userInfo > 190)) {
         setShowWarn(true);
-      } else if (surveyNum === 4 && (userInfo <= 10 || userInfo >= 110)) {
+      } else if (surveyNum === 4 && (userInfo < 10 || userInfo > 110)) {
         setShowWarn(true);
       } else if (userInfo !== 0 && inputRef.current.value !== "") {
         const tmp = [...surveyAnswer];
@@ -219,7 +219,7 @@ const Survey = () => {
   useEffect(() => {
     getQuestions();
   }, []);
-
+  console.log(surveyAnswer);
   return (
     <div className="survey">
       <div className="surveyContainer">

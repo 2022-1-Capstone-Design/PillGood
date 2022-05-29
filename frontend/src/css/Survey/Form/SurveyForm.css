@@ -26,3 +26,18 @@
 .survey_main_question_answer input[type="checkbox"]:checked + label {
   background-image: url("../../../image/check_on.png");
 }
+
+@media screen and (max-width: 1023px) {
+  .survey_main_question_detail {
+    text-align: center;
+  }
+  .survey_main_question .survey_main_question_answer {
+    text-align: left;
+    padding-left: 25px;
+    word-break: keep-all;
+  }
+  .survey_main_question .warning {
+    text-align: left;
+    padding-left: 25px;
+  }
+}
