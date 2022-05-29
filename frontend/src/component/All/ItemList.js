@@ -59,9 +59,7 @@ const ItemList = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log(response.data);
       setLikeArray(response.data.likes);
-      console.log("백엔드에서 받아온 likeArray 배열: ", likeArray);
       setProducts(response.data.products);
       setLoading(false);
     } catch (e) {
@@ -137,6 +135,7 @@ const ItemList = () => {
             placeholder="영양제 검색하기"
             value={search}
             onChange={writePill}
+            className="search_input"
           />
           <div className="search_icon">
             <div className="search_icon2">

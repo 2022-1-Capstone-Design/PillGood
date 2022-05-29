@@ -21,7 +21,6 @@ const SurveyResultCategoryForm = ({ resultData }) => {
     e.preventDefault(); 
     setFieldClick(num=>num=index); 
   }
-
   return (
   <div className="contents">
 
@@ -37,11 +36,12 @@ const SurveyResultCategoryForm = ({ resultData }) => {
         {data.map((item,index)=>
          <div className="contents__details__one">
           {fieldClick===0 && index===0? 
-            <SurveyResultCategoryData item={item} index={0}/>
-           : (fieldClick===index && index!==0 ? (
-            <SurveyResultCategoryData item={item} index={fieldClick}/> )
+            <SurveyResultCategoryData item={item} index={fieldClick}/>
+           : (fieldClick===index && index!==0 ? 
+            <SurveyResultCategoryData item={item} index={fieldClick}/> 
           : null)}
-          </div>
+          
+        </div>
 
       )}
       </div>

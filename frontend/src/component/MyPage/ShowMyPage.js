@@ -19,6 +19,7 @@ const ShowMyPage = ({ myPageData }) => {
     pauseOnHover: true,
   };
 
+  //   <button id="btn_delete">✖</button>
   return (
     <ul className="mypage_list">
       <li className="mypage_content" key={myPageData.name}>
@@ -26,28 +27,52 @@ const ShowMyPage = ({ myPageData }) => {
           💊 <b>{myPageData.name}</b> 님의 PillGood
         </p>
         <p id="likes_text">관심상품</p>
-        <Slider {...settings}>
+
+        {myPageData.likes ? (myPageData.likes.length<=2 ? 
+          <div className="set_box_two">
           {myPageData.likes?.map((item) => (
-            <div className="set_box_all">
-                <button id="btn_delete">✖</button>
-              <a
-                href={`https://search.shopping.naver.com/search/all?query=${item.PRDLST_NM}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img
-                  className="set_img"
-                  src={`..\\..\\..\\img\\${item.INDEX}.jpg`}
-                  alt=""
-                />
-              </a>
-              <br />
-              <p id="company_name">{item.BSSH_NM}</p>
-              <br />
-              <p id="prdt_name">{item.PRDLST_NM}</p>
-            </div>
-          ))}
-        </Slider>
+              <div className="set_box_two_all">
+                <a
+                  href={`https://search.shopping.naver.com/search/all?query=${item.PRDLST_NM}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="set_img"
+                    src={`..\\..\\..\\img\\${item.INDEX}.jpg`}
+                    alt=""
+                  />
+                </a>
+                <br />
+                <p id="company_name">{item.BSSH_NM}</p>
+                <br />
+                <p id="prdt_name">{item.PRDLST_NM}</p>
+              </div>
+            ))}
+          </div>
+           :
+          <Slider {...settings}>
+            {myPageData.likes?.map((item) => (
+              <div className="set_box_all">
+                <a
+                  href={`https://search.shopping.naver.com/search/all?query=${item.PRDLST_NM}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    className="set_img"
+                    src={`..\\..\\..\\img\\${item.INDEX}.jpg`}
+                    alt=""
+                  />
+                </a>
+                <br />
+                <p id="company_name">{item.BSSH_NM}</p>
+                <br />
+                <p id="prdt_name">{item.PRDLST_NM}</p>
+              </div>
+            ))}
+          </Slider> 
+        ):null}
         <p id="results_text">설문조사</p>
         <button
           id="btn_show_result"
