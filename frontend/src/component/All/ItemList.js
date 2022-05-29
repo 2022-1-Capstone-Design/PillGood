@@ -137,11 +137,9 @@ const ItemList = () => {
             onChange={writePill}
             className="search_input"
           />
-          <div className="search_icon">
-            <div className="search_icon2">
+          <button id="search_icon" type="submit">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </div>
-          </div>
+          </button>
       </form>
 
       <div className="list-block">

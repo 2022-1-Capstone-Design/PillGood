@@ -11,8 +11,9 @@
     margin: 0px auto;
     width: 400px;
     height: 30px;
-    top:50%;
-    margin-top: 100px;
+    position: relative;
+    z-index: 1;
+    padding-top: 10%;
 }
 
 .search_input {
@@ -25,16 +26,16 @@
     vertical-align: middle;
     white-space: nowrap;
 }
-.search_icon{
-    /* display: flex;
-    justify-content: space-between; */
-    position: absolute;
-    
-    margin-left: 17px;
-    margin-top:17px;
-    
-}
 
+#search_icon{
+    top: 82%;
+    
+    position:absolute;
+    z-index: 1;
+    border:0px ;
+    background-color: transparent;
+    width:13%;
+}
 
 .search_icon2{
     color: #808080;
