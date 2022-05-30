@@ -1,14 +1,15 @@
 import axios from "axios";
 
 export function Logout() {
-  const token = window.localStorage.getItem("token");
+  const deleteCookie = (document.cookie =
+    "check" + "=; expires=Thu, 01 Jan 1999 00:00:10 GMT;");
   axios
-    .post("/test/kakao/logout", { token: JSON.parse(token) })
+    .post("/test/kakao/logout")
     .then((res) => {
       if (res.data.success) {
-        window.localStorage.removeItem("token");
+        deleteCookie();
       }
-      window.location.reload();
+      // window.location.reload();
     })
     .catch((err) => {
       window.location.reload();

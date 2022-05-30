@@ -9,7 +9,7 @@ import SurveyNav from "./SurveyNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseChimneyUser } from "@fortawesome/free-solid-svg-icons";
 
-const Survey = () => {
+const Survey = ({ isLoggedIn }) => {
   //설문자 이름
   const [userName, setUserName] = useState("");
   //설문자 키 or 몸무게 or 나이
@@ -217,9 +217,10 @@ const Survey = () => {
   };
 
   useEffect(() => {
-    getQuestions();
+    if (!isLoggedIn) navigate("/", true);
+    else getQuestions();
   }, []);
-  console.log(surveyAnswer);
+
   return (
     <div className="survey">
       <div className="surveyContainer">

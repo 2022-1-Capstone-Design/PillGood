@@ -15,13 +15,14 @@ import MyPage from "./component/MyPage/MyPage";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const token = window.localStorage.getItem("token");
+  const cookie = document.cookie === "";
 
-  //localstorage에 토큰값 유무에 따라 로그인 여부 결정
+  // 쿠키에 토큰값 유무에 따라 로그인 여부 결정
   useEffect(() => {
-    if (token) setIsLoggedIn(true);
-    else setIsLoggedIn(false);
-  }, [token]);
+    if (cookie) setIsLoggedIn(false);
+    else setIsLoggedIn(true);
+  }, [cookie]);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -42,8 +43,11 @@ function MyRoute() {
           <Route path="/mypage" element={<MyPage />} />
         </Route>
         <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
-        <Route path="/form" element={<Form />} />
-        <Route path="/form/survey" element={<Survey />} />
+        <Route path="/form" element={<Form isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/form/survey"
+          element={<Survey isLoggedIn={isLoggedIn} />}
+        />
         <Route path="/auth/kakao/callback" element={<Kakao />} />
         <Route path="/survey/loading" element={<SurveyLoading />} />
         <Route path="*" element={<Navigate to="/" replace />} />

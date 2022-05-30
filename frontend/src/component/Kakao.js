@@ -46,11 +46,6 @@ const Kakao = () => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          window.localStorage.setItem("token", JSON.stringify(res.data.jwt));
-          //토큰 만료시간 지나면 자동 삭제
-          setTimeout(() => {
-            window.localStorage.removeItem("token");
-          }, expiresIn * 1000);
           navigate(-2, true);
         } else {
           window.alert("로그인에 실패하였습니다.");
