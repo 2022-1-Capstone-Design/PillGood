@@ -19,21 +19,24 @@ const login = async (req, res) => {
         const kakaoUser = await getProfile(req.body.access_token);
         // 해당 유저가 DB에서 찾고 없으면 create
         const {doc, created} = await User.findOrCreate({ id: kakaoUser.id, name: kakaoUser.properties.nickname });
-        // response data에 실어서 보냄
-        let responseData = {
-            success : true,
-            user: doc,
-        }
+        
         // jwt 토큰 생성
         const token = jwt.sign({
             id : doc.id,
-            name : doc.name,
             access_token : req.body.access_token,
         }, process.env.JWT_KEY
          , { expiresIn: req.body.expires_in }
         );
-        responseData.jwt= token;
-        return res.status(created? 201 : 200).json(responseData);
+
+        const options = {
+            maxAge: req.body.expires_in * 1000, // JWT token과 만료 시간과 동일하게 cookie 파기
+            httpOnly: true,
+            sameSite: 'none', // client가 server와 서로 다른 ip라도 동작하도록 함
+            secure: true, // sameSite를 none으로 설정했을 경우 secure : true
+        };
+        res.cookie('token', token, options); // cookie에 JWT 담기
+
+        return res.status(created? 201 : 200).json({ success: true });
     } catch (error) {
         return res.status(500).json({
         success: false,
@@ -45,7 +48,8 @@ const login = async (req, res) => {
 const logout = async (req, res) => {
     try {
         // 토큰 복호화
-        const token = await jwt.verify(req.body.token, process.env.JWT_KEY);
+        const cookie = req.headers.cookie.split('=')[1];
+        const token = await jwt.verify(cookie, process.env.JWT_KEY);
         // 복호화된 access token을 이용하여 해당 유저 카카오 서버에서 logout
         await axios.post("httsp://kapi.kakao.com/v1/user/logout", 
         {
@@ -64,10 +68,17 @@ const logout = async (req, res) => {
 
 const verifyUser = async (req, res, next) => {
     try {
+<<<<<<< Updated upstream
         const token = req.headers.authorization.split(' ')[1];
         console.log(token);
         if (JSON.parse(token)) {
             const decryption = jwt.verify(JSON.parse(token), process.env.JWT_KEY);
+=======
+        const cookie = req.headers.cookie;
+        if (cookie) {
+            const token = cookie.split('=')[1];
+            const decryption = jwt.verify(token, process.env.JWT_KEY);
+>>>>>>> Stashed changes
             req.user = decryption.id;
         }
         next( );
