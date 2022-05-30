@@ -63,7 +63,7 @@ const logout = async (req, res) => {
   try {
     // 토큰 복호화
     const cookie = req.headers.cookie.split("=")[1];
-    const token = await jwt.verify(cookie, process.env.JWT_KEY);
+    const token = await jwt.verify(cookie.split(";")[0], process.env.JWT_KEY);
     // 복호화된 access token을 이용하여 해당 유저 카카오 서버에서 logout
     await axios.post("httsp://kapi.kakao.com/v1/user/logout", {
       headers: {
@@ -84,7 +84,7 @@ const verifyUser = async (req, res, next) => {
     const cookie = req.headers.cookie;
     if (cookie) {
       const token = cookie.split("=")[1];
-      const decryption = jwt.verify(token, process.env.JWT_KEY);
+      const decryption = jwt.verify(token.split(';')[0], process.env.JWT_KEY);
       req.user = decryption.id;
     }
     next();
