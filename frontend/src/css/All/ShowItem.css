@@ -10,7 +10,7 @@
   font-size:96%;
 }
 .item-card-text {
-  padding-top :20%;
+  padding-top :1%;
 }
 .item-card {
   font-size: 15px;
@@ -67,6 +67,9 @@
     height:230px;
     display: inline-block;
   }
+  .item-card-text {
+    padding-top :3%;
+  }
 }
 @media screen and (max-width: 392px) {
   #all_img{
@@ -82,5 +85,8 @@
   .item-card{
     width:110px; 
     height:230px;
+  }
+  .item-card-text {
+    padding-top :20%;
   }
 }
