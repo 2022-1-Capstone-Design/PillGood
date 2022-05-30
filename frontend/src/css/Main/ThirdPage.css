@@ -1,0 +1,109 @@
+@keyframes updown{
+    from{
+        transform: translatey(0px);
+      }
+      to{
+        transform: translatey(-20px);
+      }
+}
+.thirdpage{
+    height:100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:aliceblue;
+    justify-content: center;
+    padding-top:40px;
+}
+.thirdpage>h1{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+.thirdpage>h1:after{
+    content: "";
+    display: block;
+    width: 30%;
+    border-bottom: 2.5px solid rgb(255, 69, 12);
+    margin:5px auto;
+    padding-bottom: 10px;
+}
+.thirdpage__{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+.circle1, 
+.circle2{
+    background-color: white;
+    font-size: 80px;
+    width: 150px;
+    height: 150px; 
+    border-radius: 70%;
+    overflow: hidden;
+    margin-right: 0px;
+    margin:20px;
+}
+.circle1{
+    
+    background-image: url('../../image/check.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.circle2{
+    background-image: url('../../image/pill.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.thirdpage__first,
+.thirdpage__second{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-right: 50px;
+    box-shadow: 0px 0px 20px 1px rgb(139, 137, 137);
+    border-radius: 10%;
+    padding-top: 40px;
+    padding:20px;
+    margin-bottom: 10px;
+    margin-bottom: 41px;
+}
+.thirdpage__first{
+    padding-left: 15px;padding-right: 17px;
+    background-color: rgb(255, 255, 255);
+}
+.thirdpage__second{
+    padding-left: 37px;margin-left: 115px;padding-right: 37px;
+    margin-right: 0px;
+    background-color: rgb(255, 255, 255);
+}
+.thirdpage__text1,
+.thirdpage__text2{
+    background-color: rgb(243, 220, 224);
+    box-shadow: 0px 0px 20px 1px rgb(200, 200, 200);
+    width:400px;
+    height:300px;
+    margin:0px 50px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.thirdpage__text1>p,
+.thirdpage__text2>p{
+    font-size: 18px;
+    color:rgb(56, 55, 55);
+    font-weight:600;
+    padding-top: 10px;
+}
+.thirdpage__text1>h2,
+.thirdpage__text2>h2{
+    margin-top: 10px;
+    padding-top: 40px;
+    border-bottom: 2px solid rgb(255, 69, 12);
+}

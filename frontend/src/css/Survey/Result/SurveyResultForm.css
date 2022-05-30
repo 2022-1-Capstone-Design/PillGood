@@ -1,0 +1,103 @@
+.result {
+  font-family: "GyeonggiTitleM";
+  background: rgb(252, 244, 244);
+  height: 100%;
+  padding-top: 55px;
+}
+.result .resultContainer {
+  background-color: white;
+  height: 100%;
+  width: 800px;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 70px;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.result .resultContainer .resultUserInfo {
+  height: 200px;
+  padding-bottom: 10px;
+  text-align: center;
+  background: #ccf3ee;
+}
+.result .resultContainer .resultUserInfo h1 {
+  padding-top: 40px;
+}
+.result .resultContainer .resultUserInfo span {
+  display: inline-block;
+}
+.result .resultContainer .resultUserInfo strong {
+  font-weight: bold;
+  font-size: 20px;
+  margin-left: 5px;
+}
+.result .resultContainer .resultUserInfo span {
+  margin: 0px 5px;
+}
+.result .resultContainer .shareBtn {
+  width: 360px;
+  height: 72px;
+  line-height: 72px;
+  background-color: #fee500;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  background-image: url("../../../image/kakao_chat.png");
+  background-repeat: no-repeat;
+  background-size: 33px;
+  background-position: 20% center;
+  padding-left: 32px;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+}
+.result .resultContainer .resultCategory {
+  padding: 10px 0px;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+}
+.result .resultContainer .resultCategory {
+  font-size: 20px;
+}
+.result .resultContainer .resultCategory ul {
+  text-align: center;
+  margin-bottom: 0px;
+}
+.result .resultContainer .resultCategory ul > li {
+  display: inline-block;
+  list-style-type: none;
+  cursor: pointer;
+  font-size: 25px;
+  margin: 10px;
+}
+.result .resultContainer .resultCategory span {
+  font-size: 15px;
+}
+.result .resultContainer .resultCategory button {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  .result {
+    padding-top: 0px;
+  }
+  .result .resultContainer .resultUserInfo {
+    word-break: keep-all;
+  }
+  .result .resultContainer .resultUserInfo h1 {
+    padding-top: 0px;
+  }
+  .result .resultContainer .resultUserInfo span {
+    display: block;
+  }
+  .result .resultContainer {
+    width: 100%;
+  }
+}

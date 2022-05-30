@@ -1,5 +1,5 @@
 const Question = require("../Schemas/question");
-const Score =  require("../Schemas/score");
+const Score = require("../Schemas/score");
 const Result = require("../Schemas/result");
 const ObjectId = require("mongodb").ObjectId;
 
@@ -13,33 +13,33 @@ const getQuestion = async (req, res) => {
 };
 
 const insertResult = async (input, id, name, age) => {
-    try {
-        input = JSON.parse(input);
-        const keys = Object.keys(input);
-        const insert = {
-            kakao_id: id,
-            user_name: name,
-            age: age,
-            BMI: {
-                bmi_figure: input.BMI[0],
-                bmi_result: input.BMI[1]
-            },
-            result: new Array( )
-        }
-        for (let key of keys.slice(0,-1)) {
-            insert.result.push({
-                category_name: key,
-                product: input[key].slice(0, 3),
-                food: input[key].slice(3, 6),
-                nutrient: input[key].slice(6, 9)
-            });
-        }
-        return await Result.create(insert);
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json(error);
+  try {
+    input = JSON.parse(input);
+    const keys = Object.keys(input);
+    const insert = {
+      kakao_id: id,
+      user_name: name,
+      age: age,
+      BMI: {
+        bmi_figure: input.BMI[0],
+        bmi_result: input.BMI[1],
+      },
+      result: new Array(),
+    };
+    for (let key of keys.slice(0, -1)) {
+      insert.result.push({
+        category_name: key,
+        product: input[key].slice(0, 3),
+        food: input[key].slice(3, 6),
+        nutrient: input[key].slice(6, 9),
+      });
     }
-}
+    return await Result.create(insert);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json(error);
+  }
+};
 
 const getResult = async (req, res) => {
     try {
@@ -104,6 +104,27 @@ const getResult = async (req, res) => {
         console.error(error);
         return res.status(500).json(error);
     }
+    console.log(result);
+    const spawn = require("child_process").spawn;
+    const python = spawn("python", ["example.py", JSON.stringify(result)]);
+    python.stdout.on("data", (data) => {
+      let buff = Buffer.from(data, "base64");
+      let text = buff.toString("utf-8");
+      return insertResult(text, user, surveyAnswer[0][0], result.age).then(
+        (data) =>
+          res.status(200).json({
+            success: true,
+            _id: data._id,
+          })
+      );
+    });
+    python.stderr.on("data", (data) => {
+      console.error(data.toString());
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json(error);
+  }
 };
 
 const getResultDetails = async (req, res) => {
@@ -167,7 +188,7 @@ const getResultDetails = async (req, res) => {
 }
 
 module.exports = {
-    getQuestion,
-    getResult,
-    getResultDetails
+  getQuestion,
+  getResult,
+  getResultDetails,
 };

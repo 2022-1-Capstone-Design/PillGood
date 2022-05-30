@@ -1,0 +1,53 @@
+@keyframes updown{
+    from{
+        transform: translatey(0px);
+      }
+      to{
+        transform: translatey(-20px);
+      }
+}
+.secondpage{
+    background-color: white;
+    height:100vh;
+    width:100%;
+}
+/* 텍스트 중 상단 텍스트 */
+.secondpage__left>h5{
+    color:rgb(241, 92, 92);
+    animation:fadeIn 3s ease-in-out;
+}
+.secondpage__right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.secondpage__img{
+    width:680px;
+    height:auto;
+}
+.secondpage__left{
+    display:flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.secondpage__context{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    padding-right: 0px;
+    padding-top: 85px;
+    padding-bottom: 48px;
+}
+
+  
+.secondpage__left>h4{
+    font-family: 'GyeonggiTitleM' ;
+    margin-top: 6px;
+}
+.secondpage__left>h1{
+    margin:0px;
+}

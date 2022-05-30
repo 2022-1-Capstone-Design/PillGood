@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding-top: 0px;
   }
   
   .footer-subscription {
@@ -111,7 +112,8 @@
     align-items: center;
     width: 90%;
     max-width: 1000px;
-    margin: 40px auto 0 auto;
+    /* margin: 40px auto 0 auto; */
+    margin-top: 0px;
   }
   
   .social-icons {

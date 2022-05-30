@@ -7,6 +7,8 @@ import pictogram from "../image/pictogram.png";
 import Cards from "./Cards";
 import Footer from "./Footer";
 import { useEffect } from "react";
+import FirstPage from "./Main/FirstPage";
+import SecondPage from './Main/SecondPage';
 
 function Main({ isLoggedIn, setIsLoggedIn }) {
   const token = window.localStorage.getItem("token");
@@ -23,58 +25,11 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
     <div>
       <FullPage controls controlsProps={{ className: "slide-navigation" }}>
         <Slide>
-          <div className="main">
-            <div>
-              <Navigate isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-            </div>
-            <div className="main__intro">
-              <div className="main__intro__">
-                <Fade right>
-                  <div className="main__intro__main">
-                    <h2>
-                      약국에 방문하지 않아도, 검색을 하지 않아도 내 손 안의
-                      헬스케어 전문 서비스 PillGood
-                    </h2>
-                  </div>
-                  <p>
-                    PillGood은 개인별 최적화된 영양제 맞춤 서비스를 제공합니다.{" "}
-                    <br />
-                    안심하고 믿을 수 있는 영양제 조회로 쉽고 빠르게 건강관리를
-                    시작하세요.
-                  </p>
-                  <Link to={isLoggedIn ? "/form" : "auth"}>
-                    <input
-                      className="startForm"
-                      type="submit"
-                      value="내 몸에 필요한 바른 영양소 자가진단,
-          지금 시작하기"
-                    />
-                  </Link>
-                </Fade>
-              </div>
-            </div>
-          </div>
+          <FirstPage/>
         </Slide>
 
         <Slide>
-          <div className="secondpage">
-            <div className="secondpage__context">
-              <Fade bottom>
-                <div className="secondpage__left">
-                  <h5>HEALTH SPECIALIST</h5>
-                  <h1>건강 종합 솔루션을 제공하는 PillGood</h1>
-                  <h4>
-                    PillGood이 제공하는 기능은 영양제 제안 시스템을 효과적으로
-                    발휘합니다.
-                    <br />
-                  </h4>
-                </div>
-                <div className="secondpage__right">
-                  <img src={pictogram} alt="p"></img>
-                </div>
-              </Fade>
-            </div>
-          </div>
+          <SecondPage/>
         </Slide>
 
         <Slide>
