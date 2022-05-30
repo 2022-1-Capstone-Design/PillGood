@@ -98,7 +98,7 @@ const ShowItem = ({ products, loading , likeItArray}) => {
               }
 
             <div className="item-card-text">
-              <h3>{product.PRDLST_NM}</h3>
+              <p id="item-name"><span id="highlight">{product.PRDLST_NM}</span></p>
               <p>{product.BSSH_NM}</p>
             </div>
 

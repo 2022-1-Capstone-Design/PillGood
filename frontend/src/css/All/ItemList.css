@@ -1,27 +1,24 @@
 .list-block {
-  flex-wrap: wrap;
+  
   padding: 20px;
   box-sizing: border-box;
   margin: 0 auto;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 4%;
   width:99vw;
 }
 #input-holder {
-  margin: 0px auto;
+  margin-top:10%;
+  margin-left:auto;
+  margin-right:auto;
   width: 45%;
   height: 30px;
-  position: relative;
   border:none;
   border-radius: 50px;
   background-color: rgba(64, 60, 67, 0.199);
-  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-#all-item-list{
-  
 }
 #search-input {
   border: none;
@@ -110,5 +107,5 @@
 #all-item-list{
   display:flex;
   flex-direction: column;
-  margin-top:7%;
+  margin-top:0%;
 }
