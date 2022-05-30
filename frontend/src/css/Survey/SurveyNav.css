@@ -12,14 +12,11 @@
   font-size: 20px;
   color: #bdbdbd;
 }
-.survey_navbar_ul span {
-  margin-left: 50px;
-}
-.survey_navbar_ul li:last-child span {
-  margin-left: 0px;
-}
 .survey_navbar_ul .now {
   color: #ff5c35;
+}
+.survey_navbar {
+  font-size: 24px;
 }
 .survey_progress {
   width: 100%;
@@ -35,16 +32,4 @@
 }
 .survey_progress::-webkit-progress-value {
   background: #ff5c35;
-}
-@media only screen and (max-width: 1023px) {
-  body {
-    width: 100%;
-  }
-  .survey_navbar_ul > li {
-    width: 100%;
-    /* text-align: left; */
-  }
-  .survey_navbar .survey_navbar_ul > li {
-    font-size: 14px;
-  }
 }

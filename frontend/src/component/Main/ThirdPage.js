@@ -1,5 +1,4 @@
 import Fade from "react-reveal/Fade";
-import '../../css/Main/ThirdPage.css';
 
 const ThirdPage=()=>{
     return(

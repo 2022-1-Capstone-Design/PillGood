@@ -26,19 +26,3 @@
 .survey_question_select_answer input[type="checkbox"]:checked + label {
   background-image: url("../../image/check_on.png");
 }
-@media screen and (max-width: 1023px) {
-  .survey_question_select {
-    text-align: left;
-  }
-  .survey_question_select .number,
-  .survey_question_select .para {
-    text-align: center;
-  }
-  .survey_question_select_answer {
-    text-align: left;
-    padding-left: 25px;
-  }
-  .survey_question_select .warning {
-    padding-left: 25px;
-  }
-}

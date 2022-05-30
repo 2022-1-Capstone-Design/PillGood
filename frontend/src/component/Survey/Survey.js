@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 import SurveyNav from "./SurveyNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouseChimneyUser } from "@fortawesome/free-solid-svg-icons";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
+import { faTableList } from "@fortawesome/free-solid-svg-icons";
 
 const Survey = () => {
   //설문자 이름
@@ -87,11 +89,11 @@ const Survey = () => {
     //키, 몸무게, 나이 입력값 검사 후 배열에 값 삽입
     else if (surveyNum === 2 || surveyNum === 3 || surveyNum === 4) {
       setUserInfo(0);
-      if (surveyNum === 2 && (userInfo < 100 || userInfo > 250)) {
+      if (surveyNum === 2 && (userInfo <= 100 || userInfo >= 250)) {
         setShowWarn(true);
-      } else if (surveyNum === 3 && (userInfo < 30 || userInfo > 190)) {
+      } else if (surveyNum === 3 && (userInfo <= 30 || userInfo >= 190)) {
         setShowWarn(true);
-      } else if (surveyNum === 4 && (userInfo < 10 || userInfo > 110)) {
+      } else if (surveyNum === 4 && (userInfo <= 10 || userInfo >= 110)) {
         setShowWarn(true);
       } else if (userInfo !== 0 && inputRef.current.value !== "") {
         const tmp = [...surveyAnswer];
@@ -202,13 +204,21 @@ const Survey = () => {
   };
   //설문조사 리스트 제출 함수
   const onSubmit = () => {
-    navigate(
-      "/survey/loading",
-      {
-        state: { surveyAnswer },
-      },
-      true
-    );
+    const token = window.localStorage.getItem("token");
+    axios
+      .post(
+        "/survey",
+        { surveyAnswer },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+        { withCredentials: true }
+      )
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    navigate("/form/survey/loading", true);
   };
 
   const getQuestions = async () => {
@@ -219,7 +229,7 @@ const Survey = () => {
   useEffect(() => {
     getQuestions();
   }, []);
-  console.log(surveyAnswer);
+
   return (
     <div className="survey">
       <div className="surveyContainer">

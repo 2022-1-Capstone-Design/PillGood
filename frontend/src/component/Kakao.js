@@ -51,7 +51,7 @@ const Kakao = () => {
           setTimeout(() => {
             window.localStorage.removeItem("token");
           }, expiresIn * 1000);
-          navigate(-2, true);
+          navigate("/", true);
         } else {
           window.alert("로그인에 실패하였습니다.");
           navigate("/");

@@ -1,96 +1,62 @@
 .list-block {
-  flex-wrap: wrap;
-  padding: 20px;
-  box-sizing: border-box;
-  width: 1300px;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 100px;
-}
-#form_list {
-  margin: 0px auto;
-  width: 400px;
-  height: 30px;
-  position: relative;
-  z-index: 1;
+    flex-wrap: wrap;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    text-align: center;
 }
 
-.search_input {
-  padding-left: 10%;
-  border: 1px solid #e1e1e1;
-  border-radius: 50px;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  vertical-align: middle;
-  white-space: nowrap;
-  margin-top: 100px;
-  background-color: rgba(64, 60, 67, 0.199);
-}
-
-#search_icon {
-  top: 18%;
-  right:88%;
-
-  position: absolute;
-  z-index: 1;
-  border: 0px;
-  background-color: transparent;
-  width: 13%;
-  margin-top: 100px;
-  border-radius: 10px;
-  padding: 3px;
-  color:rgba(43, 43, 43, 0.705);
-}
 .pageNumbers {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .pageNumbers li {
-  list-style: none;
-  padding: 0;
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border: 1px solid #e2e2e2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  cursor: pointer;
+    list-style: none;
+    padding: 0;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
 .pageNumbers li:first-child {
-  border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
 }
 
 .pageNumbers li:last-child {
-  border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
 }
 
 .pageNumbers li.active {
-  background-color: #d5d5d5;
-  color: black;
+    background-color: #337ab7;
+    color: black;
 }
 
 .pageNumbers li button {
-  background-color: transparent;
-  border: none;
-  color: rgb(0, 0, 0);
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    background-color: transparent;
+    border: none;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .pageNumbers li button:hover {
-  color: #337ab7;
+    color: #337ab7;
 }
 
 .pageNumbers li button:focus {
-  outline: none;
+    outline: none;
 }

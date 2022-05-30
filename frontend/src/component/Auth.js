@@ -4,12 +4,15 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../image/logo2.png";
 import { useEffect } from "react";
 
-function Auth({ isLoggedIn }) {
+function Auth({ setIsLoggedIn }) {
   const navigate = useNavigate();
+  const token = window.localStorage.getItem("token");
   useEffect(() => {
-    if (isLoggedIn) {
+    if (token) {
       //로그인 상태면 해당 페이지 접근 제한
-      navigate("/", true);
+      navigate("/", setIsLoggedIn(true));
+    } else {
+      setIsLoggedIn(false);
     }
   });
   return (

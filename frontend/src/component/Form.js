@@ -7,14 +7,15 @@ function Form() {
     <div className="form">
       <div className="form__first">
         <Link to="/">
-          <img id="form_logo" src={logo} width="166" height="30" alt="pillgood logo" />
+          <img src={logo} width="166" height="30" alt="pillgood logo" />
         </Link>
-        <p className="intro_one">
-          내 몸에 필요한 <span className="highlight">영양제</span>와 <span className="highlight">영양소</span>! 궁금하신가요?
+        <p>
+          필굿 :) <br />
+          나에게 필요한 영양제와 영양소 알고싶어 ^_^
         </p>
-        <p className="intro_two">나에게 최적화된 영양제를 지금 바로 <span className="highlight">PillGood</span>과 함께 알아봐요!😀</p>
+        <p>설문을 통해 나에게 최적화된 영양제를 알아봐요~</p>
       </div>
-      <Link id="link_to_survey" to="/form/survey">
+      <Link to="/form/survey">
         <input className="start" value="시작하기" type="submit" />
       </Link>
     </div>

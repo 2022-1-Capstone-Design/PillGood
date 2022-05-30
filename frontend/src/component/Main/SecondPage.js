@@ -1,6 +1,5 @@
 import Fade from "react-reveal/Fade";
 import pictogram from "../../image/pictogram.png";
-import '../../css/Main/SecondPage.css';
 
 const SecondPage=()=>{
     return(
@@ -17,7 +16,7 @@ const SecondPage=()=>{
               </h4>
             </div>
             <div className="secondpage__right">
-              <img className="secondpage__img" src={pictogram} alt="p"></img>
+              <img src={pictogram} alt="p"></img>
             </div>
           </Fade>
         </div>

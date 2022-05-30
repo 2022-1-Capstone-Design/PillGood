@@ -1,45 +1,52 @@
-body {
-  margin: 0;
-  font-family: "GyeonggiTitleM";
+/* 필굿 로고 사진 */
+a>img{
+  position: relative;
+  margin-top: 0px;
+  height:60px;
+  padding-bottom: 5px;
+  backface-visibility: hidden;
+  display: inline-block;
+
+  text-align: center;
 }
+
 /* 로고 포함 네비바 */
-.navbar {
-  display: flex;
+.main__first{
+  display:flex;
+  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  padding: 10px;
   background-color: white;
   position: fixed;
   transform: initial;
-  width: 100%;
-  z-index: 1;
-  transition: 0.5s;
-  padding: 8px 12px;
-  margin-bottom: 20px;
+  width: 100%; 
+  z-index: 1; 
+  transition:.5s;
+  padding-left: 100px;
 }
 
 .hidden {
   opacity: 0;
   top: -100px;
-  transition: 0.3s;
+  transition:.3s;
 }
-/* 필굿 로고 사진 */
-.navbar_logo img {
-  position: relative;
-  margin-top: 0px;
-  padding-bottom: 5px;
-  backface-visibility: hidden;
-  display: inline-block;
-  width: 150px;
-  text-align: center;
+
+.main__first>img{
+  width: 166px;
 }
 
 .navbar__element {
   display: flex;
   list-style: none;
-  padding-left: 0;
+  padding-right: 140px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin: 0px;
   font-size: 18px;
 }
-.navbar__element li {
+.navbar__element  li {
   padding-right: 60px;
   font-family: "GyeonggiTitleM";
 }
@@ -50,74 +57,49 @@ body {
   padding: 0px;
   transition: all 0.3s ease;
   font-size: 18px;
+  font-family: "GyeonggiTitleM";
 }
-.menu {
-  display: none;
-  position: absolute;
-  top: 15px;
-  right: 50px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
+@font-face {
+  font-family: "GyeonggiTitleM";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-.menu .line {
+.navbar__element li:hover,
+.navbar__element a:hover {
+  color: #39d9c8;
+  transition: transform 100ms ease-in-out;
+}
+.navbar__element li:after {
   display: block;
-  width: 40px;
-  height: 3px;
-  background-color: #000;
-  margin-block: 10px;
-  border-radius: 4px;
-  transition: transform 0.5s, opacity 0.25s;
+  content: "";
+  border-bottom: solid 3px #39d9c8;
+  margin-top: 3px;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
 }
-.menu.active .line:nth-child(1) {
-  transform: translateY(13px) rotate(45deg);
+.navbar__element li:hover:after
+{
+  transform: scaleX(1);
 }
-.menu.active .line:nth-child(2) {
-  opacity: 0; /*Hides this line.*/
-}
-.menu.active .line:nth-child(3) {
-  transform: translateY(-13px) rotate(-45deg);
-}
-
-@media screen and (max-width: 1023px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px 0px;
-    position: relative;
-  }
-  .navbar_logo img {
-    padding-top: 2vh;
-    width: 100px;
-  }
-
+@media screen and (max-width: 887px) {
   .navbar__element {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
-  .navbar__element li {
-    width: 100%;
-    text-align: center;
-    margin: 30px 0px;
-    padding-right: 0px;
-  }
-
-  .menu {
-    display: inline-block;
-    position: absolute;
-    right: 0;
-  }
-
-  .navbar__element.active {
     display: flex;
-    height: 100%;
+    background-color: #ffffff;
+    flex-direction: column;
+    padding: 0px;
+    align-items: center;
+  }
+  .navbar__element > li {
+    padding-right: 100px;
+    padding-bottom: 40px;
+  }
+  .behind {
+    display: none;
   }
 }
-
 .behind {
   display: block;
 }
