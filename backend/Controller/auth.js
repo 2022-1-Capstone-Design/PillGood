@@ -68,17 +68,10 @@ const logout = async (req, res) => {
 
 const verifyUser = async (req, res, next) => {
     try {
-<<<<<<< Updated upstream
-        const token = req.headers.authorization.split(' ')[1];
-        console.log(token);
-        if (JSON.parse(token)) {
-            const decryption = jwt.verify(JSON.parse(token), process.env.JWT_KEY);
-=======
         const cookie = req.headers.cookie;
         if (cookie) {
             const token = cookie.split('=')[1];
             const decryption = jwt.verify(token, process.env.JWT_KEY);
->>>>>>> Stashed changes
             req.user = decryption.id;
         }
         next( );
