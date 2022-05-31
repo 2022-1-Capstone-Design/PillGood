@@ -23,7 +23,14 @@ child_pill_index = [2,33,40,50,63,69,85,87,89,106,129,142,143,148,161,164,
 1286]
 
 # 제외할 영양제 인덱스
-except_list_index = []
+except_list_index = [6,15,35,41,67,77,79,80,89,90,109,115,121,126,142,164,
+202,213,237,255,259,276,277,278,285,290,298,319,324,333,336,337,339,341,
+342,345,346,349,355,366,391,403,411,421,443,448,475,484,491,497,536,600,
+608,627,629,632,634,636,644,647,648,649,651,655,656,660,668,689,690,701,
+723,728,745,746,747,753,755,756,760,782,789,792,828,841,852,857,862,868,
+869,874,879,885,886,904,916,935,946,968,974,1044,1061,1072,1073,1106,1109,
+1113,1114,1115,1134,1147,1148,1153,1164,1169,1186,1188,1209,1226,1230,1231,
+1240,1254,1263,1264,1266,1271,1286,1291]
 
 # BMI 판별 메소드
 def bmicalc(x):
@@ -165,16 +172,18 @@ def calc(vJson):
         # 영양제 추천 부분
         if age > 20:
             for x in range(len(pill_distance_list)):
-                if pill_distance_list.index(sort_pill_distance_list[x]) not in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
-                    total_list.append(pill_test_data.loc[pill_distance_list.index(sort_pill_distance_list[x])][0])
+                testA = pill_distance_list.index(sort_pill_distance_list[x])
+                if pill_test_data.loc[testA][0] not in child_pill_index and pill_test_data.loc[testA][0] not in except_list_index:
+                    total_list.append(pill_test_data.loc[testA][0])
                 else:
                     continue
                 if len(total_list) == 3:
                     break
         else:
             for x in range(len(pill_distance_list)):
-                if pill_distance_list.index(sort_pill_distance_list[x]) in child_pill_index and pill_distance_list.index(sort_pill_distance_list[x]) not in except_list_index:
-                    total_list.append(pill_test_data.loc[pill_distance_list.index(sort_pill_distance_list[x])][0])
+                testA = pill_distance_list.index(sort_pill_distance_list[x])
+                if pill_test_data.loc[testA][0] in child_pill_index and pill_test_data.loc[testA][0] not in except_list_index:
+                    total_list.append(pill_test_data.loc[testA][0])
                 else:
                     continue
                 if len(total_list) == 3:
