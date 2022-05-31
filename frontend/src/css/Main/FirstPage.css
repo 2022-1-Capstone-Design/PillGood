@@ -12,7 +12,7 @@
 }
 /* 폰트 적용 */
 @font-face {
-    font-family: 'GyeonggiTitleM';
+    font-family: 'Noto Sans KR', sans-serif;
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/GyeonggiTitleM.woff') format('woff');
     font-weight: normal;
     font-style: normal;

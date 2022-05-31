@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&family=Hubballi&family=IBM+Plex+Sans+KR:wght@100;500&family=Noto+Sans+KR:wght@100&family=Source+Sans+Pro:wght@200;400&display=swap');
+
 /*메인에 Card 적용*/
 .card_main {
     display: flex;
@@ -46,7 +48,7 @@ body {
   }
 
 p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
-    font-family: 'GyeonggiTitleM';
+  font-family: 'Noto Sans KR', sans-serif;
     line-height: 1.7;
     animation:fadeIn 3s ease-in-out;
     

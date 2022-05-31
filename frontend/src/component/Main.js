@@ -24,7 +24,6 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
 
 <ReactFullpage
   licenseKey={'YOUR_KEY_HERE'}
-  scrollingSpeed = {1000}
 
   render={({state, fullpageApi}) =>{
 
