@@ -45,9 +45,12 @@
 
   
 .secondpage__left>h4{
-    font-family: 'GyeonggiTitleM' ;
     margin-top: 6px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
 }
 .secondpage__left>h1{
     margin:0px;
+    font-family: 'Noto Sans KR', sans-serif;
+    text-align: center;
 }

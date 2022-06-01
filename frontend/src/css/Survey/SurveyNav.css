@@ -9,8 +9,9 @@
   width: 200px;
   text-align: center;
   font-family: "GyeonggiTitleM";
-  font-size: 20px;
+  font-size: 19px;
   color: #bdbdbd;
+  font-weight: 600;
 }
 .survey_navbar_ul span {
   margin-left: 50px;
@@ -42,9 +43,14 @@
   }
   .survey_navbar_ul > li {
     width: 100%;
-    /* text-align: left; */
   }
   .survey_navbar .survey_navbar_ul > li {
-    font-size: 14px;
+    font-size: 15px;
+  }
+  .survey_navbar_ul span {
+    margin-left: 0px;
+  }
+  .survey_navbar .survey_navbar_ul > li > span:nth-child(2) {
+    display: none;
   }
 }

@@ -27,7 +27,6 @@ const ShowMyPage = ({ myPageData }) => {
           💊 <b>{myPageData.name}</b> 님의 PillGood
         </p>
         <p id="likes_text">관심상품</p>
-
         {myPageData.likes ? (myPageData.likes.length<=2 ? 
           <div className="set_box_two">
           {myPageData.likes?.map((item) => (
@@ -49,6 +48,7 @@ const ShowMyPage = ({ myPageData }) => {
                 <p id="prdt_name">{item.PRDLST_NM}</p>
               </div>
             ))}
+
           </div>
            :
           <Slider {...settings}>
@@ -72,7 +72,7 @@ const ShowMyPage = ({ myPageData }) => {
               </div>
             ))}
           </Slider> 
-        ):null}
+        ):<div id="likes_null">등록된 관심상품이 없습니다. '전체보기'에서 💖를 클릭해주세요.</div>}
         <p id="results_text">설문조사</p>
         <button
           id="btn_show_result"

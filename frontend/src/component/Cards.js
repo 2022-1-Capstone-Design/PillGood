@@ -17,7 +17,7 @@ function Cards() {
             />
             <CardItem
               src='images/9.jpg'
-              text='사용자의 자가진단을 통한 맞춤 영양제 추천'
+              text='사용자의 자가진단을 통한 맞춤 영양제 및 음식 추천'
               label='영양제 추천'
               path='/empty'
             />

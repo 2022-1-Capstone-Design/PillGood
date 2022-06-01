@@ -5,6 +5,7 @@ import axios from "axios";
 import "../../css/All/ItemList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
@@ -49,16 +50,11 @@ const ItemList = () => {
       return null;
     }
   });
-  const token = window.localStorage.getItem("token");
 
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
   const axiosData = async () => {
     try {
-      const response = await axios.get("/product" + location.search, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get("/product" + location.search);
       setLikeArray(response.data.likes);
       setProducts(response.data.products);
       setLoading(false);
@@ -116,31 +112,33 @@ const ItemList = () => {
   }
 
   return (
-    <div id="all_item_list">
-      <form
-        id="form_list"
-        onSubmit={(e) => {
-          navigate({
-            pathname: "/all",
-            search: `?search=${search}`,
-            data: data,
-          });
-          location.search = { search };
-          searchPill(e);
-        }}
-      >
-          <input
-            type="text"
-            name="pname"
-            placeholder="영양제 검색하기"
-            value={search}
-            onChange={writePill}
-            className="search_input"
-          />
-          <button id="search_icon" type="submit">
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-          </button>
-      </form>
+    <div id="all-item-list">
+      <div id="search-wrapper">
+        <form
+          id="input-holder"
+          onSubmit={(e) => {
+            navigate({
+              pathname: "/all",
+              search: `?search=${search}`,
+              data: data,
+            });
+            location.search = { search };
+            searchPill(e);
+          }}
+        >
+            <button id="search-icon" type="submit">
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+            </button>
+            <input
+              type="text"
+              name="pname"
+              placeholder="영양제 검색하기"
+              value={search}
+              onChange={writePill}
+              id="search-input"
+            />
+        </form>
+      </div>
 
       <div className="list-block">
         {btnClick ? (
@@ -162,6 +160,7 @@ const ItemList = () => {
             products={currentPosts}
             loading={loading}
             likeItArray={likeArray}
+            
           />
         )}
       </div>

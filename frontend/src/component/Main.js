@@ -1,12 +1,13 @@
 import Navigate from "../route/Navigate";
 import "../css/Main.css";
 import { Link } from "react-router-dom";
-import { FullPage, Slide } from "react-full-page";
+//import { FullPage, Slide } from "react-full-page";
 import Fade from "react-reveal/Fade";
-import pictogram from "../image/pictogram.png";
+import { ReactDOM } from "react";
+import ReactFullpage from '@fullpage/react-fullpage';
 import Cards from "./Cards";
 import Footer from "./Footer";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import FirstPage from "./Main/FirstPage";
 import SecondPage from './Main/SecondPage';
 
@@ -21,18 +22,23 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
     }
   }, [isLoggedIn, setIsLoggedIn, token]);
 
+<ReactFullpage
+  licenseKey={'YOUR_KEY_HERE'}
+
+  render={({state, fullpageApi}) =>{
+
   return (
     <div>
-      <FullPage controls controlsProps={{ className: "slide-navigation" }}>
-        <Slide>
+      <ReactFullpage.Wrapper controls controlsProps={{ className: "slide-navigation" }}>
+        <div className="section-first">
           <FirstPage/>
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-second">
           <SecondPage/>
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-third">
           <div className="thirdpage">
             <h1>당신을 위한 PillGood의 맞춤 영양 케어</h1>
             <Fade bottom>
@@ -68,17 +74,19 @@ function Main({ isLoggedIn, setIsLoggedIn }) {
               </div>
             </Fade>
           </div>
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-cards">
           <Cards />
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-footer">
           <Footer />
-        </Slide>
-      </FullPage>
+        </div>
+      </ReactFullpage.Wrapper>
     </div>
   );
+}}
+/>
 }
 export default Main;

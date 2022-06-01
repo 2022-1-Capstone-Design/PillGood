@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "GyeonggiTitleM";
+  font-family: 'Noto Sans KR', sans-serif;
 }
 /* 로고 포함 네비바 */
 .navbar {
@@ -31,6 +31,7 @@ body {
   display: inline-block;
   width: 150px;
   text-align: center;
+  padding-left: 60px;
 }
 
 .navbar__element {
@@ -38,10 +39,12 @@ body {
   list-style: none;
   padding-left: 0;
   font-size: 18px;
+  font-weight: bolder;
 }
 .navbar__element li {
   padding-right: 60px;
-  font-family: "GyeonggiTitleM";
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
 }
 
 .navbar__element a {
@@ -50,6 +53,7 @@ body {
   padding: 0px;
   transition: all 0.3s ease;
   font-size: 18px;
+  font-weight: border;
 }
 .menu {
   display: none;

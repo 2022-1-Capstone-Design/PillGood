@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ShowMyPage from "./ShowMyPage";
 
-const token = window.localStorage.getItem("token");
 const MyPageList = () => {
   const [myPageData, setMyPageData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -11,9 +10,7 @@ const MyPageList = () => {
     const loadData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/myPage", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await axios.get("/myPage")
         setMyPageData(res.data);
         console.log(res.data);
         setLoading(false);

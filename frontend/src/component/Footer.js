@@ -69,14 +69,7 @@ function Footer() {
             >
               <i className="fab fa-instagram" />
             </Link>
-            <Link
-              className="social-icon-link youtube"
-              to="/"
-              target="_blank"
-              aria-label="Youtube"
-            >
-              <i className="fab fa-youtube" />
-            </Link>
+
             <Link
               className="social-icon-link twitter"
               to="/"
@@ -85,14 +78,7 @@ function Footer() {
             >
               <i className="fab fa-twitter" />
             </Link>
-            <Link
-              className="social-icon-link twitter"
-              to="/"
-              target="_blank"
-              aria-label="LinkedIn"
-            >
-              <i className="fab fa-linkedin" />
-            </Link>
+
           </div>
         </div>
       </section>

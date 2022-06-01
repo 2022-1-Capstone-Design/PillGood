@@ -13,7 +13,8 @@ const SurveyResult = () => {
 
   useEffect(() => {
     getResult();
-  }, []); 
+  }, []);
+  console.log(resultData);
   return (
     <div>
       {resultData[0] && (

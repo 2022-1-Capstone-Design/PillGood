@@ -1,10 +1,19 @@
 .show_item_list{
   margin: 0;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-left:0px;
+}
+.card-heart{
+  font-size:96%;
+}
+.item-card-text {
+  padding-top :1%;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .item-card {
-  display: inline-block;
-  justify-content: space-between;
-  white-space: nowrap;
   font-size: 15px;
   list-style-type: none;
   border: 2px solid #eee;
@@ -14,18 +23,73 @@
   padding: 10px;
   margin-right: 10px;
   margin-bottom: 30px;
+  display: inline-block;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  gap:2%;
 }
-.card-heart{
-  position: relative;
-  left:30%;
-  bottom:35%;
+.item-card-text > p{
+  word-break: keep-all;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+#item-name{
+  font-weight:bold;
+}
+#highlight{
+  box-shadow: inset -5px -10px 0 #D9FCDB;
 }
 .item-card:hover{
   box-shadow: 0px 5px 15px rgb(64 60 67 / 24%);
   border: 2px solid rgba(255, 255, 255, 0.24);
 }
 #all_img {
-  width: 150px;
-  height:150px;
-  padding:10% 10%;
+  width: 170px;
+  height:170px;
+  padding:8% 8%;
+}
+#card-img{
+  justify-content: center;
+}
+@media screen and (max-width: 645px) {
+  #all_img{
+    width : 90px;
+    height: 90px;
+    padding: 8% 8%;
+  }
+  .item-card-text >p{
+    white-space: normal;
+    margin-top:0px;
+    margin-bottom: 0px;
+    font-size: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .item-card{
+    width:140px;
+    height:230px;
+    display: inline-block;
+  }
+  .item-card-text {
+    padding-top :3%;
+  }
+}
+@media screen and (max-width: 392px) {
+  #all_img{
+    width : 90px;
+    height: 90px;
+    padding: 8% 8%;
+  }
+  .item-card-text >p{
+    white-space: normal;
+    margin: 3px 0px;
+    font-size:50%;
+  }
+  .item-card{
+    width:110px; 
+    height:230px;
+  }
+  .item-card-text {
+    padding-top :20%;
+  }
 }
