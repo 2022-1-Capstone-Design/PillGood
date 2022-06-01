@@ -40,7 +40,15 @@ const getUserPage = async (req, res) => {
                 'result': { '$push': '$result.category_name' }
               }
             }, { '$unwind': '$result' }, 
-            { '$sort': { 'user_date': -1 } }
+            { '$sort': { 'user_date': -1 } },
+            { '$project': {
+              _id: 1,
+              user_name: 1,
+              age: 1,
+              user_date: { $dateToString: { format: "%Y-%m-%d %H:%M", date: "$user_date" } },
+              result: 1
+            } }
+
         ]);
         return res.status(200).json({
             name: user.name,
