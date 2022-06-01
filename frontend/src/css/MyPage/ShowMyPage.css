@@ -1,6 +1,6 @@
 .mypage_list {
     list-style: none;
-    font-family: "GyeonggiTitleM";
+    font-weight: bolder;
     background: rgb(241, 241, 241);
     height: 100%;
     padding-top: 55px;
@@ -80,6 +80,7 @@
     margin-bottom: 40px;
     cursor: pointer;
     font-size: 1.3rem;
+    font-weight: bolder;
     padding: 15px;
     border-radius: 36px;
 }
@@ -158,4 +159,37 @@ table {
 
 table:hover {
     background-color: #f3f2f2;
+}
+
+@media screen and (max-width: 1023px) {
+    .mypage_list {
+      padding-top: 0px;
+    }
+    .set_box_two {
+      word-break: keep-all;
+    }
+    .head_text, .likes_text{
+      padding-top: 0px;
+    }
+    .set_box_all{
+        padding-top: 0px;
+        margin: 0;
+        padding: 0;
+      display: block;
+      width: 90%;
+    }
+    .mypage_content {
+      width: 100%;
+    }
+    #btn_show_result {
+        padding-top: 0px;
+        width: 90%;
+    }
+    #likes_null {
+        padding-top: 0px;
+        padding-left: 20px;
+        width: 90%;
+        text-align: center;
+        align-items: center;
+    }
 }

@@ -40,11 +40,13 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
+    align-items: center;
+    padding-top: 200px;
   }
   
   .slide-navigation button:disabled {
     background-color: rgba(223, 223, 223, 0.689);
-    border: 1px solid rgba(219, 219, 219, 0.612);
+    border: 0.5px solid rgba(203, 202, 202, 0.345);
   }
 
 p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{

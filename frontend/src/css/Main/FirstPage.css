@@ -24,16 +24,16 @@
     justify-content: space-evenly;
     align-items: flex-end;
     padding-bottom: 20vh;
-    padding-right: 109px;
+    padding-right: 90px;
     padding-top: 230px;
 }
 
 /* 메인페이지 내 큰 글씨 */
 .main__intro__main> h2{
-    width:527px;
+    width:640px;
     font-family:'GyeonggiTitleM';
     line-height: 1.7;
-    font-weight: 500;
+    font-weight: 600;
     animation:fadeIn 3s ease-in-out;
     padding-bottom: 0px;
     font-size: 30px;
