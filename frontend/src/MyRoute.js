@@ -40,7 +40,7 @@ function MyRoute() {
           <Route path="/all" element={<All token={isLoggedIn} />} />
           <Route path="/form/survey/:id" element={<SurveyResult />} />
           <Route path="/ask" element={<Ask />} />
-          <Route path="/mypage" element={<MyPage />} />
+          <Route path="/mypage" element={<MyPage isLoggedIn={isLoggedIn} />} />
         </Route>
         <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
         <Route path="/form" element={<Form isLoggedIn={isLoggedIn} />} />
