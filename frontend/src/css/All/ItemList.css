@@ -21,6 +21,7 @@
   justify-content: space-around;
 }
 #search-input {
+  font-family: 'Noto Sans KR', sans-serif;
   border: none;
   border-radius: 50px;
   width: 61%;
@@ -49,6 +50,7 @@
 }
 
 .pageNumbers li {
+  font-family: 'Noto Sans KR', sans-serif;
   list-style: none;
   padding: 0;
   display: inline-block;

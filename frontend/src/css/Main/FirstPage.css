@@ -30,10 +30,9 @@
 
 /* 메인페이지 내 큰 글씨 */
 .main__intro__main> h2{
-    width:640px;
-    font-family:'GyeonggiTitleM';
+    width:570px;
     line-height: 1.7;
-    font-weight: 600;
+    font-weight: bold;
     animation:fadeIn 3s ease-in-out;
     padding-bottom: 0px;
     font-size: 30px;
@@ -51,16 +50,18 @@
 }
 
 .main__intro__>p{
-    padding-bottom: 10px;
-    width:610px;
+    padding-bottom: 60px;
+    width:710px;
     animation:fadeIn 3s ease-in-out;
     line-height: 1.7;
     text-align: right;
-    font-family:'GyeonggiTitleM' ;
+    font-weight: bold;
     font-size:21px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .startForm {
+    font-family: 'Noto Sans KR', sans-serif;
     border-radius: 40px;
     padding: 23px 40px;
     background-color: #ff9d00;
@@ -68,8 +69,7 @@
     color: rgb(245, 241, 241);
     font-size: 24px;
     cursor: pointer;
-    font-family: 'GyeonggiTitleM';
-    font-weight: 500;
+    font-weight: 900;
     position: relative;
 }
 

@@ -11,6 +11,7 @@
 }
 .item-card-text {
   padding-top :1%;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 .item-card {
   font-size: 15px;
@@ -30,6 +31,7 @@
 }
 .item-card-text > p{
   word-break: keep-all;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 
 #item-name{
@@ -61,6 +63,7 @@
     margin-top:0px;
     margin-bottom: 0px;
     font-size: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
   }
   .item-card{
     width:140px;
