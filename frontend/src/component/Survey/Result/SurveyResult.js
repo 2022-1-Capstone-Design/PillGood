@@ -10,10 +10,10 @@ const SurveyResult = () => {
   const getResult = async () => {
     await axios.get(`/survey/${id}`).then((res) => setResultData(res.data));
   };
-
+  console.log(resultData);
   useEffect(() => {
     getResult();
-  }, []); 
+  }, []);
   return (
     <div>
       {resultData[0] && (

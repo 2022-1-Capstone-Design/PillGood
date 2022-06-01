@@ -8,20 +8,10 @@ const SurveyLoading = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
     axios
-      .post(
-        "/survey",
-        { surveyAnswer },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-        { withCredentials: true }
-      )
+      .post("/survey", { surveyAnswer }, { withCredentials: true })
       .then((res) => {
-        navigate(`/form/survey/${res.data._id}`, true);
+        navigate(`/form/survey/${res.data._id}`, { replace: true });
       })
       .catch((err) => console.log(err));
   });

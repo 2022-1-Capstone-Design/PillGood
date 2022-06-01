@@ -207,7 +207,7 @@ const Survey = ({ isLoggedIn }) => {
       {
         state: { surveyAnswer },
       },
-      true
+      { replace: true }
     );
   };
 

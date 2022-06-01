@@ -38,7 +38,7 @@ const SurveyResultForm = ({ resultData, resultId }) => {
           </span>
           <span>
             <strong>BMI : </strong>
-            {resultData[0].BMI.bmi_figure}({resultData[0].BMI.bmi_result})
+            {resultData[0].BMI[0].bmi_figure}({resultData[0].BMI[0].bmi_result})
           </span>
           <span>
             <strong>검사일시 : </strong>
