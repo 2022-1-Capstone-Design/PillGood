@@ -1,7 +1,7 @@
 /* 첫번째 페이지 전체 설정 */
 .main{
     height:100vh;
-    width:100%;
+    width:100vw;
     background-color: rgb(169, 232, 248);
     background-image: url('../../image/medical.png');
     background-size: contain;

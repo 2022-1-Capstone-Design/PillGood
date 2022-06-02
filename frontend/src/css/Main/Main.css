@@ -58,3 +58,8 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
 .main__intro__background{
     transform: scaleX(-1);
 }
+
+@media screen and (max-width:780px) {
+  
+}
+

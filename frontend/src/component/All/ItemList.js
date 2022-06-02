@@ -154,7 +154,7 @@ const ItemList = () => {
             </div>
           )
         ) : loading ? (
-          <div>Loading...</div>
+          <div><img id="char3" src="images/char3.png" alt=""></img><br/>Loading..</div>
         ) : (
           <ShowItem
             products={currentPosts}

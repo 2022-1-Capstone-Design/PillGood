@@ -9,10 +9,10 @@ const FirstPage = ({ isLoggedIn }) => {
         <div className="main__intro__">
           <Fade right>
             <div className="main__intro__main">
-              <h2>
+              <h2><b>
                 약국에 방문하지 않아도, 검색을 하지 않아도 내 손 안의 헬스케어
                 전문 서비스 PillGood
-              </h2>
+                </b></h2>
             </div>
             <p>
               PillGood은 개인별 최적화된 영양제 맞춤 서비스를 제공합니다. <br />
