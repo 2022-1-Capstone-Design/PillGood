@@ -15,7 +15,9 @@ const SurveyLoading = () => {
       })
       .catch((err) => console.log(err));
   });
-  return <h1>loading</h1>;
+  return (
+  <div><img src="images/char4.png" alt=""></img><br/>loading..</div>
+  );
 };
 
 export default SurveyLoading;
