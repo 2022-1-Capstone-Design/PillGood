@@ -5,7 +5,7 @@ import CardItem from './CardItem';
 function Cards() {
   return (
     <div className='cards'>
-      <h1>Find out your nutritional needs with PillGood!</h1>
+      <span id="#card-text1">Find out your nutritional needs with PillGood!</span>
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
