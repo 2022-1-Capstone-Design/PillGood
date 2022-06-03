@@ -9,6 +9,7 @@ import ThirdPage from "./ThirdPage";
 import KakaoChat from "../KakaoChat";
 
 function Main({ isLoggedIn }) {
+  console.log("test");
   return (
     <div>
       <FullPage controls controlsProps={{ className: "slide-navigation" }}>
