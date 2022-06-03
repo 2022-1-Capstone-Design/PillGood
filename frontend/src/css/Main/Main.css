@@ -9,10 +9,12 @@
   }
 
 /*메인에 fullPage기능 css*/
-body {
+/* body {
     margin : 0;
-  }
-  
+    height:100vh;
+    weight:100vw;
+  } */
+
   
   .slide-navigation button:nth-child(1) {
     display: none;
@@ -58,8 +60,26 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
 .main__intro__background{
     transform: scaleX(-1);
 }
-
-@media screen and (max-width:780px) {
-  
+.section-third{
+  display:block;
 }
 
+@media screen and (max-width:720px){
+   .section-first{
+     height: 73%;
+   }
+   .section-third{
+     display:none;
+     height:0vh;
+   }
+   .thirdpage{
+     display:none;
+   }
+   .cards__item__info{
+     padding:0px;
+   }
+   .section-second{
+     display:none;
+   }
+  
+}
