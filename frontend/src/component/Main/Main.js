@@ -1,6 +1,7 @@
 import "../../css/Main/Main.css";
 import React from "react";
-import { FullPage, Slide } from "react-full-page";
+//import { FullPage, Slide } from "react-full-page";
+import ReactFullpage from '@fullpage/react-fullpage';
 import Cards from "../Cards";
 import Footer from "../Footer";
 import FirstPage from "./FirstPage";
@@ -11,28 +12,28 @@ import KakaoChat from "../KakaoChat";
 function Main({ isLoggedIn }) {
   return (
     <div>
-      <FullPage controls controlsProps={{ className: "slide-navigation" }}>
-        <Slide>
+      <ReactFullpage.Wrapper controls controlsProps={{ className: "slide-navigation" }}>
+        <div className="section-first">
           <FirstPage isLoggedIn={isLoggedIn} />
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-sectond">
           <SecondPage />
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-thrid">
           <ThirdPage />
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-cards">
           <Cards />
-        </Slide>
+        </div>
 
-        <Slide>
+        <div className="section-footer">
           <Footer />
-        </Slide>
+        </div>
         <KakaoChat />
-      </FullPage>
+      </ReactFullpage.Wrapper>
     </div>
   );
 }
