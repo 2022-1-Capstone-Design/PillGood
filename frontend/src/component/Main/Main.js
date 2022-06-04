@@ -11,6 +11,7 @@ import { useState, useEffect, useRef } from "react";
 
 const DIVIDER_HEIGHT = 5;
 
+
 function Main({ isLoggedIn }) {
   const outerDivRef = useRef();
   const [scrollIndex, setScrollIndex] = useState(1);
