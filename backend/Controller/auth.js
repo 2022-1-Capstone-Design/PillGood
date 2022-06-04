@@ -84,7 +84,7 @@ const verifyUser = async (req, res, next) => {
     const cookie = req.headers.cookie;
     if (cookie) {
       const token = cookie.split("=")[1];
-      const decryption = jwt.verify(token.split(';')[0], process.env.JWT_KEY);
+      const decryption = jwt.verify(token.split(";")[0], process.env.JWT_KEY);
       req.user = decryption.id;
     }
     next();

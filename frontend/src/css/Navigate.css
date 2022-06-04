@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 /* 로고 포함 네비바 */
 .navbar {
@@ -43,7 +43,7 @@ body {
 }
 .navbar__element li {
   padding-right: 60px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 900;
 }
 
@@ -94,8 +94,8 @@ body {
     position: relative;
   }
   .navbar_logo img {
-    padding-top: 2vh;
-    width: 100px;
+    padding-top: 2.5vh;
+    width: 120px;
   }
 
   .navbar__element {

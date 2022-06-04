@@ -16,7 +16,8 @@ const Kakao = () => {
     const data = {
       grant_type: "authorization_code",
       client_id: process.env.REACT_APP_KAKAO_KEY,
-      redirect_uri: "http://localhost:3000/auth/kakao/callback",
+      redirect_uri:
+        "http://ec2-54-224-198-233.compute-1.amazonaws.com/auth/kakao/callback",
       code: code,
     };
     const queryString = Object.keys(data)
