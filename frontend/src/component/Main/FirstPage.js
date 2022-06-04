@@ -1,25 +1,11 @@
 import { Link } from "react-router-dom";
 import "../../css/Main/FirstPage.css";
-import { useRef,useCallback,useEffect,useState} from 'react';
 const FirstPage = ({ isLoggedIn }) => {
-  let style="";
-  const element = useRef();
-  const addFadeIn=()=>{
-      if(element){
-       style="fadeInRight";
-       console.log(style);
-      }    
-  }
-  useEffect(()=>{
-    console.log(element);
-    addFadeIn();
-  },[])
-
-
+  
   return (
     <div className="main">
       <div className="main__intro">
-        <div className= "main__intro__" ref={element}>
+        <div className= "main__intro__">
             <div className="main__intro__main" >
                 <span id="text1">약국에 방문하지 않아도, 검색을 하지 않아도 </span> <br/>
                 <span id="text2">내 손 안의 헬스케어 전문 서비스 PillGood </span>
