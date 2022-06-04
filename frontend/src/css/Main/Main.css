@@ -30,7 +30,7 @@
   }
   
   .inner {
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,10 +38,6 @@
   
   .bg-yellow {
     background-color: #f7f6cf;
-  }
-  
-  .bg-blue {
-    background-color: #b6d8f2;
   }
   
   .bg-pink {

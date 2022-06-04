@@ -14,15 +14,16 @@
     align-items: center;
     background-color:aliceblue;
     justify-content: center;
-    padding-top:40px;
+
     font-family: 'Noto Sans KR', sans-serif;
 }
-.thirdpage>h1{
+#third-text1{
     text-align: center;
     margin-top: 40px;
     margin-bottom: 0px;
+    border-bottom: 2px solid rgb(255, 69, 12);
 }
-.thirdpage>h1:after{
+#third-text1{
     content: "";
     display: block;
     width: 30%;
@@ -34,7 +35,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-top: 10px;
+    padding-top: 3%;
 }
 .circle1, 
 .circle2{
@@ -83,27 +84,14 @@
     margin-right: 0px;
     background-color: rgb(255, 255, 255);
 }
-.thirdpage__text1,
-.thirdpage__text2{
-    background-color: rgb(243, 220, 224);
-    box-shadow: 0px 0px 20px 1px rgb(200, 200, 200);
-    width:400px;
-    height:300px;
-    margin:0px 50px;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-.thirdpage__text1>p,
-.thirdpage__text2>p{
+
+.third-text2-p{
     font-size: 18px;
     color:rgb(56, 55, 55);
     font-weight:600;
     padding-top: 10px;
 }
-.thirdpage__text1>h2,
-.thirdpage__text2>h2{
+third-text2{
     margin-top: 10px;
     padding-top: 40px;
     border-bottom: 2px solid rgb(255, 69, 12);
@@ -114,4 +102,35 @@
        display: none;
        
     }
+    
 }
+@media screen and (max-width:1299px){
+    .thirdpage{
+        padding-top: 10%;
+        justify-content: center;
+    }
+    .thirdpage__second{
+        margin-left:0px;
+    }
+    #third-text1{
+        font-size: 22px;
+        width:50%;
+    }
+    .thirdpage__second{
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .third-text2-p{
+        font-size: 15px;
+        width:333px;
+    }
+    .thirdpage__first, .thirdpage__second {
+    font-size: 20px;
+    color: #ff6124;
+    font-weight: bold;
+    }
+    .thirdpage__{
+        padding-top: 3%;
+    }
+}
+

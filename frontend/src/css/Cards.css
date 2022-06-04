@@ -1,7 +1,7 @@
 .cards {
   padding: 4rem;
   background: #fff;
-  height: 100vh;
+  /* height: 100vh; */
 
 }
 
@@ -135,5 +135,8 @@ h1 {
   }
   #card-text1{
     font-size: 40%;
+  }
+  .cards__wrapper{
+    margin-bottom: 122%;
   }
 }
