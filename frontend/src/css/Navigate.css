@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 /* 로고 포함 네비바 */
 .navbar {
@@ -31,7 +31,7 @@ body {
   display: inline-block;
   width: 150px;
   text-align: center;
-  padding-left: 60px;
+  padding-left: 20px;
 }
 
 .navbar__element {
@@ -43,7 +43,7 @@ body {
 }
 .navbar__element li {
   padding-right: 60px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 900;
 }
 
@@ -69,11 +69,12 @@ body {
 .menu .line {
   display: block;
   width: 40px;
-  height: 3px;
+  height: 2.5px;
   background-color: #000;
   margin-block: 10px;
   border-radius: 4px;
   transition: transform 0.5s, opacity 0.25s;
+  margin-right: 10px;
 }
 .menu.active .line:nth-child(1) {
   transform: translateY(13px) rotate(45deg);
@@ -93,8 +94,8 @@ body {
     position: relative;
   }
   .navbar_logo img {
-    padding-top: 2vh;
-    width: 100px;
+    padding-top: 2.5vh;
+    width: 120px;
   }
 
   .navbar__element {

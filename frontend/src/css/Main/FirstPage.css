@@ -1,7 +1,7 @@
 /* 첫번째 페이지 전체 설정 */
 .main{
     height:100vh;
-    width:100%;
+    width:100vw;
     background-color: rgb(169, 232, 248);
     background-image: url('../../image/medical.png');
     background-size: contain;
@@ -9,6 +9,7 @@
     display:flex;
     flex-direction: column;
     justify-content: space-between;
+
 }
 /* 폰트 적용 */
 @font-face {
@@ -21,56 +22,107 @@
 .main__intro__{
     display:flex;
     flex-direction: column;
-    justify-content: space-evenly;
     align-items: flex-end;
-    padding-bottom: 20vh;
-    padding-right: 90px;
-    padding-top: 230px;
+    padding-right: 10%;
+    height:100vh;
+    justify-content: center;
 }
-
+.main__intro{
+    height:100%;
+}
 /* 메인페이지 내 큰 글씨 */
-.main__intro__main> h2{
-    width:570px;
+#text1,
+#text2{
     line-height: 1.7;
     font-weight: bold;
     animation:fadeIn 3s ease-in-out;
     padding-bottom: 0px;
-    font-size: 30px;
+    font-size:2.5vw;
     text-align: right;
 }
-
+#text3,
+#text4{
+line-height: 1.7;
+    font-weight: bold;
+    animation: fadeIn 3s ease-in-out;
+    padding-bottom: 0px;
+    font-size: 1.6vw;
+    text-align: right;
+}
+.main__intro__main{
+    padding-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    padding-top:10%;
+}
+@media screen and (min-width:721px){
+    .startForm{
+        margin-top: 15%;
+        font-size: 152%;
+    }
+    .main__intro__main2{
+        width:101%;
+    }
+    #text1,#text2{
+        font-size:3vw;
+    }
+    #text3, #text4{
+        font-size: 1.6vw;
+    }
+    .main{
+        background-image: none;
+    }
+}
+@media screen and (min-width:1000px){
+    .startForm,
+    .main__intro__main,
+    .main__intro__main2{
+        padding:2% 2%;
+    }
+    #text1,
+    #text2{
+        font-size: 4vh;
+        font-weight: 300;
+    }
+    .main{
+    background-image: url('../../image/medical.png');
+    
+    } 
+}
+ 
 /* 화면 너비가 줄어들 경우 반응형으로 메뉴바 나오도록 */
-@media screen and (max-width:780px){
+@media screen and (max-width:720px){
     .main{
         background-color: rgb(169, 232, 248);
+        background-image: none;
     }
     .main__intro{
         display: none;
     }
 }
 
-.main__intro__>p{
-    padding-bottom: 60px;
-    width:710px;
+.main__intro__main2{
+    padding-bottom: 3%;
+    width:54%;
     animation:fadeIn 3s ease-in-out;
     line-height: 1.7;
     text-align: right;
     font-weight: bold;
-    font-size:21px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
 .startForm {
     font-family: 'Noto Sans KR', sans-serif;
-    border-radius: 40px;
-    padding: 23px 40px;
+    border-radius: 50px;
+    padding: 4% 6%;
     background-color: #ff9d00;
     border: 0px;
     color: rgb(245, 241, 241);
-    font-size: 24px;
+    font-size: 1.5vw;
     cursor: pointer;
     font-weight: 900;
     position: relative;
+    margin-top:4%;
 }
 
 @keyframes updown{

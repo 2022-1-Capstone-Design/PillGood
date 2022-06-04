@@ -3,6 +3,8 @@
 }
 
 .contents__category__btn {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 900;
   margin: 10px 20px;
   font-size: 20px;
   padding: 10px 0px;
@@ -11,6 +13,7 @@
   background-color: #f4bfbf;
   cursor: pointer;
   color: #000;
+  border: none;
 }
 .contents__category {
   padding: 10px 0px;
@@ -58,6 +61,7 @@
 }
 .contents__details__nutrients li,
 .contents__details__one__choose__pillImg {
+  font-size: 18px;
   margin: 0px 8%;
 }
 .contents__details__one__choose {

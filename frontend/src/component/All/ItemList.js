@@ -101,6 +101,21 @@ const ItemList = () => {
     }
   };
 
+  const handleDoubleNextbtn = () => {
+    setCurrentPage(currentPage + pageNumberLimit);
+    if (currentPage + pageNumberLimit > maxPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
+    }
+  };
+  const handleDoublePrevbtn = () => {
+    setCurrentPage(currentPage - pageNumberLimit);
+    if (currentPage - pageNumberLimit < minPageNumberLimit) {
+      setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
+      setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
+    }
+  };
+
   let pageIncrementBtn = null;
   if (pageNumber.length > maxPageNumberLimit) {
     pageIncrementBtn = <li onClick={handleNextbtn}>&hellip;</li>;
@@ -154,7 +169,7 @@ const ItemList = () => {
             </div>
           )
         ) : loading ? (
-          <div>Loading...</div>
+          <div><img id="char3" src="images/char3.png" alt=""></img><br/>Loading..</div>
         ) : (
           <ShowItem
             products={currentPosts}
@@ -165,12 +180,20 @@ const ItemList = () => {
         )}
       </div>
       <ul className="pageNumbers">
+      <li>
+          <button
+            onClick={handleDoublePrevbtn}
+            disabled={currentPage === pageNumber[0] || currentPage <= pageNumber[4] ? true : false}
+          >
+          &lt;&lt;
+          </button>
+        </li>
         <li>
           <button
             onClick={handlePrevbtn}
             disabled={currentPage === pageNumber[0] ? true : false}
           >
-            &lt;&lt;
+            &lt;
           </button>
         </li>
         {pageDecrementBtn}
@@ -183,7 +206,15 @@ const ItemList = () => {
               currentPage === pageNumber[pageNumber.length - 1] ? true : false
             }
           >
-            &gt;&gt;
+            &gt;
+          </button>
+        </li>
+        <li>
+          <button
+            onClick={handleDoubleNextbtn}
+            disabled={currentPage === pageNumber[pageNumber.length - 1] || currentPage >= pageNumber[60] ? true : false}
+          >
+          &gt;&gt;
           </button>
         </li>
       </ul>
