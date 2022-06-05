@@ -11,7 +11,6 @@ import { useState, useEffect, useRef } from "react";
 
 const DIVIDER_HEIGHT = 5;
 
-
 function Main({ isLoggedIn }) {
   const outerDivRef = useRef();
   const [scrollIndex, setScrollIndex] = useState(1);
@@ -129,6 +128,7 @@ function Main({ isLoggedIn }) {
   }, []);
   return (
     <div ref={outerDivRef} className="outer">
+      <h1>asdf</h1>
       <Dots scrollIndex={scrollIndex} />
       <div className="inner bg-yellow">
         <FirstPage />
