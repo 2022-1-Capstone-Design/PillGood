@@ -128,7 +128,6 @@ function Main({ isLoggedIn }) {
   }, []);
   return (
     <div ref={outerDivRef} className="outer">
-      <h1>asdf</h1>
       <Dots scrollIndex={scrollIndex} />
       <div className="inner bg-yellow">
         <FirstPage />
