@@ -49,6 +49,7 @@ const login = async (req, res) => {
         maxAge: req.body.expires_in * 1000,
         sameSite: "none",
         secure: true,
+        domain: ".pillgood.ml",
       });
 
     return res.status(created ? 201 : 200).json({ success: true });
