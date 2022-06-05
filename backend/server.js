@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config({ path: "../frontend/.env" });
 
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 // Router
 const authRouter = require("./Router/auth");
 const surveyRouter = require("./Router/survey");
@@ -13,7 +13,7 @@ const myPageRouter = require("./Router/myPage");
 const app = express();
 
 // Body-Parser
-app.use(bodyParser.json( ));
+app.use(bodyParser.json());
 
 // DB
 const connect = require("./Schemas");
@@ -21,6 +21,12 @@ const connect = require("./Schemas");
 // DB 연결
 connect();
 
+app.use(
+  cors({
+    origin: ["http://pillgood.ml"],
+    credentials: true,
+  })
+);
 // Router 연결
 app.use("/test", authRouter); //경로 잠깐 바꿔놨습니다
 app.use("/survey", surveyRouter);
