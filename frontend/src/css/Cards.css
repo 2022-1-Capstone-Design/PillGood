@@ -1,7 +1,7 @@
 .cards {
   padding: 4rem;
   background: #fff;
-  /* height: 100vh; */
+  height: 80%;
 
 }
 
@@ -28,6 +28,7 @@ h1 {
 
 .cards__items {
   margin-bottom: 24px;
+  display: flex;
 }
 
 .cards__item {
@@ -116,6 +117,11 @@ h1 {
 @media only screen and (min-width: 1024px) {
   .cards__items {
     display: flex;
+    padding-top:4%
+  }
+  .cards{
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -138,5 +144,8 @@ h1 {
   }
   .cards__wrapper{
     margin-bottom: 122%;
+  }
+  .cards{
+    height:180%
   }
 }

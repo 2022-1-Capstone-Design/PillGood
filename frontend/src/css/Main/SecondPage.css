@@ -100,10 +100,10 @@
 }
 @media screen and (min-width:531px) and (max-width:702px) {
     .secondpage__left{
-       padding-top:9%;
+       padding-top:2%;
     }
     .secondpage__img{
-        width:92vw;
+        width:66%;
         padding-top: 2vh;
     }
     .secondpage{
@@ -111,12 +111,13 @@
     }
     #secondpage_text3{
         padding-bottom: 8px;
+        font-size: medium;
     }
     #secondpage_text2{
-        font-size: 5vw;
+        font-size: large;
     }
     #secondpage_text1{
-        font-size: 3.5vw;
+        font-size: 2vh;
     }
     .startForm{
         font-size:2.5vw ;
@@ -124,23 +125,23 @@
 }
 @media screen and (min-width:703px) and (max-width:1023px){
     #secondpage_text3{
-        font-size: 2.8vw;
-        padding-top: 5%;
+        font-size: 2vw;
+        padding-top: 2%;
     }
     .secondpage__img{
-        width:67vw;
+        width:55%;
     }
     #secondpage_text2{
-        font-size: 4vw;
+        font-size: 3vw;
     }
     .secondpage__left{
-        padding-top: 20vh;
+        padding-top: 2%;
     }
     .secondpage{
         justify-content: flex-start;
     }
     #secondpage_text1{
-        font-size: 2.5vw;
+        font-size: 2vw;
     }
     .startForm{
         font-size:2.5vw ;
@@ -160,11 +161,11 @@
         font-size: 2vw;
     }
     .secondpage__img{
-        width:69%;
+        width:50%;
     }
     .secondpage__left{
         justify-content: center;
-        padding-top:0vh;
+        padding-top:3vw;
     }
 }
 @media screen and (min-width:1300px) and (max-width:1704px) {

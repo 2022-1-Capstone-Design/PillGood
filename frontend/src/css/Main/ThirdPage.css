@@ -106,13 +106,13 @@ third-text2{
 }
 @media screen and (max-width:1299px){
     .thirdpage{
-        padding-top: 10%;
         justify-content: center;
     }
     .thirdpage__second{
         margin-left:0px;
     }
     #third-text1{
+        padding-top: 3%;
         font-size: 22px;
         width:50%;
     }
@@ -130,7 +130,7 @@ third-text2{
     font-weight: bold;
     }
     .thirdpage__{
-        padding-top: 3%;
+        padding-top: 1%;
     }
 }
 
