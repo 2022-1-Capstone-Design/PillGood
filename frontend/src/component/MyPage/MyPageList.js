@@ -10,7 +10,7 @@ const MyPageList = () => {
     const loadData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/myPage", {
+        const res = await axios.get("http://api.pillgood.ml/myPage", {
           withCredentials: true,
         });
         setMyPageData(res.data);
