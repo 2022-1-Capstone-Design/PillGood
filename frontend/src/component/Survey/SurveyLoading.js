@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import image from "../../../public/images/char4.png";
 
 const SurveyLoading = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const SurveyLoading = () => {
   });
   return (
     <div>
-      <img src="images/char4.png" alt=""></img>
+      <img src={image} alt="loading"></img>
       <br />
       loading..
     </div>
