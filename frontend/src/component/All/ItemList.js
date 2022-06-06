@@ -54,9 +54,12 @@ const ItemList = () => {
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
   const axiosData = async () => {
     try {
-      const response = await axios.get("/product" + location.search, {
-        withCredentials: true,
-      });
+      const response = await axios.get(
+        "http://pillgood.ml/product" + location.search,
+        {
+          withCredentials: true,
+        }
+      );
       setLikeArray(response.data.likes);
       setProducts(response.data.products);
       setLoading(false);
