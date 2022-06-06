@@ -78,7 +78,7 @@ const addLike = async (req, res) => {
 
 const deleteLike = async (req, res) => {
   try {
-    Like.deleteOne({
+    await Like.deleteOne({
       user_id: req.user,
       product_id: req.body.productId,
     });
