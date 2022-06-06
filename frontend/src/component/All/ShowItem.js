@@ -31,9 +31,15 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           text: "관심상품 더 알아보러 가볼까요? 😲",
         });
         axios
-          .delete("http://pillgood.ml/product", {
-            data: { productId: `${id}` },
-          })
+          .delete(
+            "http://api.pillgood.ml/product",
+            {
+              data: { productId: `${id}` },
+            },
+            {
+              withCredentials: true,
+            }
+          )
           .then(console.log("delete 성공"))
           .catch((error) => {
             console.log(error);
@@ -47,9 +53,15 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           text: "관심상품은 마이페이지에서 확인할 수 있어요 😊",
         });
         axios
-          .post("http://pillgood.ml/product", {
-            productId: `${id}`,
-          })
+          .post(
+            "http://api.pillgood.ml/product",
+            {
+              productId: `${id}`,
+            },
+            {
+              withCredentials: true,
+            }
+          )
           .then(() => {})
           .catch((error) => {
             console.log(error);
