@@ -1,11 +1,10 @@
 .footer-container {
     background-color: #FAE069;
-    padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
+    height: 100%;
     width: 100%;
     padding-top: 0px;
   }
@@ -160,6 +159,9 @@
   
     .social-media-wrap {
       flex-direction: column;
+    }
+    .footer-container{
+      height:auto;
     }
   }
   

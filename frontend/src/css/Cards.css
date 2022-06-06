@@ -1,5 +1,4 @@
 .cards {
-  padding: 4rem;
   background: #fff;
   height: 80%;
 
@@ -37,7 +36,9 @@ h1 {
   margin: 0 3rem;
   border-radius: 10px;
 }
-
+#card-text1{
+  padding:1rem;
+}
 .cards__item__link {
   display: flex;
   flex-flow: column;
@@ -106,6 +107,7 @@ h1 {
   font-size: 16px;
   line-height: 24px;
   width: 400px;
+  text-align: center;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -117,11 +119,17 @@ h1 {
 @media only screen and (min-width: 1024px) {
   .cards__items {
     display: flex;
-    padding-top:4%
+    padding-left: 0px;
   }
   .cards{
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #card-text1{
+    padding-top:60px; 
+    padding-bottom:17px;
   }
 }
 
