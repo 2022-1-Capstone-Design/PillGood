@@ -54,7 +54,9 @@ const ItemList = () => {
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
   const axiosData = async () => {
     try {
-      const response = await axios.get("/product" + location.search);
+      const response = await axios.get("/product" + location.search, {
+        withCredentials: true,
+      });
       setLikeArray(response.data.likes);
       setProducts(response.data.products);
       setLoading(false);
@@ -141,17 +143,17 @@ const ItemList = () => {
             searchPill(e);
           }}
         >
-            <button id="search-icon" type="submit">
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-            <input
-              type="text"
-              name="pname"
-              placeholder="영양제 검색하기"
-              value={search}
-              onChange={writePill}
-              id="search-input"
-            />
+          <button id="search-icon" type="submit">
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+          <input
+            type="text"
+            name="pname"
+            placeholder="영양제 검색하기"
+            value={search}
+            onChange={writePill}
+            id="search-input"
+          />
         </form>
       </div>
 
@@ -169,23 +171,30 @@ const ItemList = () => {
             </div>
           )
         ) : loading ? (
-          <div><img id="char3" src="images/char3.png" alt=""></img><br/>Loading..</div>
+          <div>
+            <img id="char3" src="images/char3.png" alt=""></img>
+            <br />
+            Loading..
+          </div>
         ) : (
           <ShowItem
             products={currentPosts}
             loading={loading}
             likeItArray={likeArray}
-            
           />
         )}
       </div>
       <ul className="pageNumbers">
-      <li>
+        <li>
           <button
             onClick={handleDoublePrevbtn}
-            disabled={currentPage === pageNumber[0] || currentPage <= pageNumber[4] ? true : false}
+            disabled={
+              currentPage === pageNumber[0] || currentPage <= pageNumber[4]
+                ? true
+                : false
+            }
           >
-          &lt;&lt;
+            &lt;&lt;
           </button>
         </li>
         <li>
@@ -212,9 +221,14 @@ const ItemList = () => {
         <li>
           <button
             onClick={handleDoubleNextbtn}
-            disabled={currentPage === pageNumber[pageNumber.length - 1] || currentPage >= pageNumber[60] ? true : false}
+            disabled={
+              currentPage === pageNumber[pageNumber.length - 1] ||
+              currentPage >= pageNumber[60]
+                ? true
+                : false
+            }
           >
-          &gt;&gt;
+            &gt;&gt;
           </button>
         </li>
       </ul>
