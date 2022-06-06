@@ -5,7 +5,7 @@ export function Logout() {
 
   // };
   axios
-    .post("/test/kakao/logout")
+    .post("http://api.pillgood.ml/test/kakao/logout", { withCredentials: true })
     .then((res) => {
       if (res.data.success) {
         // deleteCookie();

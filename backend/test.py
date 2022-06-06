@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+# -*- coding: euc-kr -*-
 import pandas as pd
 import numpy as np
 import copy

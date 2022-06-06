@@ -87,7 +87,7 @@ const getResult = async (req, res) => {
 
     console.log(result);
     const spawn = require("child_process").spawn;
-    const python = spawn("python", ["example.py", JSON.stringify(result)]);
+    const python = spawn("python3", ["example.py", JSON.stringify(result)]);
     python.stdout.on("data", (data) => {
       let buff = Buffer.from(data, "base64");
       let text = buff.toString("utf-8");

@@ -17,7 +17,7 @@ function Auth({ isLoggedIn }) {
       <Link to="/">
         <img src={logo} alt="pillgood logo" />
       </Link>
-      <a href={process.env.REACT_APP_KAUTH_URL}>
+      <a href="https://kauth.kakao.com/oauth/authorize?client_id=326cd91121ead061d9c149f8690d1706&redirect_uri=http://pillgood.ml/auth/kakao/callback&response_type=code">
         <button>
           <img src={imgLogin} alt="kakao Login button" />
         </button>
