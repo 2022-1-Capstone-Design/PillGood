@@ -34,7 +34,7 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           .delete(
             "http://api.pillgood.ml/product",
             {
-              productId: `${id}`,
+              data: { productId: `${id}` },
             },
             {
               withCredentials: true,
