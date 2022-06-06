@@ -9,14 +9,22 @@ const SurveyLoading = () => {
 
   useEffect(() => {
     axios
-      .post("/survey", { surveyAnswer }, { withCredentials: true })
+      .post(
+        "http://api.pillgood.ml/survey",
+        { surveyAnswer },
+        { withCredentials: true }
+      )
       .then((res) => {
         navigate(`/form/survey/${res.data._id}`, { replace: true });
       })
       .catch((err) => console.log(err));
   });
   return (
-  <div><img src="images/char4.png" alt=""></img><br/>loading..</div>
+    <div>
+      <img src="images/char4.png" alt=""></img>
+      <br />
+      loading..
+    </div>
   );
 };
 
