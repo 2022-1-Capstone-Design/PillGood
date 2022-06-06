@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import Fade from "react-reveal/Fade";
 import "../../css/Main/FirstPage.css";
-
 const FirstPage = ({ isLoggedIn }) => {
+  
   return (
     <div className="main">
       <div className="main__intro">
-        <div className="main__intro__">
-          <Fade right>
-            <div className="main__intro__main">
+        <div className= "main__intro__">
+            <div className="main__intro__main" >
                 <span id="text1">약국에 방문하지 않아도, 검색을 하지 않아도 </span> <br/>
                 <span id="text2">내 손 안의 헬스케어 전문 서비스 PillGood </span>
             </div>
@@ -23,7 +21,6 @@ const FirstPage = ({ isLoggedIn }) => {
                 value="내 몸에 필요한 바른 영양소 자가진단, 지금 시작하기"
               />
             </Link>
-          </Fade>
         </div>
       </div>
     </div>

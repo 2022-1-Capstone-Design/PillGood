@@ -6,14 +6,26 @@
         transform: translatey(-20px);
       }
 }
+@keyframes fadeInUp{
+    0%{
+        opacity: 0;
+        transform: translate3d(0,100%,0);
+    }
+    to{
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
 .secondpage{
     background-color: white;
-    height:100vh;
+    height:100%;
     width:100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    animation:fadeInUp 1s;
 }
 /* 텍스트 중 상단 텍스트 */
 #secondpage_text1{
@@ -59,37 +71,88 @@
     text-align: center;
     font-size:8vw;
 }
-@media screen and (max-width:1299px){
-    .main__intro{
-        /* display: none; */
+@media screen and (max-width:449px) {
+    .secondpage__img{
+        padding-bottom: 31%;
     }
     #secondpage_text2{
         font-size: 5vw;
     }
-    #secondpage_text1{
-        font-size: 3vw;
+    .secondpage__left{
+        padding-top: 3vh;
+        justify-content: flex-start;
     }
-    #secondpage_text3{
-        font-size: 4vw;;
+}
+@media screen and (min-width:450px)and (max-width:530px){
+    .secondpage__left{
+        padding-top: 14vh;
+    }
+    #secondpage_text1{
+        font-size: 4.0vw;
     }
     .secondpage{
-        height:85vh;
-        padding-top:9vh;
+        justify-content: center;
+        padding-bottom: 46%;
     }
+    .startForm{
+        font-size:2.5vw ;
+    }
+}
+@media screen and (min-width:531px) and (max-width:702px) {
     .secondpage__left{
-        padding-top:3vh;
+       padding-top:2%;
     }
-    
-}
-@media screen and (min-width:721px){
-   
-}
-@media screen and (min-width:1000px){
-    #secondpage_text1{
-        font-size: 1.5vw;
+    .secondpage__img{
+        width:66%;
+        padding-top: 2vh;
+    }
+    .secondpage{
+        justify-content: flex-start;
+    }
+    #secondpage_text3{
+        padding-bottom: 8px;
+        font-size: medium;
     }
     #secondpage_text2{
-        font-size:2.7vw;
+        font-size: large;
+    }
+    #secondpage_text1{
+        font-size: 2vh;
+    }
+    .startForm{
+        font-size:2.5vw ;
+    }
+}
+@media screen and (min-width:703px) and (max-width:1023px){
+    #secondpage_text3{
+        font-size: 2vw;
+        padding-top: 2%;
+    }
+    .secondpage__img{
+        width:55%;
+    }
+    #secondpage_text2{
+        font-size: 3vw;
+    }
+    .secondpage__left{
+        padding-top: 2%;
+    }
+    .secondpage{
+        justify-content: flex-start;
+    }
+    #secondpage_text1{
+        font-size: 2vw;
+    }
+    .startForm{
+        font-size:2.5vw ;
+    }
+}
+@media screen and (min-width:1024px) and (max-width:1299px) {
+    #secondpage_text1{
+        font-size: 1.0vw;
+    }
+    #secondpage_text2{
+        font-size:1.7vw;
     }
     #secondpage_text3{
         padding-bottom: 2%;
@@ -98,23 +161,56 @@
         font-size: 2vw;
     }
     .secondpage__img{
-        width:89%;
+        width:50%;
+    }
+    .secondpage__left{
+        justify-content: center;
+        padding-top:3vw;
     }
 }
-@media screen and (max-width:1636px){
-    #secondpage_text1{
-        font-size: 1.3vw;
-    }
+@media screen and (min-width:1300px) and (max-width:1704px) {
+   
     #secondpage_text2{
-        font-size:2.7vw;
+        font-size: 2vw;
+    }
+    #secondpage_text1{
+        font-size: 1vw;
     }
     #secondpage_text3{
-        padding-bottom: 2%;
-        padding-top:10%;
-        margin-top:-8%;
-        font-size: 1.8vw;
+        font-size: 2vw;
+        padding-top: 2%;
+    }
+    .secondpage{
+        justify-content: center;
+    }
+    .secondpage__left{
+        padding-top:3vh;
     }
     .secondpage__img{
-        width:95%;
+        width:32vw;
     }
+    
+}
+@media screen and (min-width:1705px) and (max-width:3000px)  {
+   
+    #secondpage_text2{
+        font-size: 5vh;
+    }
+    #secondpage_text1{
+        font-size: 1vw;
+    }
+    #secondpage_text3{
+        font-size: 1.8vh;
+        padding-top: 2%;
+    }
+    .secondpage{
+        justify-content: center;
+    }
+    .secondpage__left{
+        padding-top:3vh;
+    }
+    .secondpage__img{
+        width:85vh;
+    }
+    
 }
