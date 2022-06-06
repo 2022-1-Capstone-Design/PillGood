@@ -72,8 +72,8 @@ const logout = async (req, res) => {
         Authorization: `Bearer ${token.access_token}`,
       },
     });
-    res.clearCookie("token");
-    res.clearCookie("check");
+    res.clearCookie("token", { domain: ".pillgood.ml", path: "/" });
+    res.clearCookie("check", { domain: ".pillgood.ml", path: "/" });
     return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({
