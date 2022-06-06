@@ -10,7 +10,9 @@ const MyPageList = () => {
     const loadData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("/myPage")
+        const res = await axios.get("/myPage", {
+          withCredentials: true,
+        });
         setMyPageData(res.data);
         console.log(res.data);
         setLoading(false);
@@ -22,7 +24,6 @@ const MyPageList = () => {
     loadData().then(() => console.log("success"));
   }, []);
 
-
   if (loading) {
     return <div>대기중</div>;
   }
@@ -32,7 +33,7 @@ const MyPageList = () => {
 
   return (
     <div>
-        <ShowMyPage myPageData={myPageData} loading={loading} />
+      <ShowMyPage myPageData={myPageData} loading={loading} />
     </div>
   );
 };
