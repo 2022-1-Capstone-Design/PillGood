@@ -7,7 +7,10 @@
 h1 {
   text-align: center;
 }
-
+#cards-text1{
+  padding-top:60px; 
+  padding-bottom:17px;
+}
 .cards__container {
   display: flex;
   flex-flow: column;
@@ -36,7 +39,7 @@ h1 {
   margin: 0 3rem;
   border-radius: 10px;
 }
-#card-text1{
+#cards-text1{
   padding:1rem;
 }
 .cards__item__link {
@@ -110,11 +113,6 @@ h1 {
   text-align: center;
 }
 
-@media only screen and (min-width: 1000px) {
-  .content__blog__container {
-    width: 84%;
-  }
-}
 
 @media only screen and (min-width: 1024px) {
   .cards__items {
@@ -127,8 +125,13 @@ h1 {
     flex-direction: column;
     justify-content: center;
   }
-  #card-text1{
-    padding-top:60px; 
+  
+  .content__blog__container {
+    width: 84%;
+    
+  }
+  #cards-text1{
+    padding-top:7%; 
     padding-bottom:17px;
   }
 }
