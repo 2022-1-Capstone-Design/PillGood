@@ -4,7 +4,6 @@ import ModalData from "./ModalData";
 const SurveyResultCategoryContent=({item, index})=>{
     const [modalIsOpen,setModalIsOpen]=useState(false);
     const [productData, setProductData]=useState({});
-
     return(
         <div className="contents__details__one__choose__pillImg">
             <div className="imgBox">
@@ -17,7 +16,7 @@ const SurveyResultCategoryContent=({item, index})=>{
                 />
             </div>
             {index===1? 
-            <ModalData product={productData} modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen}/>
+            <ModalData product={productData}  modalIsOpen={modalIsOpen}  setModalIsOpen={setModalIsOpen} />
             :null}
            
            {index===1?

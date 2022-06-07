@@ -1,12 +1,11 @@
 import Modal from 'react-modal';
-import React,{useMemo, useRef, useState} from "react";
+import React,{useMemo, useRef, useState,useEffect} from "react";
 import '../../../../css/Survey/Result/ModalData.css';
 
 Modal.setAppElement('#root');
 
 const ModalData=({product, modalIsOpen, setModalIsOpen})=>{
-  const comment=" ";
- 
+  const comment=" "; 
   const [showMore, setShowMore]=useState(false);
   const textLimit=useRef(10);
 
@@ -24,6 +23,18 @@ const ModalData=({product, modalIsOpen, setModalIsOpen})=>{
     }
     
   },[showMore]);
+
+  useEffect(()=>{
+     if(modalIsOpen){
+       document.body.style.overflow="hidden";
+       document.body.style.touchAction="none";
+       document.querySelector('.navbar').style.display="none";
+     }else{
+       document.body.style.overflow="unset";
+       document.body.style.touchAction="auto";
+       document.querySelector('.navbar').style.display="flex";
+     }
+  },[modalIsOpen])
 
   return(
     <Modal 
