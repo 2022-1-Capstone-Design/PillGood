@@ -17,6 +17,43 @@ const ShowMyPage = ({ myPageData }) => {
     autoplay: true, // 자동 스크롤 사용 여부
     autoplaySpeed: 3000,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+            slidesToShow: 7,
+            slidesToScroll: 7
+        }
+    },
+    {
+        breakpoint: 1024,
+        settings: {
+            slidesToShow: 5,
+            slidesToScroll: 5
+        }
+    },
+    {
+        breakpoint: 720,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3
+        }
+    },
+    {
+        breakpoint: 480,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+        }
+    },
+    {
+        breakpoint: 320,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+        }
+    }
+    ]
   };
 
   //   <button id="btn_delete">✖</button>

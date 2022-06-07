@@ -8,6 +8,7 @@ h1 {
   text-align: center;
 }
 #cards-text1{
+  align-items : column;
   padding-top:60px; 
   padding-bottom:17px;
 }
