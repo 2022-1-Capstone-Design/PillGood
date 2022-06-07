@@ -9,11 +9,14 @@ const SurveyLoading = () => {
 
   useEffect(() => {
     axios
+      .post("/survey", { surveyAnswer }, { withCredentials: true })
+      /*
       .post(
         "http://api.pillgood.ml/survey",
         { surveyAnswer },
         { withCredentials: true }
       )
+      */
       .then((res) => {
         navigate(`/form/survey/${res.data._id}`, { replace: true });
       })
