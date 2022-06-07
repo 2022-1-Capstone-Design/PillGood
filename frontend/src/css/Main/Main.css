@@ -38,13 +38,13 @@
 
   
   .bg-pink {
-    background-color: #f4cfdf;
+    background-color: #ffffff;
   }
   
   .divider {
     width: 100%;
-    height: 5px;
-    background-color: gray;
+    height: 2px;
+    background-color: rgb(255, 255, 255);
   }
 p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
   font-family: 'Noto Sans KR', sans-serif;
@@ -73,5 +73,8 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
    .section-second{
      display:none;
    }
+   .bg-pink {
+      height: 70%;
+  }
   
 }

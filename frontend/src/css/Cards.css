@@ -154,6 +154,7 @@ h1 {
   }
   #card-text1{
     font-size: 40%;
+    font-weight: bolder;
   }
   .cards__wrapper{
     margin-bottom: 122%;
@@ -170,5 +171,11 @@ h1 {
   }
   .cards__item__pic-wrap{
     margin-left: 40px;
+  }
+  
+  .cards__item__pic-wrap::after {
+    display: flex;
+    right: 0;
+    margin-right:70px;
   }
 }
