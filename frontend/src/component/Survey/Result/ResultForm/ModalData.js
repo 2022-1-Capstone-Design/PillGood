@@ -6,23 +6,6 @@ Modal.setAppElement('#root');
 
 const ModalData=({product, modalIsOpen, setModalIsOpen})=>{
   const comment=" "; 
-  const [showMore, setShowMore]=useState(false);
-  const textLimit=useRef(10);
-
-  const commentToggle=useMemo(()=>{
-    if(Array.isArray(comment)){
-      const shortView=comment.slice(0,textLimit.current);
-      if(comment.length>textLimit.current){
-        if(showMore){
-          return comment;
-        }
-        return shortView;
-      }else {
-        return comment;
-      }
-    }
-    
-  },[showMore]);
 
   useEffect(()=>{
      if(modalIsOpen){
@@ -51,18 +34,9 @@ const ModalData=({product, modalIsOpen, setModalIsOpen})=>{
 
              <h4>(3) 주요 기능</h4>
               <p>{product.PRIMARY_FNCLTY}</p>
-              <div onClick={()=>setShowMore(!showMore)}>
-                {(comment.length>textLimit.current)&&(showMore?'닫기':'더보기')}
-              </div>
-           
             
               <h4>(3) 주의사항</h4>
-              
               <p>{product.IFTKN_ATNT_MATR_CN}</p>
-              <div onClick={()=>setShowMore(!showMore)}>
-                {(comment.length>textLimit.current)&&(showMore?'닫기':'더보기')}
-              </div>
-            
             
           </div>
           <button className="Modal__btn" onClick={()=>setModalIsOpen(false)}>닫기</button>
