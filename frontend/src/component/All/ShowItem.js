@@ -31,15 +31,11 @@ const ShowItem = ({ products, loading, likeItArray }) => {
           text: "관심상품 더 알아보러 가볼까요? 😲",
         });
         axios
-          .delete(
-            "http://api.pillgood.ml/product",
-            {
-              data: { productId: `${id}` },
-            },
-            {
-              withCredentials: true,
-            }
-          )
+          .delete("http://api.pillgood.ml/product", {
+            data: { productId: `${id}` },
+
+            withCredentials: true,
+          })
           .then(console.log("delete 성공"))
           .catch((error) => {
             console.log(error);
