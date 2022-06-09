@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config({ path: "../frontend/.env" });
 
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 // Router
 const authRouter = require("./Router/auth");
@@ -27,7 +28,8 @@ app.use(
     credentials: true,
   })
 );
-*/
+
+app.use(cookieParser());
 // Router 연결
 app.use("/test", authRouter); //경로 잠깐 바꿔놨습니다
 app.use("/survey", surveyRouter);

@@ -72,6 +72,8 @@ const logout = async (req, res) => {
         Authorization: `Bearer ${token.access_token}`,
       },
     });
+    res.clearCookie("token", { domain: ".pillgood.ml", path: "/" });
+    res.clearCookie("check", { domain: ".pillgood.ml", path: "/" });
     return res.status(200).json({ success: true });
   } catch (error) {
     return res.status(500).json({
@@ -83,10 +85,9 @@ const logout = async (req, res) => {
 
 const verifyUser = async (req, res, next) => {
   try {
-    const cookie = req.headers.cookie;
+    const cookie = req.cookies;
     if (cookie) {
-      const token = cookie.split("=")[1];
-      const decryption = jwt.verify(token.split(";")[0], process.env.JWT_KEY);
+      const decryption = jwt.verify(cookie.token, process.env.JWT_KEY);
       req.user = decryption.id;
     }
     next();
