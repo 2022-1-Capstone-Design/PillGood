@@ -212,9 +212,12 @@ const Survey = ({ isLoggedIn }) => {
   };
 
   const getQuestions = async () => {
+    const question = await axios.get("/survey");
+    /*
     const questions = await axios.get("http://api.pillgood.ml/survey", {
       withCredentials: true,
     });
+    */
     setQuestions(questions.data);
   };
 

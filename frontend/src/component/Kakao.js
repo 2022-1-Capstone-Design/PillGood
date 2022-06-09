@@ -16,7 +16,7 @@ const Kakao = () => {
     const data = {
       grant_type: "authorization_code",
       client_id: process.env.REACT_APP_KAKAO_KEY,
-      redirect_uri: "http://pillgood.ml/auth/kakao/callback",
+      redirect_uri: "http://localhost:3000/auth/kakao/callback",
       code: code,
     };
     const queryString = Object.keys(data)
@@ -40,7 +40,7 @@ const Kakao = () => {
   const sendKakaoTokenToServer = (token, expiresIn) => {
     axios
       .post(
-        "http://api.pillgood.ml/test/kakao",
+        "/test/kakao",
         { access_token: token, expires_in: expiresIn },
         { withCredentials: true }
       ) // localhost:5000/test/kakao로 전송

@@ -4,8 +4,7 @@ export function Logout() {
   // const deleteCookie = () => {
 
   // };
-  axios
-    .post(
+  axios.post(
       "http://api.pillgood.ml/test/kakao/logout",
       {},
       { withCredentials: true }

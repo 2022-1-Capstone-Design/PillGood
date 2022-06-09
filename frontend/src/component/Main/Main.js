@@ -130,7 +130,7 @@ function Main({ isLoggedIn }) {
     <div ref={outerDivRef} className="outer">
       <Dots scrollIndex={scrollIndex} />
       <div className="inner bg-yellow">
-        <FirstPage />
+        <FirstPage isLoggedIn={isLoggedIn}/>
       </div>
       <div className="divider"></div>
       <div className="inner bg-blue">

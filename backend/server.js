@@ -21,13 +21,14 @@ const connect = require("./Schemas");
 
 // DB 연결
 connect();
-
+/*
 app.use(
   cors({
     origin: ["http://pillgood.ml"],
     credentials: true,
   })
 );
+
 app.use(cookieParser());
 // Router 연결
 app.use("/test", authRouter); //경로 잠깐 바꿔놨습니다

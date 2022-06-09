@@ -24,6 +24,12 @@
     padding: 40px;
     overflow: auto;
 }
+
+.modal-open body{
+    overflow:hidden;
+    height:100%;
+}
+
 .Modal::-webkit-scrollbar{
     border-radius:16px;
     background-color: rgb(238, 238, 238);
