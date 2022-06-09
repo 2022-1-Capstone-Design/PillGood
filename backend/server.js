@@ -21,7 +21,7 @@ const connect = require("./Schemas");
 
 // DB 연결
 connect();
-/*
+
 app.use(
   cors({
     origin: ["http://pillgood.ml"],
