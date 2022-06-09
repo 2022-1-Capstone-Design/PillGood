@@ -40,7 +40,7 @@ const login = async (req, res) => {
       // sameSite: "none", // client가 server와 서로 다른 ip라도 동작하도록 함
       // secure: true, // sameSite를 none으로 설정했을 경우 secure : true
       overwrite: true, // 이전에 설정한 동일한 이름의 쿠키 덮어 씌움
-      // domain: ".pillgood.ml",
+      domain: ".pillgood.ml",
     };
 
     res
@@ -49,7 +49,7 @@ const login = async (req, res) => {
         maxAge: req.body.expires_in * 1000,
         // sameSite: "none",
         // secure: true,
-        // domain: ".pillgood.ml",
+        domain: ".pillgood.ml",
       });
 
     return res.status(created ? 201 : 200).json({ success: true });
