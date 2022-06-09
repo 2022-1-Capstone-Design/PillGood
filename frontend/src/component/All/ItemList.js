@@ -55,12 +55,10 @@ const ItemList = () => {
   const axiosData = async () => {
     try {
       const response = await axios.get(
-        /*
         "http://api.pillgood.ml/product" + location.search,
         {
           withCredentials: true,
-        }*/
-        "/product" + location.search
+        }
       );
       setLikeArray(response.data.likes);
       setProducts(response.data.products);
