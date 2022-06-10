@@ -1,0 +1,9 @@
+#char4 {
+    max-width: 50%;
+    max-height: 200px;
+  }
+
+  .container_loading {
+      margin: 0 auto;
+      display: block;
+  }
