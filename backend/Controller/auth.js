@@ -86,7 +86,7 @@ const logout = async (req, res) => {
 const verifyUser = async (req, res, next) => {
   try {
     const cookie = req.cookies;
-    if (cookie) {
+    if (cookie.token) {
       const decryption = jwt.verify(cookie.token, process.env.JWT_KEY);
       req.user = decryption.id;
     }
