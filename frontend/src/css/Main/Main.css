@@ -61,6 +61,7 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
     height: 100vh;
     overflow-y: hidden;
     width: 100%;
+    -webkit-appearance: none; 
   }
    .section-first{
      height: 73%;
