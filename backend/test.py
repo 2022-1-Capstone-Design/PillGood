@@ -209,6 +209,7 @@ def calc(vJson):
         vJson['세부'][i] = final_list[count]
         count += 1
         
+        
     # BMI 계산 후 딕셔너리 추가    
     BMI = weight / (height * height)
     bmi_list = []
