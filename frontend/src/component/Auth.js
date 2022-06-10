@@ -1,13 +1,15 @@
 import imgLogin from "../image/kakao_login.png";
 import "../css/Auth.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../image/logo2.png";
 import { useEffect } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const cookies = location.state.surveyAnswer;
   useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn || cookies) {
       //로그인 상태면 해당 페이지 접근 제한
       navigate("/", true);
     }

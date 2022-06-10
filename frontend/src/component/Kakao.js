@@ -46,7 +46,13 @@ const Kakao = () => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          navigate(-2, true);
+          navigate(
+            "/auth",
+            {
+              state: { cookies },
+            },
+            { replace: true }
+          );
         } else {
           window.alert("로그인에 실패하였습니다.");
           navigate("/");
