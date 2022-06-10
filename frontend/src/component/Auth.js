@@ -7,7 +7,7 @@ import { useEffect } from "react";
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const cookies = location.state.surveyAnswer;
+  const cookies = location.state.cookies;
   useEffect(() => {
     if (isLoggedIn || cookies) {
       //로그인 상태면 해당 페이지 접근 제한
