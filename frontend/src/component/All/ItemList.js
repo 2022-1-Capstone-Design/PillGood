@@ -5,7 +5,6 @@ import axios from "axios";
 import "../../css/All/ItemList.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ItemList = () => {
   const [products, setProducts] = useState([]);
@@ -55,11 +54,6 @@ const ItemList = () => {
   const axiosData = async () => {
     try {
       const response = await axios.get(
-        /*
-        "http://api.pillgood.ml/product" + location.search,
-        {
-          withCredentials: true,
-        }*/
         "/product" + location.search
       );
       setLikeArray(response.data.likes);

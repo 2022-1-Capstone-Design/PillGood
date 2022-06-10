@@ -12,9 +12,7 @@ const MyPageList = () => {
       try {
         const res = await axios.get("/myPage");
         setMyPageData(res.data);
-        console.log(res.data);
         setLoading(false);
-        console.log("myPageData : ", myPageData);
       } catch (e) {
         console.log(e);
       }
