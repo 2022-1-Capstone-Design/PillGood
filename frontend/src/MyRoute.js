@@ -42,7 +42,12 @@ function MyRoute() {
           <Route path="/ask" element={<Ask />} />
           <Route path="/mypage" element={<MyPage isLoggedIn={isLoggedIn} />} />
         </Route>
-        <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
+        <Route
+          path="/auth"
+          element={
+            <Auth isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          }
+        />
         <Route path="/form" element={<Form isLoggedIn={isLoggedIn} />} />
         <Route
           path="/form/survey"
