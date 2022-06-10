@@ -54,7 +54,6 @@ const Survey = ({ isLoggedIn }) => {
     else {
       tmpArr[tmpArr.length] = e.target.value;
     }
-    console.log(tmpArr);
   };
   //상세 질문 번호 오름차순으로 저장 및 진행률 변수 설정
   const saveSurveyNum = () => {

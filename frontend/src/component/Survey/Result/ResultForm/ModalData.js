@@ -1,11 +1,10 @@
 import Modal from 'react-modal';
-import React,{useMemo, useRef, useState,useEffect} from "react";
+import React,{useEffect} from "react";
 import '../../../../css/Survey/Result/ModalData.css';
 
 Modal.setAppElement('#root');
 
 const ModalData=({product, modalIsOpen, setModalIsOpen})=>{
-  const comment=" "; 
 
   useEffect(()=>{
      if(modalIsOpen){

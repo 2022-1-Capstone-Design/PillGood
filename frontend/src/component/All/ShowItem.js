@@ -8,10 +8,8 @@ import Swal from "sweetalert2";
 const ShowItem = ({ products, loading, likeItArray }) => {
   const [likeArray, setLikeArray] = useState(likeItArray);
   const navigate = useNavigate();
-  const [lock, setLock] = useState(likeItArray);
 
   useEffect(() => {
-    console.log("넘겨받은 likeArray: ", likeArray);
   }, [likeItArray]);
 
   if (loading) {
@@ -109,7 +107,6 @@ const ShowItem = ({ products, loading, likeItArray }) => {
             <FontAwesomeIcon
               icon={faHeart}
               onClick={() => {
-                console.log("이동");
                 navigate("/auth");
               }}
               style={{ color: "gray" }}

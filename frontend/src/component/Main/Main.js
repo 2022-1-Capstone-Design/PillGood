@@ -26,7 +26,6 @@ function Main({ isLoggedIn }) {
         //스크롤 내릴 때
         if (scrollTop >= 0 && scrollTop < pageHeight) {
           //현재 1페이지면 2페이지로 이동
-          console.log("현재 1페이지, down");
           outerDivRef.current.scrollTo({
             top: pageHeight + DIVIDER_HEIGHT,
             left: 0,
@@ -35,7 +34,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(2);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           //현재 2페이지면 3페이지로 이동
-          console.log("현재 2페이지, down");
           outerDivRef.current.scrollTo({
             top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
             left: 0,
@@ -44,7 +42,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(3);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           //현재 3페이지면 4페이지로 이동
-          console.log("현재 3페이지, down");
           outerDivRef.current.scrollTo({
             top: pageHeight * 3 + DIVIDER_HEIGHT * 3,
             left: 0,
@@ -53,7 +50,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(4);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 4) {
           //현재 4페이지면 5페이지로 이동
-          console.log("현재 4페이지, down");
           outerDivRef.current.scrollTo({
             top: pageHeight * 4 + DIVIDER_HEIGHT * 4,
             left: 0,
@@ -62,7 +58,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(5);
         } else {
           //현재 5페이지면 5페이지로 이동
-          console.log("현재 5페이지, down");
           outerDivRef.current.scrollTo({
             top: pageHeight * 4 + DIVIDER_HEIGHT * 4,
             left: 0,
@@ -74,7 +69,6 @@ function Main({ isLoggedIn }) {
         //스크롤 올릴 때
         if (scrollTop >= 0 && scrollTop < pageHeight) {
           //현재 1페이지면 1페이지로 이동
-          console.log("현재 1페이지, up");
           outerDivRef.current.scrollTo({
             top: 0,
             left: 0,
@@ -83,7 +77,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(1);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 2) {
           //현재 2페이지면 1페이지로 이동
-          console.log("현재 2페이지, up");
           outerDivRef.current.scrollTo({
             top: 0,
             left: 0,
@@ -92,7 +85,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(1);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 3) {
           //현재 3페이지면 2페이지로 이동
-          console.log("현재 3페이지, up");
           outerDivRef.current.scrollTo({
             top: pageHeight + DIVIDER_HEIGHT,
             left: 0,
@@ -101,7 +93,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(2);
         } else if (scrollTop >= pageHeight && scrollTop < pageHeight * 4) {
           //현재 4페이지면 3페이지로 이동
-          console.log("현재 4페이지, up");
           outerDivRef.current.scrollTo({
             top: pageHeight * 2 + DIVIDER_HEIGHT * 2,
             left: 0,
@@ -110,7 +101,6 @@ function Main({ isLoggedIn }) {
           setScrollIndex(3);
         } else {
           //현재 5페이지면 4페이지로 이동
-          console.log("현재 5페이지, up");
           outerDivRef.current.scrollTo({
             top: pageHeight * 3 + DIVIDER_HEIGHT * 3,
             left: 0,
