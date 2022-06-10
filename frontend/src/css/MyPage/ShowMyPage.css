@@ -48,7 +48,10 @@
   margin-top: 100px;
   margin-bottom: 100px;
 }
-
+#char5 {
+  max-width: 50%;
+  max-height: 200px;
+}
 #btn_delete {
   position: absolute;
   background-color: transparent;
@@ -165,13 +168,23 @@ table:hover {
 @media screen and (max-width: 1023px) {
   .mypage_list {
     padding-top: 0px;
+    width: 97%;
   }
   .set_box_two {
     word-break: keep-all;
   }
-  .head_text,
-  .likes_text {
+  .head_text{
     padding-top: 0px;
+    margin-left: 0;
+  }
+
+  #likes_text {
+    margin-left: 20px;
+  }
+
+  #results_text {
+    margin-top: 100px;
+    margin-left: 20px;
   }
   .set_box_all {
     padding-top: 0px;
@@ -183,14 +196,17 @@ table:hover {
   .mypage_content {
     width: 100%;
     padding-top: 0px;
+    align-items: center;
+    overflow-x: hidden;
   }
+
   #btn_show_result {
     padding-top: 0px;
+    padding: 10px;
     width: 90%;
   }
   #likes_null {
     padding-top: 0px;
-    padding-left: 20px;
     width: 90%;
     text-align: center;
     align-items: center;

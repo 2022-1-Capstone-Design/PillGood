@@ -48,7 +48,7 @@ const ItemList = () => {
       );
     } else {
       return null;
-    }
+    } 
   });
 
   //url query string으로 검색시 해당 제품 검색, 혹은 처음에 들어왔을때 전체제품 보여준다
@@ -87,6 +87,9 @@ const ItemList = () => {
     if (search) {
       data = { key: { search } };
       setBtnClick(true);
+      setLoading(true);
+      setCurrentPage(1);
+      renderPageNumbers(1);
     }
   };
 
@@ -131,6 +134,12 @@ const ItemList = () => {
     pageDecrementBtn = <li onClick={handlePrevbtn}>&hellip;</li>;
   }
 
+
+  let testNumber = pageNumber.length % 5;
+  if(testNumber===0) {
+    testNumber =5;
+  }
+
   return (
     <div id="all-item-list">
       <div id="search-wrapper">
@@ -163,7 +172,11 @@ const ItemList = () => {
       <div className="list-block">
         {btnClick ? (
           loading ? (
-            <div>Loading...</div>
+            <div>
+            <img id="char5" src="images/char3.png" alt=""></img>
+            <br/>
+              Loading...
+              </div>
           ) : (
             <div>
               <ShowItem
@@ -226,7 +239,7 @@ const ItemList = () => {
             onClick={handleDoubleNextbtn}
             disabled={
               currentPage === pageNumber[pageNumber.length - 1] ||
-              currentPage >= pageNumber[60]
+              currentPage >= pageNumber[pageNumber.length - testNumber] // 나머지 0일 경우 5
                 ? true
                 : false
             }

@@ -25,7 +25,7 @@ const MyPageList = () => {
   }, []);
 
   if (loading) {
-    return <div>대기중</div>;
+    return <div>Loading..</div>;
   }
   if (!myPageData) {
     return null;
