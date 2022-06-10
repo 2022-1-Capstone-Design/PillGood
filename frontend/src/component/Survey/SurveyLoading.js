@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../../css/Survey/SurveyLoading.css";
 
 const SurveyLoading = () => {
   const location = useLocation();
@@ -21,10 +22,10 @@ const SurveyLoading = () => {
       .catch((err) => console.log(err));
   });
   return (
-    <div>
-      <img src="/images/char4.png" alt=""></img>
+    <div className="container_loading">
+      <img id="char4" src="/images/char4.png" alt=""></img>
       <br />
-      loading..
+      Loading..
     </div>
   );
 };
