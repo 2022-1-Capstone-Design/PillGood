@@ -49,7 +49,7 @@ const Kakao = () => {
           navigate(
             "/auth",
             {
-              state: { cookies: true },
+              state: true,
             },
             { replace: true }
           );
