@@ -57,6 +57,11 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
 }
 
 @media screen and (max-width:720px){
+  .outer {
+    height: 100vh;
+    overflow-y: hidden;
+    width: 100%;
+  }
    .section-first{
      height: 73%;
    }

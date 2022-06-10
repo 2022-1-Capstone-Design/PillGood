@@ -90,7 +90,7 @@ line-height: 1.7;
     .startForm,
     .main__intro__main,
     .main__intro__main2{
-        padding:2% 2%;
+        padding: 3% 3%;
     }
     #text1,
     #text2{
@@ -99,7 +99,6 @@ line-height: 1.7;
     }
     .main{
     background-image: url('../../image/medical.png');
-    
     } 
 }
  
@@ -124,14 +123,15 @@ line-height: 1.7;
 }
 @media screen and (max-width:584px){
     .startForm{
-        margin-top: 17%;
+        margin-top: 18%;
         margin-bottom: 48%;
-        margin-left: 5%;
+        margin-left: 5.5%;
         font-size: 3.5vw !important;
     }
     .main__intro__{
         padding-right: 0%;
         align-items: center;
+        position: fixed;
     }
     .main__intro__main2{
         width:101%;
@@ -163,7 +163,7 @@ line-height: 1.7;
 .startForm {
     font-family: 'Noto Sans KR', sans-serif;
     border-radius: 50px;
-    padding: 4% 6%;
+    padding: 5% 6%;
     background-color: #ff9d00;
     border: 0px;
     color: rgb(245, 241, 241);
