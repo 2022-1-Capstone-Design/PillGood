@@ -18,20 +18,6 @@ const ShowMyPage = ({ myPageData }) => {
     autoplaySpeed: 3000,
     pauseOnHover: true,
     responsive: [
-      {
-        breakpoint: 1440,
-        settings: {
-            slidesToShow: 7,
-            slidesToScroll: 7
-        }
-    },
-    {
-        breakpoint: 1024,
-        settings: {
-            slidesToShow: 5,
-            slidesToScroll: 5
-        }
-    },
     {
         breakpoint: 720,
         settings: {

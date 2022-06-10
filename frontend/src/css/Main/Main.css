@@ -43,7 +43,7 @@
   
   .divider {
     width: 100%;
-    height: 2px;
+    height: 10px;
     background-color: rgb(255, 255, 255);
   }
 p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
@@ -76,5 +76,6 @@ p,h2,h5.current,h1,.thirdpage__first,.thirdpage__second{
    .bg-pink {
       height: 70%;
   }
+  
   
 }
