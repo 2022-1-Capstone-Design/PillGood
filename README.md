@@ -16,3 +16,4 @@
 </p>
 
 ## 🏠 [HOME PAGE](http://pillgood.ml)
+## 💡 [스크럼 회의록](https://disco-candle-da3.notion.site/f130f64225d34d92a3cef0fc120eeaad?v=ade94fdab21244a09c244d5c58c8bbe7)
