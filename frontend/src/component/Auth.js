@@ -7,11 +7,13 @@ import { useEffect } from "react";
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
   useEffect(() => {
-    window.location.reload();
     if (isLoggedIn) {
-      navigate(-1, true);
+      window.location.reload();
     }
   }, [isLoggedIn]);
+  useEffect(() => {
+    if (isLoggedIn) navigate(-1, true);
+  });
   return (
     <div className="auth">
       <Link to="/">
