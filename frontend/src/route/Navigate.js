@@ -36,7 +36,7 @@ function Navigate({ isLoggedIn, setPrevPath }) {
   }, [scrollEvent]);
 
   useEffect(() => {
-    setPrevPath(location.pathname);
+    setPrevPath(location);
   }, [location]);
   return (
     <>
