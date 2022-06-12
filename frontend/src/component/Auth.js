@@ -4,12 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../image/logo2.png";
 import { useEffect } from "react";
 
-function Auth({ isLoggedIn, setIsLoggedIn }) {
+function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
   useEffect(() => {
-    if (!isLoggedIn) {
-      if (document.cookie !== "") setIsLoggedIn(true);
-    } else navigate(-1, true);
+    window.location.reload();
+    if (isLoggedIn) {
+      navigate(-1, true);
+    }
   }, [isLoggedIn]);
   return (
     <div className="auth">
