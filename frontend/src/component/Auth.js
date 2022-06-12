@@ -6,15 +6,18 @@ import { useEffect, useState } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
-
+  const [cookie, setCookie] = useState(false);
   useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn]);
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate(-1, true);
-    }
-  });
+    if (document.cookie !== "") {
+      setCookie(false);
+      console.log(cookie);
+    } else setCookie(true);
+  }, [cookie]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate(-1, true);
+  //   }
+  // });
   return (
     <div className="auth">
       <Link to="/">
