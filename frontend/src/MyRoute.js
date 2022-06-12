@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Main from "./component/Main/Main";
 import Auth from "./component/Auth";
 import Form from "./component/Form";
@@ -22,17 +16,12 @@ import MyPage from "./component/MyPage/MyPage";
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const cookie = document.cookie === "";
-  const { location } = useLocation();
 
   // 쿠키에 토큰값 유무에 따라 로그인 여부 결정
   useEffect(() => {
     if (cookie) setIsLoggedIn(false);
     else setIsLoggedIn(true);
   }, [cookie]);
-
-  useEffect(() => {
-    console.log(location);
-  }, [location]);
 
   return (
     <BrowserRouter>
