@@ -10,7 +10,7 @@ function Auth({ isLoggedIn }) {
   useEffect(() => {
     setCookie(document.cookie);
     if (cookie !== "") navigate(-1, true);
-  }, [cookie]);
+  });
   console.log(cookie);
   return (
     <div className="auth">
