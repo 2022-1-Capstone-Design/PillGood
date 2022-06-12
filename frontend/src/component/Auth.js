@@ -14,8 +14,15 @@ function Auth({ isLoggedIn }) {
 	    window.location.reload();
     } else {
       setCookie(false);
+<<<<<<< HEAD
     } 
   }, [cookies]);
+=======
+    }
+    window.location.reload();
+  }, [cookies]);
+
+>>>>>>> ecf31d2e06ec6727335d6edb418ba28e982d6449
   useEffect(() => {
     if (cookie) navigate(-1, true);
   });
