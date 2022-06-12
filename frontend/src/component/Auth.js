@@ -6,11 +6,9 @@ import { useEffect, useState } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
-  const [cookie, setCookie] = useState("");
   useEffect(() => {
-    setCookie(document.cookie);
-    if (cookie !== "") navigate(-1, true);
-  }, [cookie]);
+    console.log(isLoggedIn);
+  }, [isLoggedIn]);
   return (
     <div className="auth">
       <Link to="/">
@@ -20,7 +18,6 @@ function Auth({ isLoggedIn }) {
         <button>
           <img src={imgLogin} alt="kakao Login button" />
         </button>
-        <p>{cookie}</p>
       </a>
     </div>
   );
