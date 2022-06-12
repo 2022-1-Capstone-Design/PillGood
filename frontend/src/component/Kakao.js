@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Kakao = ({ prevPath }) => {
   const navigate = useNavigate();
+  const prevPage = prevPath;
   const query = queryString.parse(window.location.search);
   useEffect(() => {
     if (query.code) {
@@ -46,7 +47,7 @@ const Kakao = ({ prevPath }) => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          console.log(prevPath);
+          navigate(`/${prevPage}`, true);
         } else {
           window.alert("로그인에 실패하였습니다.");
           navigate("/");
