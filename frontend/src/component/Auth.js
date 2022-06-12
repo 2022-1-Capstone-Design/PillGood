@@ -10,6 +10,8 @@ function Auth({ isLoggedIn }) {
   useEffect(() => {
     if (isLoggedIn) {
       setCookie(true);
+    } else {
+      setCookie(false);
     }
   }, [isLoggedIn]);
   useEffect(() => {
