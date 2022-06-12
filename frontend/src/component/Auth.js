@@ -6,12 +6,13 @@ import { useEffect } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
+  const cookies = document.cookie();
   useEffect(() => {
-    if (isLoggedIn) {
+    if (cookies) {
       //로그인 상태면 해당 페이지 접근 제한
       navigate(-1, true);
     }
-  }, [isLoggedIn]);
+  }, [cookies]);
   return (
     <div className="auth">
       <Link to="/">
