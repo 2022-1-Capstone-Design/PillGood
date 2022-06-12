@@ -17,3 +17,11 @@
 
 ## 🏠 [HOME PAGE](http://pillgood.ml)
 ## 💡 [스크럼 회의록](https://disco-candle-da3.notion.site/f130f64225d34d92a3cef0fc120eeaad?v=ade94fdab21244a09c244d5c58c8bbe7)
+## 🛠 주요 기능
+|메인페이지|로그인|설문페이지|설문결과|
+|:--:|:--:|:--:|:--:|
+|<img width='500' src='https://imgur.com/PIx9rue.png'>|<img width='500' src='https://i.imgur.com/CwLWFYR.png'>|<img width='500' src='https://i.imgur.com/X0NEmUK.png'>|<img width='500' src='https://i.imgur.com/5xsSFwZ.png'>|
+
+|전체보기|즐겨찾기|마이페이지|문의하기|
+|:--:|:--:|:--:|:--:|
+|<img width='500' src='https://i.imgur.com/fVCvULH.png'>|<img width='500' src='https://i.imgur.com/jngpX1d.png'>|<img width='500' src='https://i.imgur.com/P94GFk4.png'>|<img width='500' src='https://i.imgur.com/EqRsvrR.png'>|
