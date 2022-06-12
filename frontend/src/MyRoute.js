@@ -21,8 +21,8 @@ import MyPage from "./component/MyPage/MyPage";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const location = useLocation();
   const cookie = document.cookie === "";
+  const { location } = useLocation();
 
   // 쿠키에 토큰값 유무에 따라 로그인 여부 결정
   useEffect(() => {
