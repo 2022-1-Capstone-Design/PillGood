@@ -8,7 +8,7 @@ function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
   const [cookie, setCookie] = useState("");
   useEffect(() => {
-    setCookie(document.cookie());
+    setCookie(document.cookie);
     if (cookie !== "") navigate(-1, true);
   }, [cookie]);
   console.log(cookie);
