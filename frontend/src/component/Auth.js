@@ -19,7 +19,7 @@ function Auth({ isLoggedIn }) {
   }, [isLoggedIn]);
   useEffect(() => {
     window.location.reload();
-  }, [isLoggedIn]);
+  }, [cookie]);
   useEffect(() => {
     if (cookie) {
       navigate(-1, true);
