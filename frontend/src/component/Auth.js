@@ -10,7 +10,6 @@ function Auth({ isLoggedIn, prevPath, setPrevPath }) {
     //로그인 상태면 해당 페이지 접근 제한
     if (isLoggedIn) navigate("/", true);
   });
-  console.log(prevPath);
   return (
     <div className="auth">
       <Link to="/">

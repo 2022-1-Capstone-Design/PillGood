@@ -47,7 +47,7 @@ const Kakao = ({ prevPath }) => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          navigate(`/${prevPage}`, true);
+          console.log(prevPage);
         } else {
           window.alert("로그인에 실패하였습니다.");
           navigate("/");

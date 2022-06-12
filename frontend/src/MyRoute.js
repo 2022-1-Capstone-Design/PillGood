@@ -23,7 +23,6 @@ function MyRoute() {
     if (cookie) setIsLoggedIn(false);
     else setIsLoggedIn(true);
   }, [cookie]);
-  console.log(prevPath);
   return (
     <BrowserRouter>
       <Routes>
