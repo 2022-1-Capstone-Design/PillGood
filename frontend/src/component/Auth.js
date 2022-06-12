@@ -14,18 +14,12 @@ function Auth({ isLoggedIn }) {
     } else {
       setCookie(false);
     }
-<<<<<<< Updated upstream
+    window.location.reload();
   }, [cookies]);
 
-=======
-	  console.log(cookie);
-  }, [isLoggedIn]);
->>>>>>> Stashed changes
   useEffect(() => {
-	  console.log(cookie);
     if (cookie) navigate(-1, true);
   });
-	console.log(cookie);
   return (
     <div className="auth">
       <Link to="/">
