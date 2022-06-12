@@ -2,16 +2,19 @@ import imgLogin from "../image/kakao_login.png";
 import "../css/Auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../image/logo2.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
+  const [cookie, setCookie] = useState(isLoggedIn);
+  const cookies = document.cookie === "";
   useEffect(() => {
-    if (isLoggedIn) {
-      window.location.reload();
-      navigate(-1, true);
-    }
-  }, [isLoggedIn]);
+    if (cookies) setCookie(false);
+    else setCookie(true);
+  }, [cookies]);
+  useEffect(() => {
+    if (cookie) navigate(-1, true);
+  }, [cookie]);
   return (
     <div className="auth">
       <Link to="/">
