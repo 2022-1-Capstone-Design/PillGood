@@ -13,7 +13,10 @@ function Auth({ isLoggedIn }) {
     else setCookie(true);
   }, [cookies]);
   useEffect(() => {
-    if (cookie) navigate(-1, true);
+    if (cookie) {
+      window.location.reload();
+      navigate(-1, true);
+    }
   }, [cookie]);
   return (
     <div className="auth">
