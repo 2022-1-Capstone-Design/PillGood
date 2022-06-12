@@ -11,20 +11,17 @@ function Auth({ isLoggedIn }) {
   useEffect(() => {
     if (cookies) {
       setCookie(true);
-	    window.location.reload();
+      console.log(cookie);
     } else {
       setCookie(false);
-<<<<<<< HEAD
-    } 
-  }, [cookies]);
-=======
+      console.log(cookie);
     }
-    window.location.reload();
-  }, [cookies]);
-
->>>>>>> ecf31d2e06ec6727335d6edb418ba28e982d6449
+  }, [cookie, cookies]);
   useEffect(() => {
-    if (cookie) navigate(-1, true);
+    if (cookie) {
+      console.log(cookie);
+      navigate(-1, true);
+    }
   });
   return (
     <div className="auth">
