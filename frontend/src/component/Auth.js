@@ -9,17 +9,16 @@ function Auth({ isLoggedIn }) {
   const [cookie, setCookie] = useState(false);
   const cookies = document.cookie !== "";
   useEffect(() => {
-    if (cookies) {
+    if (isLoggedIn) {
       setCookie(true);
       console.log(cookie);
     } else {
       setCookie(false);
       console.log(cookie);
     }
-  }, [cookie, cookies]);
+  }, []);
   useEffect(() => {
     if (cookie) {
-      console.log(cookie);
       navigate(-1, true);
     }
   });
