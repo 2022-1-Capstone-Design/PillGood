@@ -8,7 +8,7 @@ function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.location.reload();
+    console.log(isLoggedIn);
   }, [isLoggedIn]);
   useEffect(() => {
     if (isLoggedIn) {
