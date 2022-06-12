@@ -16,7 +16,7 @@ function Auth({ isLoggedIn }) {
       setCookie(false);
       console.log(cookie);
     }
-  }, []);
+  }, [isLoggedIn]);
   useEffect(() => {
     if (cookie) {
       navigate(-1, true);
