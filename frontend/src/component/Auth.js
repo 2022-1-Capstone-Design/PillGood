@@ -16,6 +16,7 @@ function Auth({ isLoggedIn }) {
       setCookie(false);
       console.log(cookie);
     }
+    window.location.reload();
   }, [isLoggedIn]);
   useEffect(() => {
     if (cookie) {
