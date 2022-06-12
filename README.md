@@ -25,3 +25,9 @@
 |전체보기|즐겨찾기|마이페이지|문의하기|
 |:--:|:--:|:--:|:--:|
 |<img width='500' src='https://i.imgur.com/fVCvULH.png'>|<img width='500' src='https://i.imgur.com/jngpX1d.png'>|<img width='500' src='https://i.imgur.com/P94GFk4.png'>|<img width='500' src='https://i.imgur.com/EqRsvrR.png'>|
+## ⏳ 서비스 흐름
+<p align='center'>
+<img src='https://i.imgur.com/va5dqae.png'>
+</p>
+
+
