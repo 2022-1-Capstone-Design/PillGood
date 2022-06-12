@@ -12,6 +12,8 @@ function Auth({ isLoggedIn }) {
       //로그인 상태면 해당 페이지 접근 제한
       navigate(-1, true);
     }
+    console.log(cookies);
+    console.log(isLoggedIn);
   }, [navigate, cookies, isLoggedIn]);
   return (
     <div className="auth">
