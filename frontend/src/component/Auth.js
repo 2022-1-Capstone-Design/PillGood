@@ -6,22 +6,12 @@ import { useEffect, useState } from "react";
 
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
-  const [cookie, setCookie] = useState(false);
-  const cookies = document.cookie !== "";
-  useEffect(() => {
-    if (isLoggedIn) {
-      setCookie(true);
-      console.log(cookie);
-    } else {
-      setCookie(false);
-      console.log(cookie);
-    }
-  }, [isLoggedIn]);
+
   useEffect(() => {
     window.location.reload();
-  }, [cookie]);
+  }, [isLoggedIn]);
   useEffect(() => {
-    if (cookie) {
+    if (isLoggedIn) {
       navigate(-1, true);
     }
   });
