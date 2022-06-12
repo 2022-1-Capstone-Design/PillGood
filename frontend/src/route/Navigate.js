@@ -36,7 +36,8 @@ function Navigate({ isLoggedIn, setPrevPath }) {
   }, [scrollEvent]);
 
   useEffect(() => {
-    setPrevPath(location);
+    if (location.pathname !== "/auth/kakao/callback")
+      setPrevPath(location.pathname);
   }, [location]);
   return (
     <>
