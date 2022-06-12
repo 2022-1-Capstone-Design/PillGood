@@ -10,8 +10,7 @@ function Auth({ isLoggedIn }) {
   useEffect(() => {
     setCookie(document.cookie);
     if (cookie !== "") navigate(-1, true);
-  });
-  console.log(cookie);
+  }, [cookie]);
   return (
     <div className="auth">
       <Link to="/">
@@ -21,6 +20,7 @@ function Auth({ isLoggedIn }) {
         <button>
           <img src={imgLogin} alt="kakao Login button" />
         </button>
+        <p>{cookie}</p>
       </a>
     </div>
   );
