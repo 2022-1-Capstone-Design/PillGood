@@ -46,7 +46,11 @@ function MyRoute() {
         <Route
           path="/auth"
           element={
-            <Auth isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Auth
+              isLoggedIn={isLoggedIn}
+              prevPath={prevPath}
+              setPrevPath={setPrevPath}
+            />
           }
         />
         <Route path="/form" element={<Form isLoggedIn={isLoggedIn} />} />
