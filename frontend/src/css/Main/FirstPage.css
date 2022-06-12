@@ -47,8 +47,8 @@
 /* 메인페이지 내 큰 글씨 */
 #text1,
 #text2{
-    line-height: 1.7;
-    font-weight: bold;
+    line-height: 1.2;
+    font-weight: 900;
     animation:fadeIn 3s ease-in-out;
     padding-bottom: 0px;
     font-size:2.5vw;
@@ -74,7 +74,7 @@ line-height: 1.7;
         font-size: 152%;
     }
     .main__intro__main2{
-        width:101%;
+        width:80%;
     }
     #text1,#text2{
         font-size:4vw;
@@ -109,7 +109,7 @@ line-height: 1.7;
         font-size: 152%;
     }
     .main__intro__main2{
-        width:101%;
+        width: 80%;
     }
     #text1,#text2{
         font-size:4vw;
@@ -131,21 +131,30 @@ line-height: 1.7;
     .main__intro__{
         padding-right: 0%;
         align-items: center;
-        position: fixed;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
     }
-    .main__intro__main2{
-        width:101%;
+
+    .main__intro__main{
+        width:95%;
         text-align: center !important;
     }
+
+    .main__intro__main2{
+        width:87%;
+        text-align: center !important;
+    }
+
     #text1,#text2{
         font-size:5vw;
         text-align: center;
-        
     }
+
     #text3, #text4{
         font-size: 3.3vw;
         text-align: center;
     }
+
     .main{
         background-image: none;
     }

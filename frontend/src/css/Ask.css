@@ -157,11 +157,12 @@ text-shadow: 1px 1px 1px rgb(123, 123, 123);
   #askAreaButtonBox {
     margin: 0 auto;
     padding: 0;
-    width: 80%;
+    width: 90%;
     text-align: center;
     margin-top: 50px;
   }
   #askAreaButton {
+    background-image: none;
     margin: 0;
     padding: 0;
     width: 50%;
