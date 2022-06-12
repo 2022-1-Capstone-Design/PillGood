@@ -7,7 +7,7 @@ import logo from "../image/logo.png";
 import { useLocation } from "react-router-dom";
 import { Outlet } from "react-router";
 
-function Navigate({ isLoggedIn }) {
+function Navigate({ isLoggedIn, setPrevPath }) {
   const [isNavOn, setIsNavOn] = useState(true);
   const [isActive, setIsActive] = useState(false);
   const location = useLocation();
@@ -36,7 +36,7 @@ function Navigate({ isLoggedIn }) {
   }, [scrollEvent]);
 
   useEffect(() => {
-    console.log(location);
+    setPrevPath(location.pathname);
   }, [location]);
   return (
     <>

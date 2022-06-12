@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import queryString from "query-string";
 import axios from "axios";
 
-const Kakao = () => {
+const Kakao = ({ prevPath }) => {
   const navigate = useNavigate();
   const query = queryString.parse(window.location.search);
   useEffect(() => {
@@ -46,7 +46,7 @@ const Kakao = () => {
       ) // localhost:5000/test/kakao로 전송
       .then((res) => {
         if (res.status === 201 || res.status === 200) {
-          window.close();
+          navigate({ prevPath }, true);
         } else {
           window.alert("로그인에 실패하였습니다.");
           navigate("/");
