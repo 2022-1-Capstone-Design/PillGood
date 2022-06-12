@@ -7,8 +7,8 @@ import { useEffect } from "react";
 function Auth({ isLoggedIn }) {
   const navigate = useNavigate();
   useEffect(() => {
-    window.location.reload();
     if (isLoggedIn) {
+      window.location.reload();
       navigate(-1, true);
     }
   }, [isLoggedIn]);
