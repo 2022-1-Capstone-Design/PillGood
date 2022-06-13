@@ -11,18 +11,25 @@ import { useState, useEffect, useRef } from "react";
 
 const DIVIDER_HEIGHT = 5;
 
-function Main({ isLoggedIn }) {
+function Main({ isLoggedIn, setIsLoggedIn }) {
   const outerDivRef = useRef();
   const [scrollIndex, setScrollIndex] = useState(1);
-  const [windowWidth, setWindowWidth]=useState(
-    window.innerWidth<1025?true: false);
-  const screenChange=(event)=>{
-    const matches=event.matches;
+  const [windowWidth, setWindowWidth] = useState(
+    window.innerWidth < 1025 ? true : false
+  );
+  const screenChange = (event) => {
+    const matches = event.matches;
     setWindowWidth(matches);
-  }
+  };
+  const cookie = document.cookie === "";
+  // 쿠키에 토큰값 유무에 따라 로그인 여부 결정
   useEffect(() => {
+    if (cookie) setIsLoggedIn(false);
+    else setIsLoggedIn(true);
+  }, [cookie]);
 
-    let wd=window.matchMedia("screen and (max-width:1024px");
+  useEffect(() => {
+    let wd = window.matchMedia("screen and (max-width:1024px");
     wd.addEventListener("change", screenChange);
 
     const wheelHandler = (e) => {
@@ -128,39 +135,38 @@ function Main({ isLoggedIn }) {
 
   return (
     <>
-    {windowWidth?  
-      <div ref={outerDivRef} className="outer">
-        <div className="inner bg-yellow">
-         <FirstPage isLoggedIn={isLoggedIn}/>
+      {windowWidth ? (
+        <div ref={outerDivRef} className="outer">
+          <div className="inner bg-yellow">
+            <FirstPage isLoggedIn={isLoggedIn} />
+          </div>
         </div>
-      </div>:
-      <div ref={outerDivRef} className="outer">
-        <Dots scrollIndex={scrollIndex} />
-        <div className="inner bg-yellow">
-          <FirstPage isLoggedIn={isLoggedIn}/>
+      ) : (
+        <div ref={outerDivRef} className="outer">
+          <Dots scrollIndex={scrollIndex} />
+          <div className="inner bg-yellow">
+            <FirstPage isLoggedIn={isLoggedIn} />
+          </div>
+          <div className="divider"></div>
+          <div className="inner bg-blue">
+            <SecondPage />
+          </div>
+          <div className="divider"></div>
+          <div className="inner bg-pink">
+            <ThirdPage />
+          </div>
+          <div className="divider"></div>
+          <div className="inner bg-yellow">
+            <Cards />
+          </div>
+          <div className="divider"></div>
+          <div className="inner bg-blue">
+            <Footer />
+          </div>
+          <KakaoChat />
         </div>
-        <div className="divider"></div>
-        <div className="inner bg-blue">
-          <SecondPage />
-        </div>
-        <div className="divider"></div>
-        <div className="inner bg-pink">
-          <ThirdPage />
-        </div>
-        <div className="divider"></div>
-        <div className="inner bg-yellow">
-          <Cards />
-        </div>
-        <div className="divider"></div>
-        <div className="inner bg-blue">
-          <Footer />
-        </div>
-        <KakaoChat />
-    </div>
-      
-     }
+      )}
     </>
-    
   );
 }
 
