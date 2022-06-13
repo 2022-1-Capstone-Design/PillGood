@@ -27,7 +27,9 @@ function Navigate({ isLoggedIn, prevUrl, setPrevUrl }) {
     [beforeScrollY]
   );
   useEffect(() => {
-    setPrevUrl(location.pathname);
+    if (window.location.host === "localhost:3000")
+      setPrevUrl(location.pathname);
+    else setPrevUrl(prevUrl);
     console.log(prevUrl);
   }, [location]);
 
@@ -55,9 +57,7 @@ function Navigate({ isLoggedIn, prevUrl, setPrevUrl }) {
           </li>
           {!isLoggedIn && (
             <li>
-              <Link to={{ pathname: "/auth", state: { prevUrl: prevUrl } }}>
-                로그인
-              </Link>
+              <Link to="/auth">로그인</Link>
             </li>
           )}
           <li>

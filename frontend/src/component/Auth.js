@@ -7,10 +7,9 @@ import { useEffect } from "react";
 function Auth({ isLoggedIn, prevUrl }) {
   const navigate = useNavigate();
   useEffect(() => {
-    if (isLoggedIn) {
-      //로그인 상태면 해당 페이지 접근 제한
-      navigate(`/${prevUrl}`, true);
-    }
+    if (isLoggedIn)
+      navigate(`/${window.localStorage.getItem("prevUrl")}`, true);
+    else window.localStorage.setItem("prevUrl", prevUrl);
   });
   console.log(prevUrl);
   return (
