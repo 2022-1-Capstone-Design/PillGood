@@ -27,10 +27,7 @@ function Navigate({ isLoggedIn, prevUrl, setPrevUrl }) {
     [beforeScrollY]
   );
   useEffect(() => {
-    if (window.location.host === "localhost:3000")
-      setPrevUrl(location.pathname);
-    else setPrevUrl(prevUrl);
-    console.log(prevUrl);
+    setPrevUrl(location.pathname);
   }, [location]);
 
   useEffect(() => {
