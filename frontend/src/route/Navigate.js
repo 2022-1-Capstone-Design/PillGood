@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../css/Navigate.css";
 import * as Logout from "../component/Logout";
 import React, { useEffect, useMemo, useRef, useState } from "react";
@@ -6,10 +6,9 @@ import { throttle } from "lodash";
 import logo from "../image/logo.png";
 import { Outlet } from "react-router";
 
-function Navigate({ isLoggedIn, prevUrl, setPrevUrl }) {
+function Navigate({ isLoggedIn }) {
   const [isNavOn, setIsNavOn] = useState(true);
   const [isActive, setIsActive] = useState(false);
-  const location = useLocation();
   //이전 스크롤 초기값
   const beforeScrollY = useRef(0);
   const scrollEvent = useMemo(
@@ -26,10 +25,6 @@ function Navigate({ isLoggedIn, prevUrl, setPrevUrl }) {
       }, 300),
     [beforeScrollY]
   );
-  useEffect(() => {
-    setPrevUrl(location.pathname);
-  }, [location]);
-
   useEffect(() => {
     //모바일 환경에서는 네비바 고정
     if (window.innerWidth > 1023)

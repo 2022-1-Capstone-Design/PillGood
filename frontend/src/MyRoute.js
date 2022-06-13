@@ -15,7 +15,6 @@ import MyPage from "./component/MyPage/MyPage";
 
 function MyRoute() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [prevUrl, setPrevUrl] = useState("");
   const cookie = document.cookie === "";
 
   // 쿠키에 토큰값 유무에 따라 로그인 여부 결정
@@ -27,15 +26,7 @@ function MyRoute() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          element={
-            <Navigater
-              isLoggedIn={isLoggedIn}
-              prevUrl={prevUrl}
-              setPrevUrl={setPrevUrl}
-            />
-          }
-        >
+        <Route element={<Navigater isLoggedIn={isLoggedIn} />}>
           <Route
             path="/"
             element={
@@ -47,10 +38,7 @@ function MyRoute() {
           <Route path="/ask" element={<Ask />} />
           <Route path="/mypage" element={<MyPage isLoggedIn={isLoggedIn} />} />
         </Route>
-        <Route
-          path="/auth"
-          element={<Auth isLoggedIn={isLoggedIn} prevUrl={prevUrl} />}
-        />
+        <Route path="/auth" element={<Auth isLoggedIn={isLoggedIn} />} />
         <Route path="/form" element={<Form isLoggedIn={isLoggedIn} />} />
         <Route
           path="/form/survey"
