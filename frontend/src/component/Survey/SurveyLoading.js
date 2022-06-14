@@ -23,7 +23,7 @@ const SurveyLoading = () => {
   });
   return (
     <div className="container_loading">
-      <img id="char4" src="/images/char4.png" alt=""></img>
+      {/* <img id="char4" src="/images/char4.png" alt=""></img> */}
       <br />
       Loading..
     </div>
